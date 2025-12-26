@@ -290,12 +290,12 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: calc(100vh - 115px);
     background: url('shutterstock-94087960-2459.jpg') center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: center;
-    margin-top: 110px;
+    margin-top: 115px;
 }
 
 .hero-overlay {
@@ -414,7 +414,7 @@ body {
 
 /* Scroll offset for fixed header */
 section[id] {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 120px;
 }
 
 /* Section Header */
@@ -489,6 +489,7 @@ section[id] {
 /* Why GELKA Section */
 .why-gelka {
     padding: 100px 0;
+    padding-top: 60px;
     background: linear-gradient(180deg, var(--light-color) 0%, #e8e8e8 100%);
     position: relative;
     overflow: hidden;
@@ -863,7 +864,7 @@ section[id] {
     justify-content: center;
     gap: 15px;
     color: var(--white);
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 
 .reassurance i {
@@ -2040,6 +2041,7 @@ section[id] {
     
     .hero {
         margin-top: 130px;
+        height: calc(100vh - 130px);
     }
     
     .nav {
@@ -2108,6 +2110,7 @@ section[id] {
     .reassurance {
         flex-direction: column;
         text-align: center;
+        margin-bottom: 80px;
     }
     
     .stats-grid {
@@ -4569,4 +4572,224 @@ section[id] {
     .article-highlight-box {
         flex-direction: column;
     }
+}
+
+
+/* Legal Pages (KVKK, Çerez Politikası) */
+.legal-content {
+    padding: 140px 0 80px;
+    background: var(--white);
+}
+
+.legal-content h1 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.legal-content .last-update {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+.legal-content h2 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-top: 35px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.legal-content h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.legal-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.legal-content ul {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.legal-content ul li {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.legal-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.legal-content a:hover {
+    text-decoration: underline;
+}
+
+.company-info-box {
+    background: var(--light-color);
+    padding: 25px 30px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 4px solid var(--accent-color);
+}
+
+.company-info-box p {
+    margin-bottom: 8px;
+}
+
+.company-info-box p:last-child {
+    margin-bottom: 0;
+}
+
+.cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.cookie-table th,
+.cookie-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cookie-table th {
+    background: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.cookie-table tr:hover {
+    background: var(--light-color);
+}
+
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 20px;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+}
+
+.cookie-banner.show {
+    display: block;
+}
+
+.cookie-banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.cookie-banner a {
+    color: var(--accent-color);
+}
+
+.cookie-banner-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.cookie-btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.cookie-btn-accept {
+    background: var(--accent-color);
+    color: var(--white);
+}
+
+.cookie-btn-accept:hover {
+    background: var(--accent-dark);
+}
+
+.cookie-btn-reject {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.cookie-btn-reject:hover {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .legal-content {
+        padding: 120px 0 60px;
+    }
+    
+    .legal-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .cookie-table {
+        font-size: 0.85rem;
+    }
+    
+    .cookie-table th,
+    .cookie-table td {
+        padding: 8px 10px;
+    }
+    
+    .cookie-banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+/* Footer Legal Links */
+.footer-legal {
+    margin-bottom: 10px;
+}
+
+.footer-legal a {
+    color: var(--silver-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.footer-legal a:hover {
+    color: var(--accent-color);
+}
+
+.footer-legal span {
+    color: var(--silver);
+    margin: 0 10px;
 }

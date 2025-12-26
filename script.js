@@ -23,7 +23,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             history.pushState({ scrollPos: window.scrollY }, null, window.location.pathname);
             
             // Calculate offset for fixed header (banner + header = ~100px)
-            const headerOffset = 150;
+            const headerOffset = 130;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             
@@ -413,3 +413,36 @@ function scrollAndOpenModal(sectorKey) {
         }, 600);
     }
 }
+
+
+// Cookie Banner Functions
+function checkCookieConsent() {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+        setTimeout(() => {
+            const banner = document.getElementById('cookieBanner');
+            if (banner) {
+                banner.classList.add('show');
+            }
+        }, 2000);
+    }
+}
+
+function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    const banner = document.getElementById('cookieBanner');
+    if (banner) {
+        banner.classList.remove('show');
+    }
+}
+
+function rejectCookies() {
+    localStorage.setItem('cookieConsent', 'rejected');
+    const banner = document.getElementById('cookieBanner');
+    if (banner) {
+        banner.classList.remove('show');
+    }
+}
+
+// Check cookie consent on page load
+document.addEventListener('DOMContentLoaded', checkCookieConsent);
