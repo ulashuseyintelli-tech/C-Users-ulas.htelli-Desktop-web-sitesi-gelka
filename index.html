@@ -231,91 +231,236 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="anasayfa" class="hero">
+    <section id="anasayfa" class="hero hero-split">
         <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <p class="hero-tagline" style="font-size: 2.43rem; font-weight: 700; margin-bottom: 5px;">Elektrikte sürpriz değil, öngörü sunarız.</p>
-            <h1>Tüketimi okur,<br>riskleri önceden görürüz.</h1>
-            <p>Elektrik maliyetinizi tahminle değil, analizle yönetiriz.</p>
-            <div class="hero-buttons">
-                <a href="#iletisim" class="btn btn-primary"><i class="fas fa-file-alt"></i> Teklif Al</a>
-                <a href="#nasil-calisiyoruz" class="btn btn-outline"><i class="fas fa-play-circle"></i> Nasıl Çalışıyoruz?</a>
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Sol Blok: Mesaj + CTA -->
+                <div class="hero-content">
+                    <h1>Veriye Dayalı Elektrik Tedariki</h1>
+                    <p class="hero-subtitle">Faturanızı okur, riskleri önceden çıkarır, sözleşmeyi sizin adınıza yönetiriz.</p>
+                    <p class="hero-trust-line"><i class="fas fa-check-circle"></i> Sabit tarife satmayız. Tüketiminize özel maliyet modeli kurarız.</p>
+                    <div class="hero-buttons">
+                        <a href="#iletisim" class="btn btn-primary btn-large"><i class="fas fa-file-alt"></i> Ücretsiz Analiz Raporu İste</a>
+                        <a href="#nasil-calisiyoruz" class="btn btn-ghost"><i class="fas fa-play-circle"></i> Nasıl Çalışıyoruz?</a>
+                    </div>
+                </div>
+                
+                <!-- Sağ Blok: Mini Form -->
+                <div class="hero-form-wrapper">
+                    <form class="hero-form" id="heroAnalysisForm" action="https://formspree.io/f/xwvneaod" method="POST" enctype="multipart/form-data">
+                        <h3><i class="fas fa-clock"></i> 24 Saatte Ön Analiz</h3>
+                        <input type="hidden" name="_subject" value="Yeni Analiz Talebi - GELKA Enerji">
+                        <div class="form-group">
+                            <input type="text" name="firma" placeholder="Firma Adı *" required>
+                        </div>
+                        <div class="form-row-half">
+                            <div class="form-group">
+                                <input type="text" name="tuketim" placeholder="Aylık Tüketim (kWh)">
+                            </div>
+                            <div class="form-group">
+                                <select name="abone_grubu">
+                                    <option value="">Abone Grubu</option>
+                                    <option value="og">OG</option>
+                                    <option value="ag">AG</option>
+                                    <option value="bilmiyorum">Bilmiyorum</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="il" placeholder="İl / İlçe *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="E-posta *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telefon" placeholder="Telefon *" required>
+                        </div>
+                        
+                        <!-- Fatura Yükleme Alanı -->
+                        <div class="form-group file-upload-group">
+                            <label class="file-upload-label" for="faturaUpload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span class="file-upload-text">Son 2-3 Aylık Faturanızı Yükleyin</span>
+                                <span class="file-upload-hint">PDF, JPG veya PNG (maks. 10MB)</span>
+                            </label>
+                            <input type="file" id="faturaUpload" name="fatura" accept=".pdf,.jpg,.jpeg,.png" multiple>
+                            <div class="file-upload-preview" id="filePreview"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full"><i class="fas fa-paper-plane"></i> Analiz Raporunu Gönder</button>
+                        <p class="form-privacy"><i class="fas fa-lock"></i> Fatura verileri yalnızca analiz amaçlı kullanılır. KVKK'ya uygundur.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Kanıt Rozetleri -->
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <i class="fas fa-building"></i>
+                    <span>200+ İşletme Analizi</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-clock"></i>
+                    <span>Ortalama Teklif Süresi: 24 Saat</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-user-check"></i>
+                    <span>Geçiş Süreci: Sizin Adınıza</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Neden GELKA Section -->
-    <section id="neden-gelka" class="why-gelka">
+    <!-- Neden GELKA Section - 6 Kart Grid -->
+    <section id="neden-gelka" class="services-section">
         <div class="container">
             <div class="section-header">
-                <h2>Neden GELKA Enerji?</h2>
+                <h2>Veriye Dayalı Elektrik Tedariki</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <i class="fas fa-bolt"></i>
+                    <span></span>
+                </div>
+                <p class="section-desc">Tüketimi okuruz, riski yönetiriz, geçişi sizin adınıza tamamlarız.</p>
             </div>
+            
             <div class="services-grid">
+                <!-- Kart 1 -->
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Tüketime Göre Fiyatlama</h3>
-                    <p>Elektriği sabit varsayımlarla değil, gerçek tüketim davranışınıza göre fiyatlarız. Herkese aynı fiyat değil, size doğru fiyat.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Fatura Okuma & Profil Çıkarma</h3>
+                    <p>Talep, puant, reaktif ve endüktif değerlerinizi faturadan okur, tüketim profilinizi çıkarırız.</p>
+                    <div class="service-output">
+                        <i class="fas fa-check-circle"></i>
+                        <span>PDF rapor + 3 senaryo teklif</span>
+                    </div>
                 </div>
+                
+                <!-- Kart 2 -->
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Riski Okuruz, Sürpriz Yaşatmayız</h3>
-                    <p>Reaktif, endüktif ve güç dengesini analiz eder, ceza risklerini önceden görürüz. Tesisata girmeyiz ama veriyi yakalarız.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Reaktif/Endüktif Risk Tespiti</h3>
+                    <p>Ceza riski taşıyan değerleri sözleşme öncesi tespit eder, simülasyonla gösteririz.</p>
+                    <div class="service-output">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Risk seviyesi: Düşük / Orta / Yüksek</span>
+                    </div>
                 </div>
+                
+                <!-- Kart 3 -->
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>İşletme Mantığıyla Çalışırız</h3>
-                    <p>Konut değil, işletme konuşuruz. AVM, plaza, sanayi, otel, hastane – elektriğin nasıl çalıştığını biliriz.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>PTF/YEKDEM Fiyat Şeffaflığı</h3>
+                    <p>Piyasa fiyat hareketlerini takip eder, teklifinizin hangi endekse dayandığını net gösteririz.</p>
+                    <div class="service-output">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Sabit / Endeksli / Karma seçenekler</span>
+                    </div>
                 </div>
+                
+                <!-- Kart 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Tarife & Dağıtım Optimizasyonu</h3>
+                    <p>OG/AG, tek/çift terimli tarife yapınızı değerlendirir, uygun modeli belirleriz.</p>
+                    <div class="service-output">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Tarife karşılaştırma tablosu</span>
+                    </div>
+                </div>
+                
+                <!-- Kart 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Sözleşme Maddeleri Kontrolü</h3>
+                    <p>Erken fesih, teminat, uzama ve gizli bedel maddelerini imza öncesi kontrol ederiz.</p>
+                    <div class="service-output">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Madde bazlı risk özeti</span>
+                    </div>
+                </div>
+                
+                <!-- Kart 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Geçiş Yönetimi</h3>
+                    <p>Başvuru, doküman ve takvim sürecini sizin adınıza yönetir, ilk faturaya kadar takip ederiz.</p>
+                    <div class="service-output">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Kesintisiz geçiş garantisi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-cta">
+                <a href="#iletisim" class="btn btn-primary btn-large"><i class="fas fa-file-alt"></i> Ücretsiz Analiz Raporu İste</a>
             </div>
         </div>
     </section>
 
     <!-- Zigzag Content Section -->
+    <!-- Tedarikte Farkımız Section -->
     <section class="zigzag-section">
-        <div class="zigzag-row">
-            <div class="zigzag-image">
-                <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=500&fit=crop" alt="Şehir Manzarası">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tedarikte Farkımız</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <i class="fas fa-bolt"></i>
+                    <span></span>
+                </div>
+                <p class="section-desc">Fiyat değil, maliyet yönetimi sunuyoruz.</p>
             </div>
-            <div class="zigzag-content">
-                <span class="zigzag-subtitle">Maliyet Avantajı</span>
-                <h2>Uygun Maliyetli ve Sürdürülebilir Enerji</h2>
-                <p>GELKA Enerji, elektrik piyasasındaki fiyat hareketlerini yakından takip ederek işletmeniz için en uygun alım zamanlarını belirler. Serbest piyasa avantajlarını kullanarak enerji maliyetlerinizi kontrol altına almanıza yardımcı oluruz.</p>
-                <ul class="zigzag-features">
-                    <li><i class="fas fa-check-circle"></i> Piyasa odaklı fiyat analizi</li>
-                    <li><i class="fas fa-check-circle"></i> Esnek sözleşme modelleri</li>
-                    <li><i class="fas fa-check-circle"></i> Şeffaf ve öngörülebilir faturalama</li>
-                </ul>
-                <a href="#iletisim" class="btn btn-primary">Teklif Al</a>
+            
+            <div class="zigzag-row">
+                <div class="zigzag-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop" alt="Tüketim Analizi ve Veri Okuma">
+                </div>
+                <div class="zigzag-content">
+                    <h3>Tüketim Profilini Okuruz</h3>
+                    <p>Teklif, sayaçtan gelen tüketim davranışınıza göre kurulur. Herkese aynı tarife değil, size uygun modeli net biçimde sunarız.</p>
+                    <span class="zigzag-badge"><i class="fas fa-tags"></i> Sabit / Değişken / Karma</span>
+                </div>
             </div>
-        </div>
-        
-        <div class="zigzag-row zigzag-reverse">
-            <div class="zigzag-image">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&fit=crop" alt="Profesyonel Ekip">
+            
+            <div class="zigzag-row zigzag-reverse">
+                <div class="zigzag-image">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop" alt="Risk Analizi ve Sözleşme İnceleme">
+                </div>
+                <div class="zigzag-content">
+                    <h3>Riskleri İmza Öncesi Görürüz</h3>
+                    <p>Reaktif–endüktif, güç aşımı ve sözleşme koşullarını imza öncesi veriden tespit ederiz. Sonradan çıkan maliyetlere alan bırakmayız.</p>
+                    <span class="zigzag-badge"><i class="fas fa-search"></i> İmza öncesi risk taraması</span>
+                </div>
             </div>
-            <div class="zigzag-content">
-                <span class="zigzag-subtitle">Güvenilir Hizmet</span>
-                <h2>Dünya Standartlarında Kalite</h2>
-                <p>Enerji sektöründeki deneyimimiz ve profesyonel ekibimizle, işletmenize kesintisiz ve güvenilir elektrik tedariki sağlıyoruz. EPDK lisanslı bir şirket olarak tüm süreçlerimiz mevzuata uygundur.</p>
-                <ul class="zigzag-features">
-                    <li><i class="fas fa-check-circle"></i> EPDK lisanslı tedarikçi</li>
-                    <li><i class="fas fa-check-circle"></i> Deneyimli profesyonel kadro</li>
-                    <li><i class="fas fa-check-circle"></i> 7/24 müşteri desteği</li>
-                </ul>
-                <a href="#iletisim" class="btn btn-primary">Bize Ulaşın</a>
+            
+            <div class="zigzag-row">
+                <div class="zigzag-image">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=500&fit=crop" alt="Kesintisiz Geçiş ve Süreç Yönetimi">
+                </div>
+                <div class="zigzag-content">
+                    <h3>Geçişi Siz Değil, Biz Yönetiriz</h3>
+                    <p>Elektriğiniz kesilmeden geçiş tamamlanır. Sayaç değişmez, tesisata dokunulmaz. İlk faturaya kadar yanınızdayız.</p>
+                    <span class="zigzag-badge"><i class="fas fa-check-double"></i> Kesintisiz geçiş + ilk fatura kontrolü</span>
+                </div>
             </div>
-        </div>
-        
-        <div class="zigzag-row">
-            <div class="zigzag-image">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=500&fit=crop" alt="Profesyonel Ekip Toplantısı">
-            </div>
-            <div class="zigzag-content">
-                <span class="zigzag-subtitle">Yenilik ve Rekabet</span>
-                <h2>Türk Enerji Sektöründe Yenilikçi Çözümler</h2>
-                <p>Akıllı enerji yönetimi sistemleri ve dijitalleşme alanındaki yatırımlarımızla tüketicilerimize daha fazla kontrol ve verimlilik sunuyoruz. Piyasadaki rekabetçi elektrik aboneliği fiyatlarımız, inovatif bakış açımız ve yenilikçi uygulamalarımızla sektörde fark yaratıyoruz.</p>
-                <p>GELKA Enerji olarak sürekli gelişime odaklanıyor ve mükemmelliğe giden yolculuğumuzda rotamızdan sapmıyoruz. Elektrik tedarikçileri arasında en iyisi olmaya devam ediyoruz!</p>
-                <a href="#iletisim" class="btn btn-primary">Detaylı Bilgi</a>
+            
+            <div class="zigzag-cta">
+                <p>Son 2 faturayı gönderin; 24 saat içinde teklif modelinizi çıkaralım.</p>
+                <a href="#iletisim" class="btn btn-primary btn-large"><i class="fas fa-file-alt"></i> Teklif Al</a>
             </div>
         </div>
     </section>
@@ -348,68 +493,79 @@
         </div>
     </section>
 
-    <!-- Nasıl Çalışıyoruz Section -->
+    <!-- Nasıl Çalışıyoruz Section - Timeline Layout -->
     <section id="nasil-calisiyoruz" class="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>4 Adımda Elektrik Tedarik Sürecinizi GELKA ile Yönetin</h2>
+                <h2>Tedarikçi Geçişi Nasıl Yapılır?</h2>
                 <div class="section-divider">
                     <span></span>
                     <i class="fas fa-bolt"></i>
                     <span></span>
                 </div>
-                <p class="section-desc">Elektrik tedarik süreci bir "form doldur – geç" işi değildir. GELKA Enerji, serbest tüketiciler için süreci piyasa gerçeklerine göre yönetir; riskleri azaltır, maliyeti kontrol altına alır.</p>
+                <p class="section-desc">Analizden sözleşmeye, geçişten ilk faturaya kadar süreci sizin adınıza yönetiriz.</p>
+                <p class="micro-trust"><i class="fas fa-check-circle"></i> Elektrik kesilmez <span>·</span> Sayaç değişmez <span>·</span> Tesisata dokunulmaz</p>
             </div>
             
-            <div class="visual-steps-grid">
-                <div class="visual-step-card">
-                    <div class="step-image">
-                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop" alt="Başvuru ve Tüketim Analizi">
-                        <div class="step-badge">1</div>
-                    </div>
-                    <div class="step-content">
-                        <h3>Başvuru ve Tüketim Analizi</h3>
-                        <p>İşletmenizin mevcut elektrik tüketimini, sözleşme yapısını ve piyasa koşullarını analiz ederiz. Amacımız sadece geçiş yaptırmak değil, doğru modeli belirlemektir.</p>
-                    </div>
-                </div>
-                
-                <div class="visual-step-card">
-                    <div class="step-image">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop" alt="Piyasa Odaklı Teklif">
-                        <div class="step-badge">2</div>
-                    </div>
-                    <div class="step-content">
-                        <h3>Piyasa Odaklı Teklif</h3>
-                        <p>Elektrik piyasasındaki fiyat hareketlerini dikkate alarak işletmenize özel teklif hazırlarız. Sabit, değişken veya karma modeller arasından size uygun olanı net şekilde sunarız.</p>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="timeline-badge">1</div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="timeline-content">
+                            <h4>Tüketim Analizi & Profil Çıkarma</h4>
+                            <p>Mevcut tüketiminizi, sözleşme yapınızı ve piyasa koşullarını analiz eder; doğru modeli belirleriz.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="visual-step-card">
-                    <div class="step-image">
-                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=300&fit=crop" alt="Şeffaf Sözleşme">
-                        <div class="step-badge">3</div>
-                    </div>
-                    <div class="step-content">
-                        <h3>Şeffaf Sözleşme Süreci</h3>
-                        <p>Sözleşme koşulları açık, sade ve kontrolünüz altındadır. Gizli bedeller, sürpriz maddeler, muğlak ifadeler yoktur.</p>
+                <div class="process-step">
+                    <div class="timeline-badge">2</div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="timeline-content">
+                            <h4>Piyasa Odaklı Tekliflendirme</h4>
+                            <p>Sabit/değişken/karma seçenekler arasından ihtiyacınıza en uygun, rekabetçi teklifi net şekilde sunarız.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="visual-step-card">
-                    <div class="step-image">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=300&fit=crop" alt="Kesintisiz Geçiş">
-                        <div class="step-badge">4</div>
+                <div class="process-step">
+                    <div class="timeline-badge">3</div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="timeline-content">
+                            <h4>Şeffaf Sözleşme & Onay</h4>
+                            <p>Gizli bedel yok, sürpriz madde yok. Tüm şartlar açık, sade ve kontrolünüz altında.</p>
+                        </div>
                     </div>
-                    <div class="step-content">
-                        <h3>Kesintisiz ve Sorunsuz Geçiş</h3>
-                        <p>Geçiş sürecini sizin adınıza yönetiriz. Siz işinize devam ederken biz süreci arka planda tamamlarız.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="timeline-badge">4</div>
+                    <div class="timeline-card">
+                        <div class="timeline-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="timeline-content">
+                            <h4>Kesintisiz Geçiş & Takip</h4>
+                            <p>Geçiş sürecini sizin adınıza yönetiriz. Siz işinize devam ederken biz süreci arka planda tamamlarız.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="reassurance">
-                <i class="fas fa-shield-alt"></i>
-                <p>Elektriğiniz kesilmez. Sayaç değişmez. Tesisatınıza dokunulmaz.</p>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>EPDK Lisanslı Tedarikçi</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-plug"></i>
+                    <span>Kesintisiz Geçiş</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-tools"></i>
+                    <span>Sayaç Değişmez</span>
+                </div>
             </div>
             
         </div>
@@ -557,113 +713,48 @@
         </div>
     </section>
 
-    <!-- Neden Biz Section - Features -->
-    <section id="hakkimizda" class="features-section">
+    <!-- Kurumsal Bilgi Section -->
+    <section id="hakkimizda" class="about-brief">
         <div class="container">
-            <div class="section-header">
-                <h2>GELKA Enerji Deneyimiyle Uygun Fiyatlı Kesintisiz ve Sorunsuz Enerji!</h2>
-                <div class="section-divider">
-                    <span></span>
-                    <i class="fas fa-bolt"></i>
-                    <span></span>
-                </div>
-                <p class="section-desc">Elektrik tedarik şirketi olarak farklı enerji tüketim profillerine uygun, esnek ve kişiselleştirilmiş tarifeler sunuyor; ihtiyaçlarınıza uyarlanabilir, tasarruflu enerji çözümleri sağlıyoruz.</p>
-            </div>
-            
-            <div class="features-layout">
-                <div class="features-left">
-                    <div class="feature-item feature-right">
-                        <div class="feature-content">
-                            <h3>Türkiye Geneli Hizmet</h3>
-                            <p>Ulusal enerji sektöründeki tecrübemiz ve bilgi birikimimizle elektrik tedariğinde Türkiye'nin her köşesine hızlı ve güvenilir elektrik tedariği sunuyoruz.</p>
-                        </div>
-                        <div class="feature-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                    </div>
-                    <div class="feature-item feature-right">
-                        <div class="feature-content">
-                            <h3>Uygun Fiyatlar</h3>
-                            <p>Uygun fiyatlı elektrik tarifeleri ve maliyet avantajları sunarak enerji harcamalarınızı en aza indirmeye yardımcı oluyoruz.</p>
-                        </div>
-                        <div class="feature-icon">
-                            <i class="fas fa-tags"></i>
-                        </div>
-                    </div>
-                    <div class="feature-item feature-right">
-                        <div class="feature-content">
-                            <h3>Kalite ve Güven</h3>
-                            <p>Kesintisiz enerji tedariği ve yüksek hizmet kalitemizle her zaman yanınızda oluyor, en iyi hizmeti aldığınızdan emin oluyoruz.</p>
-                        </div>
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="features-center">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop" alt="GELKA Enerji Ekibi">
-                </div>
-                
-                <div class="features-right">
-                    <div class="feature-item feature-left">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Müşteri Odaklı Hizmet</h3>
-                            <p>İhtiyaçlarınıza özel enerji tedarik çözümleri ve 7/24 müşteri hizmetleri desteğimizle memnuniyetinizi ön planda tutuyoruz.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item feature-left">
-                        <div class="feature-icon">
-                            <i class="fas fa-exchange-alt"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Kolay Geçiş Süreci</h3>
-                            <p>Elektrik tedarikçileri arasında hızlı, sorunsuz ve kolay bir şekilde yeni elektrik sağlayıcınıza zahmetsizce geçmenizi sağlıyoruz.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item feature-left">
-                        <div class="feature-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3>Yenilikçi Çözümler</h3>
-                            <p>Akıllı enerji yönetimi, dijital platformlar ve enerji tüketiminizi izleyebileceğiniz teknolojik çözümler sağlıyoruz.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="features-cta">
-                <div class="features-cta-box">
-                    <a href="#neden-gelka" class="cta-link">
-                        <i class="fas fa-bolt"></i>
-                        <span>ELEKTRİK TEDARİĞİ</span>
-                    </a>
-                    <span class="cta-divider">&</span>
-                    <a href="#iletisim" class="cta-link accent">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <span>FİYAT AL</span>
-                    </a>
+            <div class="about-brief-content">
+                <div class="about-brief-text">
+                    <span class="about-label">GELKA Enerji Hakkında</span>
+                    <h2>Veriye Dayalı Elektrik Tedariki</h2>
+                    <p>EPDK lisanslı elektrik tedarik şirketi olarak sanayi, ticari ve kurumsal işletmelere hizmet veriyoruz. Tüketim analizi yaparak işletmenize özel fiyat modeli oluşturur, sözleşme sürecini sizin adınıza yönetiriz.</p>
+                    <a href="#iletisim" class="btn btn-primary">Teklif Alın</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bayilik Section -->
-    <section id="bayilik" class="franchise-section">
+    <!-- Bayilik Section - Cesur + Proof -->
+    <section id="bayilik" class="franchise-section franchise-bold">
         <div class="franchise-wrapper">
-            <div class="franchise-image">
-                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800" alt="Enerji Şehir">
-                <div class="franchise-image-overlay"></div>
-            </div>
-            <div class="franchise-content">
-                <span class="franchise-subtitle">Bayimiz Olmak İster misiniz?</span>
-                <div class="franchise-divider"></div>
-                <h2>Türkiye Genelinde Yeni Enerji Bayilikleri Veriyoruz! Ailemize Katılın!</h2>
-                <a href="#iletisim" class="btn btn-outline-light">Bayilik Başvurusu</a>
+            <div class="franchise-content-full">
+                <div class="franchise-city-bg"></div>
+                <div class="franchise-inner">
+                    <span class="franchise-subtitle">GELKA Enerji Bayilik Sistemi</span>
+                    <div class="franchise-divider"></div>
+                    <h2>Enerji Satışına Bugün Başlayın</h2>
+                    <p class="franchise-desc">Güçlü portföy altyapısı, merkezi operasyon desteği ve profesyonel satış sistemiyle enerji piyasasında yerinizi alın.</p>
+                    
+                    <div class="franchise-proof-badges">
+                        <div class="franchise-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Münhasır bölge hakkı</span>
+                        </div>
+                        <div class="franchise-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Rekabetçi komisyon modeli</span>
+                        </div>
+                        <div class="franchise-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Satış ve operasyon desteği</span>
+                        </div>
+                    </div>
+                    
+                    <a href="bayilik.html" class="btn btn-primary btn-large"><i class="fas fa-rocket"></i> Bayilik İçin Başvur</a>
+                </div>
             </div>
         </div>
     </section>
@@ -792,8 +883,9 @@
                 </div>
                 
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="teklifForm">
+                    <form class="contact-form" id="teklifForm" action="https://formspree.io/f/xwvneaod" method="POST">
                         <h3>Ücretsiz Teklif Formu</h3>
+                        <input type="hidden" name="_subject" value="Yeni Teklif Talebi - GELKA Enerji">
                         <div class="form-row">
                             <input type="text" name="firma" placeholder="Firma Adı *" required>
                             <input type="text" name="yetkili" placeholder="Yetkili Adı Soyadı *" required>
@@ -891,7 +983,7 @@
                     <span>|</span>
                     <a href="cerez-politikasi.html">Çerez Politikası</a>
                 </div>
-                <p>&copy; 2025 Gelka Enerji Yatırım Sanayi ve Ticaret A.Ş. Tüm hakları saklıdır.</p>
+                <p>&copy; 2026 Gelka Enerji Yatırım Sanayi ve Ticaret A.Ş. Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>

@@ -120,14 +120,51 @@ document.querySelectorAll('.services, .about, .stats, .contact').forEach(section
     observer.observe(section);
 });
 
-// Form submission
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+// Form submission - Formspree handles the actual submission
+// These are just for UX enhancements
+
+// File Upload Functionality
+const faturaUpload = document.getElementById('faturaUpload');
+const fileUploadLabel = document.querySelector('.file-upload-label');
+const filePreview = document.getElementById('filePreview');
+
+if (faturaUpload && fileUploadLabel && filePreview) {
+    // Click to upload
+    faturaUpload.addEventListener('change', handleFileSelect);
+    
+    // Drag & Drop
+    fileUploadLabel.addEventListener('dragover', (e) => {
         e.preventDefault();
-        alert('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.');
-        contactForm.reset();
+        fileUploadLabel.classList.add('drag-over');
     });
+    
+    fileUploadLabel.addEventListener('dragleave', () => {
+        fileUploadLabel.classList.remove('drag-over');
+    });
+    
+    fileUploadLabel.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileUploadLabel.classList.remove('drag-over');
+        faturaUpload.files = e.dataTransfer.files;
+        handleFileSelect();
+    });
+    
+    function handleFileSelect() {
+        filePreview.innerHTML = '';
+        const files = faturaUpload.files;
+        
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const fileSize = (file.size / 1024 / 1024).toFixed(2);
+            
+            const previewItem = document.createElement('div');
+            previewItem.className = 'file-preview-item';
+            previewItem.innerHTML = `
+                <span><i class="fas fa-file-alt"></i> ${file.name} (${fileSize} MB)</span>
+            `;
+            filePreview.appendChild(previewItem);
+        }
+    }
 }
 
 // FAQ Accordion

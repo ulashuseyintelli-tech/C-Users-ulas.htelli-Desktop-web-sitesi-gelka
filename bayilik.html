@@ -45,6 +45,7 @@
 
     <!-- Bayilik Hero -->
     <section class="bayilik-hero">
+        <div class="bayilik-hero-city-bg"></div>
         <div class="container">
             <p class="hero-tagline">GELKA Enerji Bayilik Sistemi</p>
             <h1>Enerji piyasasında satış yapmak isteyen profesyoneller için.</h1>
@@ -532,7 +533,8 @@
                 <h2>Bayilik Başvuru Formu</h2>
                 <p class="form-intro">Aşağıdaki formu eksiksiz doldurun. Başvurular değerlendirmeye tabidir.</p>
                 
-                <form class="bayilik-form" id="bayilikForm">
+                <form class="bayilik-form" id="bayilikForm" action="https://formspree.io/f/xwvneaod" method="POST">
+                    <input type="hidden" name="_subject" value="Yeni Bayilik Başvurusu - GELKA Enerji">
                     <div class="form-section-title">Kimlik & Yapı</div>
                     <div class="form-row">
                         <input type="text" name="ad" placeholder="Ad Soyad *" required>
