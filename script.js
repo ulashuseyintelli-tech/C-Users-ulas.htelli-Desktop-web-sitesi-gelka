@@ -1,15 +1,15 @@
 // Intro Screen Animation
 const introScreen = document.getElementById('introScreen');
 if (introScreen) {
-    // Hide intro after animation completes
+    // Hide intro after animation completes - hızlandırıldı
     setTimeout(() => {
         introScreen.classList.add('hidden');
-    }, 3500);
+    }, 1800);
     
     // Remove from DOM after fade out
     setTimeout(() => {
         introScreen.style.display = 'none';
-    }, 4300);
+    }, 2500);
 }
 
 // Smooth scrolling for navigation links
@@ -483,3 +483,89 @@ function rejectCookies() {
 
 // Check cookie consent on page load
 document.addEventListener('DOMContentLoaded', checkCookieConsent);
+
+
+// ============================================
+// DÖNÜŞÜM İZLEME (Conversion Tracking)
+// ============================================
+
+// Genel dönüşüm izleme fonksiyonu
+function trackConversion(eventName) {
+    // GA4 Event
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, {
+            'event_category': 'conversion',
+            'event_label': eventName
+        });
+    }
+
+    // Google Ads Conversion (TODO: Conversion action oluşturup label ekleyin)
+    // if (typeof gtag === 'function') {
+    //     gtag('event', 'conversion', {
+    //         'send_to': 'AW-2838120596/CONVERSION_LABEL'
+    //     });
+    // }
+
+    // DataLayer push (GTM kullanıyorsanız)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': eventName,
+        'event_category': 'conversion'
+    });
+
+    console.log('[Conversion]', eventName);
+}
+
+// Form submit with AJAX + redirect to tesekkurler.html
+function handleFormSubmit(form, eventName) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        trackConversion(eventName);
+
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gönderiliyor...';
+        }
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        }).then(function(response) {
+            if (response.ok) {
+                window.location.href = 'tesekkurler.html';
+            } else {
+                alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Gönder';
+                }
+            }
+        }).catch(function() {
+            alert('Bağlantı hatası. Lütfen tekrar deneyin.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Gönder';
+            }
+        });
+    });
+}
+
+// Hero Analiz Formu
+const heroForm = document.getElementById('heroAnalysisForm');
+if (heroForm) handleFormSubmit(heroForm, 'form_submit_analiz');
+
+// Teklif Formu
+const teklifForm = document.getElementById('teklifForm');
+if (teklifForm) handleFormSubmit(teklifForm, 'form_submit_teklif');
+
+// Telefon tıklama tracking - tüm tel: linkleri
+document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+    if (!link.hasAttribute('onclick')) {
+        link.addEventListener('click', function() {
+            trackConversion('phone_click');
+        });
+    }
+});

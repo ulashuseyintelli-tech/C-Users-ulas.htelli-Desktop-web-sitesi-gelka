@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talebiniz Alındı | GELKA Enerji</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Ads + GA4 Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-442PEKLLWZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-442PEKLLWZ');
+        gtag('config', 'AW-2838120596');
+
+        // Form gönderim dönüşümü - tesekkurler sayfası yüklendiğinde tetiklenir
+        gtag('event', 'form_submit_lead', {
+            'event_category': 'conversion',
+            'event_label': 'tesekkurler_sayfa'
+        });
+    </script>
+
+    <style>
+        .thankyou-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e8f4f8 100%);
+        }
+        .thankyou-box {
+            max-width: 600px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .thankyou-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 36px;
+            color: #fff;
+        }
+        .thankyou-box h1 {
+            font-size: 28px;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+        .thankyou-box p {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .thankyou-box .highlight {
+            color: #0e7490;
+            font-weight: 600;
+        }
+        .thankyou-actions {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .thankyou-actions .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        .thankyou-actions .btn-primary {
+            background: linear-gradient(135deg, #0e7490, #0891b2);
+            color: #fff;
+        }
+        .thankyou-actions .btn-outline {
+            border: 2px solid #0e7490;
+            color: #0e7490;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="yatay_logo.png" alt="GELKA Enerji Logo"></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="thankyou-section">
+        <div class="thankyou-box">
+            <div class="thankyou-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1>Talebiniz Başarıyla Alındı</h1>
+            <p>Ekibimiz en geç <span class="highlight">24 saat içinde</span> sizinle iletişime geçecektir.</p>
+            <p>Tüketim analiziniz hazırlanıp e-posta adresinize gönderilecektir.</p>
+            <div class="thankyou-actions">
+                <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Ana Sayfaya Dön</a>
+                <a href="tel:+908505326995" class="btn btn-outline"><i class="fas fa-phone"></i> Hemen Arayın</a>
+                <a id="waThankYou" href="#" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:#22c55e;color:#22c55e;display:none">
+                  <i class="fab fa-whatsapp"></i> WhatsApp'ta Devam Et
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+      // Landing page'den gelen lead varsa WhatsApp butonunu göster
+      (function(){
+        try{
+          var lead = JSON.parse(localStorage.getItem("gelka_lead_last"));
+          if(lead && lead.company){
+            var lines = [
+              "Merhaba, az önce teklif formu gönderdim.",
+              "Firma: " + (lead.company || ""),
+              "Yetkili: " + (lead.name || ""),
+              lead.consumption ? "Aylık Tüketim: " + lead.consumption + " kWh" : null,
+              lead.subscriberGroup ? "Abone Grubu: " + lead.subscriberGroup : null
+            ].filter(Boolean).join("\n");
+            var url = "https://wa.me/908505326995?text=" + encodeURIComponent(lines);
+            var btn = document.getElementById("waThankYou");
+            if(btn){ btn.href = url; btn.style.display = "inline-flex"; }
+          }
+        }catch(e){}
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /gelka-site-tam.zip
+Disallow: /guncelleme.zip
+Disallow: /footer-fix.zip
+Disallow: /meta-fix.zip
+Disallow: /seo-dosyalari.zip
+Disallow: /seo-temizlik.zip
+Disallow: /tesekkurler.html
+Disallow: /ticari-elektrik-teklifi.html
+Disallow: /ticari-elektrik-teklifi
+Disallow: /yapilacaklar
+
+Sitemap: https://www.gelkaenerji.com.tr/sitemap.xml

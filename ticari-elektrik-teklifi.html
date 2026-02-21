@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ticari Elektrik Teklifi Al | Gelka Enerji</title>
+  <meta name="description" content="Faturanı gönder, ticari elektrik teklifini aynı gün al. Serbest tüketici ve işletmelere uygun tarifeler." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Ads + GA4 Global Site Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-2838120596"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-2838120596');
+    gtag('config', 'G-442PEKLLWZ');
+  </script>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a30;
+      --muted:#9fb0d0;
+      --text:#eaf0ff;
+      --line:rgba(255,255,255,.12);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --good:#34d399;
+      --warn:#fbbf24;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --r:16px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 10%,rgba(125,211,252,.18),transparent 55%),
+        radial-gradient(900px 500px at 85% 20%,rgba(167,139,250,.16),transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* Layout */
+    .wrap{max-width:1100px;margin:0 auto;padding:20px 24px}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 0 18px;border-bottom:1px solid var(--line);margin-bottom:22px;
+    }
+    .brand{display:flex;gap:10px;align-items:center}
+    .brand img{height:36px;width:auto;border-radius:8px}
+    .brand b{letter-spacing:.2px;font-size:15px}
+    .pill{
+      font-size:12px;color:var(--muted);
+      border:1px solid var(--line);padding:6px 10px;border-radius:999px;
+      display:flex;gap:8px;align-items:center;
+      background:rgba(255,255,255,.04);
+    }
+    .dot-live{width:8px;height:8px;border-radius:99px;background:var(--good);display:inline-block}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;align-items:start;
+    }
+
+    /* Hero */
+    .hero{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border-radius:var(--r);padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .hero h1{font-size:32px;letter-spacing:-.4px;line-height:1.18;margin-bottom:10px}
+    .hero .subtitle{color:var(--muted);font-size:15px;margin-bottom:16px}
+
+    /* Bullets */
+    .bullets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+    .bullet{
+      display:flex;align-items:center;gap:6px;
+      font-size:13px;color:rgba(234,240,255,.92);
+      border:1px solid var(--line);background:rgba(255,255,255,.04);
+      padding:7px 12px;border-radius:999px;
+    }
+    .bullet svg{flex-shrink:0}
+
+    /* Social proof */
+    .proofline{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+    .proof{
+      border:1px solid var(--line);background:rgba(255,255,255,.04);
+      padding:8px 10px;border-radius:999px;
+      display:flex;gap:8px;align-items:center;font-size:13px;
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--good);box-shadow:0 0 0 4px rgba(52,211,153,.12)}
+
+    /* Steps */
+    .steps{display:grid;gap:10px;margin-bottom:18px}
+    .step{
+      border:1px solid var(--line);background:rgba(255,255,255,.03);
+      padding:12px;border-radius:14px;display:flex;gap:12px;align-items:flex-start;
+    }
+    .num{
+      width:30px;height:30px;border-radius:10px;
+      background:rgba(125,211,252,.12);border:1px solid rgba(125,211,252,.28);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:var(--accent);flex:0 0 auto;font-size:14px;
+    }
+    .step b{display:block;margin-bottom:2px;font-size:14px}
+    .step span{color:var(--muted);font-size:13px}
+
+    /* FAQ */
+    .faq h2{margin:18px 0 10px;font-size:16px}
+    details{
+      border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);
+      border-radius:14px;padding:12px;
+    }
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:700;letter-spacing:-.15px;font-size:14px}
+    details p{margin:10px 0 0;color:var(--muted);font-size:13px}
+
+    .foot{
+      margin-top:18px;color:rgba(159,176,208,.9);font-size:12px;
+      border-top:1px solid var(--line);padding-top:14px;
+    }
+
+    /* Form card */
+    .card{
+      border:1px solid var(--line);background:rgba(255,255,255,.04);
+      border-radius:var(--r);padding:20px;box-shadow:var(--shadow);
+      position:sticky;top:20px;
+    }
+    .card h2{margin:0 0 6px;font-size:18px;letter-spacing:-.2px}
+    .sub{color:var(--muted);font-size:13px;margin:0 0 14px}
+    form{display:grid;gap:10px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    label{font-size:12px;color:rgba(234,240,255,.88);display:block;margin-bottom:3px}
+    .req{color:var(--warn);font-weight:700;margin-left:3px}
+    input,select,textarea{
+      width:100%;padding:11px 12px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(11,18,32,.55);color:var(--text);
+      outline:none;font-size:14px;font-family:inherit;
+      transition:border .15s ease;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:rgba(125,211,252,.55);
+      box-shadow:0 0 0 4px rgba(125,211,252,.12);
+    }
+    select option{background:#0f1a30;color:var(--text)}
+    textarea{min-height:80px;resize:vertical}
+    .hint{color:var(--muted);font-size:11px;margin-top:4px}
+
+    /* CTA hero button */
+    .cta-hero{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 28px;border-radius:14px;
+      background:linear-gradient(135deg,rgba(125,211,252,.95),rgba(167,139,250,.95));
+      color:#0b1220;font-weight:800;font-size:15px;
+      text-decoration:none;
+      box-shadow:var(--shadow);
+      transition:transform .12s ease,filter .12s ease;
+    }
+    .cta-hero:hover{transform:translateY(-1px);filter:brightness(1.02)}
+
+    /* Sektör referans satırı */
+    .sector-line{
+      display:flex;flex-wrap:wrap;gap:6px;margin:16px 0;
+    }
+    .sector-line span{
+      font-size:11px;color:var(--muted);
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      padding:5px 10px;border-radius:999px;
+      letter-spacing:.2px;text-transform:uppercase;font-weight:600;
+    }
+
+    /* Örnek kazanç kartı */
+    .saving-card{
+      border:1px solid rgba(52,211,153,.2);
+      background:linear-gradient(135deg,rgba(52,211,153,.06),rgba(125,211,252,.04));
+      border-radius:14px;overflow:hidden;margin:14px 0;
+    }
+    .saving-header{
+      display:flex;align-items:center;gap:8px;
+      padding:10px 14px;
+      background:rgba(52,211,153,.08);
+      font-weight:700;font-size:13px;color:var(--good);
+      border-bottom:1px solid rgba(52,211,153,.12);
+    }
+    .saving-body{padding:12px 14px}
+    .saving-row{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:6px 0;font-size:13px;
+    }
+    .saving-row span{color:var(--muted)}
+    .saving-row b{font-size:14px}
+    .saving-result{
+      margin-top:8px;padding:8px 12px;
+      background:rgba(52,211,153,.1);border-radius:10px;
+      text-align:center;font-weight:700;font-size:14px;
+      color:var(--good);
+    }
+
+    /* Submit button */
+    .btn{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      padding:14px;border:none;border-radius:14px;width:100%;
+      background:linear-gradient(135deg,rgba(125,211,252,.95),rgba(167,139,250,.95));
+      color:#0b1220;font-weight:800;font-size:15px;
+      cursor:pointer;box-shadow:var(--shadow);
+      transition:transform .12s ease,filter .12s ease;
+    }
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.02)}
+    .btn:active{transform:translateY(0);filter:brightness(.98)}
+
+    /* Pulse animation */
+    .pulse{animation:pulse 2.5s infinite}
+    @keyframes pulse{
+      0%,100%{box-shadow:var(--shadow)}
+      50%{box-shadow:0 0 0 8px rgba(125,211,252,.15),var(--shadow)}
+    }
+
+    /* Mini actions */
+    .mini-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .ghost{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 14px;border-radius:14px;flex:1;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.03);
+      color:rgba(234,240,255,.92);font-weight:650;font-size:13px;
+      text-decoration:none;transition:background .15s;
+    }
+    .ghost:hover{background:rgba(255,255,255,.07)}
+    .ghost small{color:var(--muted);font-weight:600}
+
+    /* Error */
+    .error{
+      display:none;
+      border:1px solid rgba(251,191,36,.35);
+      background:rgba(251,191,36,.10);
+      padding:10px 12px;border-radius:14px;
+      color:rgba(234,240,255,.96);font-size:13px;
+    }
+    .error.show{display:block}
+
+    /* Sticky WhatsApp */
+    .wa-sticky{
+      position:fixed;right:16px;bottom:16px;z-index:9999;
+      display:flex;align-items:center;gap:10px;
+      padding:12px 16px;border-radius:999px;
+      background:rgba(34,197,94,.18);border:1px solid rgba(34,197,94,.35);
+      box-shadow:var(--shadow);text-decoration:none;color:var(--text);
+      backdrop-filter:blur(8px);transition:transform .15s;
+    }
+    .wa-sticky:hover{transform:scale(1.03)}
+    .wa-ic{
+      width:36px;height:36px;border-radius:999px;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(34,197,94,.25);border:1px solid rgba(34,197,94,.35);
+    }
+    .wa-sticky b{display:block;font-size:13px;line-height:1.2}
+    .wa-sticky span span{display:block;font-size:12px;color:var(--muted);line-height:1.2}
+
+    /* Responsive */
+    @media(max-width:920px){
+      .grid{grid-template-columns:1fr}
+      /* Mobilde form üstte */
+      #formCard{order:-1}
+      #heroSection{order:1}
+      .card{position:static}
+    }
+    @media(max-width:520px){
+      .row{grid-template-columns:1fr}
+      .hero h1{font-size:24px}
+      .wa-sticky{right:12px;bottom:12px;padding:10px 12px}
+      .wa-sticky span span{display:none}
+      .bullets{gap:6px}
+      .bullet{font-size:12px;padding:6px 10px}
+    }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img src="logo.png" alt="Gelka Enerji Logo" />
+        <div>
+          <b>Gelka Enerji</b><br/>
+          <span style="color:var(--muted);font-size:12px">Ticari Elektrik Teklifi</span>
+        </div>
+      </div>
+      <div class="pill">
+        <span class="dot-live"></span>
+        Aynı gün dönüş hedefi
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- SOL: Hero -->
+      <section class="hero" id="heroSection">
+        <h1>Elektrik Faturanızı<br/>Birlikte Masaya Yatıralım</h1>
+        <p class="subtitle">
+          Mevcut tarifenizi analiz edip size özel fiyat modeli çıkarıyoruz. Daha uygun teklif bulamazsak, biz söyleriz.
+        </p>
+
+        <!-- Satış argümanları -->
+        <div class="bullets">
+          <div class="bullet">
+            <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#34d399" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Geçiş işlemleri ücretsiz
+          </div>
+          <div class="bullet">
+            <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#34d399" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Kesintisiz tedarik garantisi
+          </div>
+          <div class="bullet">
+            <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#34d399" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Şeffaf maliyet modeli
+          </div>
+          <div class="bullet">
+            <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#34d399" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sabit &amp; piyasa bazlı alternatifler
+          </div>
+        </div>
+
+        <!-- CTA → form'a scroll -->
+        <a href="#quoteForm" class="cta-hero" onclick="document.getElementById('quoteForm').scrollIntoView({behavior:'smooth'});return false;">
+          Faturamı Analiz Et →
+        </a>
+
+        <!-- Sektör referans satırı -->
+        <div class="sector-line">
+          <span>Sanayi</span><span>AVM</span><span>Zincir Mağaza</span><span>Otel</span><span>Akaryakıt İstasyonu</span><span>Hastane</span>
+        </div>
+
+        <!-- Örnek kazanç bloğu -->
+        <div class="saving-card">
+          <div class="saving-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 16 16"><path d="M8 1v14M4.5 4.5L8 1l3.5 3.5M3 8h10" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Son Analiz Örneği
+          </div>
+          <div class="saving-body">
+            <div class="saving-row">
+              <span>Aylık Tüketim</span>
+              <b>18.400 kWh</b>
+            </div>
+            <div class="saving-row">
+              <span>Mevcut Maliyet</span>
+              <b style="color:var(--warn)">₺42.300</b>
+            </div>
+            <div class="saving-row">
+              <span>Analiz Sonrası</span>
+              <b style="color:var(--good)">₺37.900</b>
+            </div>
+            <div class="saving-result">
+              %10,4 iyileştirme · Aylık ₺4.400 tasarruf
+            </div>
+          </div>
+        </div>
+
+        <!-- Sosyal kanıt -->
+        <div class="proofline" style="margin-top:18px">
+          <div class="proof"><span class="dot"></span><b>200+</b>&nbsp;işletme analizi tamamlandı</div>
+          <div class="proof"><span class="dot" style="background:var(--accent)"></span><b>EPDK</b>&nbsp;uyumlu süreç</div>
+          <div class="proof"><span class="dot" style="background:var(--accent2)"></span><b>Sözleşme</b>&nbsp;süreci bizden</div>
+        </div>
+
+        <!-- 3 Adım -->
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div><b>Bilgileri paylaş</b><span>Abone grubu + tüketim bilgisi veya fatura.</span></div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div><b>Analiz edelim</b><span>Tarife ve tedarik koşullarını kıyaslayıp en uygun senaryoyu çıkaralım.</span></div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div><b>Teklifini iletelim</b><span>WhatsApp veya telefonla teklif + net adımlar.</span></div>
+          </div>
+        </div>
+
+        <!-- SSS -->
+        <div class="faq">
+          <h2>Sık Sorulan Sorular</h2>
+          <details>
+            <summary>Elektrik kesintisi olur mu?</summary>
+            <p>Hayır. Tedarikçi değişikliği altyapıyı etkilemez, elektrik kesintisi yaşanmaz.</p>
+          </details>
+          <details>
+            <summary>Sözleşme süresi zorunlu mu?</summary>
+            <p>Zorunlu değil. Esnek sözleşme seçenekleri sunuyoruz.</p>
+          </details>
+          <details>
+            <summary>Geçiş süresi ne kadar?</summary>
+            <p>Ortalama 15 iş günü içinde geçiş tamamlanır. Tüm süreç tarafımızca yönetilir.</p>
+          </details>
+          <details>
+            <summary>Sabit fiyat mümkün mü?</summary>
+            <p>Evet. Sabit fiyat ve piyasa bazlı fiyat modelleri arasında seçim yapabilirsiniz.</p>
+          </details>
+          <details>
+            <summary>Teklif almak için fatura şart mı?</summary>
+            <p>Hayır. Tüketim ve abone grubunu yazmanız yeterli. Fatura varsa doğruluk artar.</p>
+          </details>
+        </div>
+
+        <div class="foot">
+          KVKK bilgilendirme: İletişim bilgileriniz yalnızca teklif süreci için kullanılır.
+        </div>
+      </section>
+
+      <!-- SAĞ: Form -->
+      <aside class="card" id="formCard">
+        <h2>Ücretsiz Fatura Analizi Başlat</h2>
+        <p class="sub">60 saniyede doldurun — aynı gün dönüş yapıyoruz.</p>
+
+        <div id="formError" class="error" role="alert"></div>
+
+        <form id="quoteForm" novalidate>
+          <div class="row">
+            <div>
+              <label for="company">Firma Adı <span class="req">*</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" required />
+            </div>
+            <div>
+              <label for="name">Yetkili Ad Soyad <span class="req">*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="subscriberGroup">Abone Grubu <span class="req">*</span></label>
+              <select id="subscriberGroup" name="subscriberGroup" required>
+                <option value="" selected disabled>Seçiniz</option>
+                <option value="Serbest Tüketici">Serbest Tüketici</option>
+                <option value="Ticarethane">Ticarethane</option>
+                <option value="Sanayi">Sanayi</option>
+                <option value="Mesken">Mesken</option>
+                <option value="Tarımsal Sulama">Tarımsal Sulama</option>
+                <option value="Aydınlatma / Diğer">Aydınlatma / Diğer</option>
+              </select>
+            </div>
+            <div>
+              <label for="consumption">Aylık Tüketim (kWh) <span class="req">*</span></label>
+              <input id="consumption" name="consumption" type="number" min="0" step="1" placeholder="Örn: 15000" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="city">İl / İlçe <span class="req">*</span></label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" required />
+            </div>
+            <div>
+              <label for="phone">Telefon <span class="req">*</span></label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="05xx xxx xx xx" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="email">E-posta <span class="req">*</span></label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ornek@firma.com" required />
+          </div>
+
+          <div>
+            <label for="invoice">Fatura Yükle (opsiyonel)</label>
+            <input id="invoice" name="invoice" type="file" accept=".pdf,.jpg,.jpeg,.png" />
+            <div class="hint">PDF, JPG veya PNG — maks. 10 MB</div>
+          </div>
+
+          <div>
+            <label for="note">Not (opsiyonel)</label>
+            <textarea id="note" name="note" placeholder="Mevcut tedarikçi, sözleşme bitişi, özel talep vb."></textarea>
+          </div>
+
+          <button class="btn pulse" type="submit">Faturamı Analiz Et →</button>
+
+          <div class="hint" style="text-align:center;margin-top:4px">
+            Verileriniz yalnızca teklif amacıyla kullanılır. KVKK uyumlu.
+          </div>
+
+          <div class="mini-actions">
+            <a id="callLink" class="ghost" href="tel:+908505326995" role="button" aria-label="Telefonla ara">
+              📞 <span>Bizi Arayın</span>
+            </a>
+            <a id="waLinkInline" class="ghost" href="#" target="_blank" rel="noopener" aria-label="WhatsApp ile yaz">
+              💬 <span>WhatsApp</span> <small>Hızlı yaz</small>
+            </a>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Sticky WhatsApp -->
+  <a id="waSticky" class="wa-sticky" href="#" target="_blank" rel="noopener" aria-label="WhatsApp ile yaz">
+    <span class="wa-ic">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </span>
+    <span>
+      <b>WhatsApp'tan Yaz</b>
+      <span>Hızlı teklif al</span>
+    </span>
+  </a>
+
+  <script>
+  (function(){
+    // ===== CONFIG =====
+    const CONFIG = {
+      whatsappNumber: "908505326995",
+      callNumber: "+908505326995",
+      thankYouUrl: "tesekkurler.html",
+      ads: {
+        formSubmit:     { send_to: "AW-2838120596/FORM_LABEL" },
+        whatsappClick:  { send_to: "AW-2838120596/WA_LABEL" },
+        callClick:      { send_to: "AW-2838120596/CALL_LABEL" }
+      }
+    };
+
+    const $ = id => document.getElementById(id);
+
+    // ===== WhatsApp mesaj oluşturucu =====
+    function buildWAText(d){
+      return [
+        "Merhaba, ticari elektrik teklifi almak istiyorum.",
+        d.company    ? "Firma: "+d.company : null,
+        d.name       ? "Yetkili: "+d.name : null,
+        d.phone      ? "Telefon: "+d.phone : null,
+        d.email      ? "E-posta: "+d.email : null,
+        d.subscriberGroup ? "Abone Grubu: "+d.subscriberGroup : null,
+        d.consumption? "Aylık Tüketim: "+d.consumption+" kWh" : null,
+        d.city       ? "İl/İlçe: "+d.city : null,
+        d.note       ? "Not: "+d.note : null
+      ].filter(Boolean).join("\n");
+    }
+
+    function waLink(text){
+      return "https://wa.me/"+CONFIG.whatsappNumber+"?text="+encodeURIComponent(text);
+    }
+
+    // ===== Conversion tracking =====
+    function track(params){
+      try{ if(typeof gtag==="function") gtag("event","conversion",params); }catch(e){}
+    }
+
+    // ===== Form verilerini oku =====
+    function getData(){
+      return {
+        company: $("company").value.trim(),
+        name: $("name").value.trim(),
+        phone: $("phone").value.trim(),
+        email: $("email").value.trim(),
+        city: $("city").value.trim(),
+        subscriberGroup: $("subscriberGroup").value,
+        consumption: $("consumption").value.trim(),
+        note: $("note").value.trim(),
+        invoiceProvided: $("invoice").files && $("invoice").files.length>0
+      };
+    }
+
+    // ===== WA linklerini güncelle =====
+    function refreshWA(){
+      var d = getData();
+      var url = waLink(buildWAText(d));
+      $("waSticky").href = url;
+      $("waLinkInline").href = url;
+    }
+
+    // Input dinle
+    ["company","name","phone","email","city","subscriberGroup","consumption","note","invoice"].forEach(function(id){
+      $(id).addEventListener("input", refreshWA);
+      $(id).addEventListener("change", refreshWA);
+    });
+
+    // Conversion event'leri
+    $("waSticky").addEventListener("click", function(){ track(CONFIG.ads.whatsappClick); });
+    $("waLinkInline").addEventListener("click", function(){ track(CONFIG.ads.whatsappClick); });
+    $("callLink").addEventListener("click", function(){ track(CONFIG.ads.callClick); });
+
+    // ===== Error =====
+    function showErr(msg){
+      var el=$("formError"); el.textContent=msg; el.classList.add("show");
+      el.scrollIntoView({behavior:"smooth",block:"center"});
+    }
+    function clearErr(){ var el=$("formError"); el.textContent=""; el.classList.remove("show"); }
+
+    // ===== Form submit =====
+    $("quoteForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      clearErr();
+      var d = getData();
+
+      // Validation
+      if(!d.company) return showErr("Firma adı zorunlu.");
+      if(!d.name) return showErr("Yetkili ad soyad zorunlu.");
+      if(!d.subscriberGroup) return showErr("Abone grubu seçmelisiniz.");
+      if(!d.consumption) return showErr("Aylık tüketim (kWh) zorunlu.");
+      if(!d.city) return showErr("İl / İlçe zorunlu.");
+      if(!d.phone) return showErr("Telefon zorunlu.");
+      if(!d.email) return showErr("E-posta zorunlu.");
+
+      // Basit e-posta kontrolü
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return showErr("Geçerli bir e-posta adresi girin.");
+
+      // localStorage'a kaydet (backend yokken lead kaybını önle)
+      d.submittedAt = new Date().toISOString();
+      try{ localStorage.setItem("gelka_lead_last", JSON.stringify(d)); }catch(err){}
+
+      // Conversion event
+      track(CONFIG.ads.formSubmit);
+
+      // Redirect
+      window.location.href = CONFIG.thankYouUrl;
+    });
+
+    // Init
+    refreshWA();
+  })();
+  </script>
+</body>
+</html>
