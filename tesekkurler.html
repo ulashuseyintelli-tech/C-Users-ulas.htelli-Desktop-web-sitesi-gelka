@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,20 @@
             'event_category': 'conversion',
             'event_label': 'tesekkurler_sayfa'
         });
+
+        // GA4 key event - Google Ads conversion action bunu dinliyor
+        gtag('event', 'ads_conversion_Form_1');
+
+        // Google Ads Conversion - form başarılı gönderim
+        // Label gelince LABEL_FORM yerine gerçek label yazılacak
+        (function() {
+            var formLabel = 'LABEL_FORM'; // TODO: Gerçek label ile değiştir
+            if (formLabel.indexOf('LABEL_') !== 0) {
+                gtag('event', 'conversion', {
+                    send_to: 'AW-2838120596/' + formLabel
+                });
+            }
+        })();
     </script>
 
     <style>
@@ -94,7 +108,10 @@
             background: transparent;
         }
     </style>
-</head>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"GELKA Enerji Yatırım Sanayi ve Ticaret A.Ş.","url":"https://www.gelkaenerji.com.tr","logo":"https://www.gelkaenerji.com.tr/logo.png","sameAs":["https://www.linkedin.com/company/gelka-enerji"]}
+    </script>
+    </head>
 <body>
     <!-- Header -->
     <header class="header">

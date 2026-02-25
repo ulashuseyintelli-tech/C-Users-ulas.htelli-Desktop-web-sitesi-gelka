@@ -490,7 +490,15 @@ document.addEventListener('DOMContentLoaded', checkCookieConsent);
 // ============================================
 
 // Genel dönüşüm izleme fonksiyonu
-function trackConversion(eventName) {
+// Google Ads dönüşüm label'ları (Google Ads panelinden gelecek)
+const ADS_LABELS = {
+    form_submit:    'LABEL_FORM',      // TODO: Gerçek label ile değiştir
+    whatsapp_click: 'LABEL_WA',        // TODO: Gerçek label ile değiştir
+    phone_click:    'LABEL_PHONE'      // TODO: Gerçek label ile değiştir
+};
+
+// Genel dönüşüm izleme fonksiyonu (callback'li, event düşmesini önler)
+function trackConversion(eventName, callback) {
     // GA4 Event
     if (typeof gtag === 'function') {
         gtag('event', eventName, {
@@ -499,13 +507,6 @@ function trackConversion(eventName) {
         });
     }
 
-    // Google Ads Conversion (TODO: Conversion action oluşturup label ekleyin)
-    // if (typeof gtag === 'function') {
-    //     gtag('event', 'conversion', {
-    //         'send_to': 'AW-2838120596/CONVERSION_LABEL'
-    //     });
-    // }
-
     // DataLayer push (GTM kullanıyorsanız)
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -513,17 +514,56 @@ function trackConversion(eventName) {
         'event_category': 'conversion'
     });
 
-    console.log('[Conversion]', eventName);
+    // Google Ads Conversion
+    var label = ADS_LABELS[eventName];
+    if (!label || label.indexOf('LABEL_') === 0) {
+        // Label henüz ayarlanmamış, sessiz geç
+        console.log('[Conversion] GA4 only:', eventName);
+        if (typeof callback === 'function') callback();
+        return;
+    }
+
+    if (typeof gtag !== 'function') {
+        if (typeof callback === 'function') callback();
+        return;
+    }
+
+    var sendTo = 'AW-2838120596/' + label;
+
+    // Callback varsa (click -> dışa çıkış), event_callback + timeout ile garantile
+    if (typeof callback === 'function') {
+        var done = false;
+        var finish = function() {
+            if (done) return;
+            done = true;
+            callback();
+        };
+
+        gtag('event', 'conversion', {
+            send_to: sendTo,
+            event_callback: finish
+        });
+
+        // Fallback: event_callback çalışmazsa 700ms sonra devam et
+        setTimeout(finish, 700);
+        return;
+    }
+
+    // Normal conversion (sayfa yüklendiğinde, callback gerekmez)
+    gtag('event', 'conversion', { send_to: sendTo });
+    console.log('[Conversion] Ads:', eventName, sendTo);
 }
 
+
+
 // Form submit with AJAX + redirect to tesekkurler.html
-function handleFormSubmit(form, eventName) {
+// NOT: Conversion burada tetiklenmez! tesekkurler.html sayfasında tetiklenir.
+function handleFormSubmit(form) {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        trackConversion(eventName);
 
-        const formData = new FormData(form);
-        const submitBtn = form.querySelector('button[type="submit"]');
+        var formData = new FormData(form);
+        var submitBtn = form.querySelector('button[type="submit"]');
         if (submitBtn) {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gönderiliyor...';
@@ -554,18 +594,42 @@ function handleFormSubmit(form, eventName) {
 }
 
 // Hero Analiz Formu
-const heroForm = document.getElementById('heroAnalysisForm');
-if (heroForm) handleFormSubmit(heroForm, 'form_submit_analiz');
+var heroForm = document.getElementById('heroAnalysisForm');
+if (heroForm) handleFormSubmit(heroForm);
 
 // Teklif Formu
-const teklifForm = document.getElementById('teklifForm');
-if (teklifForm) handleFormSubmit(teklifForm, 'form_submit_teklif');
+var teklifForm = document.getElementById('teklifForm');
+if (teklifForm) handleFormSubmit(teklifForm);
 
-// Telefon tıklama tracking - tüm tel: linkleri
-document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
-    if (!link.hasAttribute('onclick')) {
-        link.addEventListener('click', function() {
-            trackConversion('phone_click');
+// ============================================
+// CLICK TRACKING: WhatsApp + Telefon (callback'li)
+// ============================================
+
+// WhatsApp linkleri - callback ile event düşmesini önle
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.removeAttribute('onclick'); // eski inline onclick'i temizle
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var href = link.href;
+        var target = link.getAttribute('target');
+        trackConversion('whatsapp_click', function() {
+            if (target === '_blank') {
+                window.open(href, '_blank', 'noopener,noreferrer');
+            } else {
+                window.location.href = href;
+            }
         });
-    }
+    });
+});
+
+// Telefon linkleri - callback ile event düşmesini önle
+document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+    link.removeAttribute('onclick'); // eski inline onclick'i temizle
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var href = link.href;
+        trackConversion('phone_click', function() {
+            window.location.href = href;
+        });
+    });
 });
