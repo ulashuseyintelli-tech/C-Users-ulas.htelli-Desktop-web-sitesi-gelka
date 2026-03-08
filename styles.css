@@ -6267,3 +6267,516 @@ section[id] {
 @media (max-width: 640px) {
     .whatsapp-label { display: none; }
 }
+
+/* ==================== KAMPÜS PARTNER STYLES ==================== */
+
+/* --- 4.1 Kampüs Partner Bölüm Stilleri --- */
+
+/* 1. Hero Section */
+.kampus-hero {
+    background: var(--gradient-hero);
+    color: var(--white);
+    padding: 120px 0 80px;
+    margin-top: 115px;
+    text-align: center;
+    position: relative;
+}
+
+.kampus-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.kampus-hero .hero-subtitle {
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto 15px;
+    opacity: 0.95;
+}
+
+.kampus-hero .hero-desc {
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    opacity: 0.85;
+}
+
+.kampus-hero .btn {
+    margin-top: 10px;
+}
+
+/* 2. Trust Band */
+.trust-band {
+    background: var(--light-color);
+    padding: 25px 0;
+}
+
+.trust-band-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.trust-band-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.trust-band-item i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.trust-band-item span {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* 3. General Section Wrapper */
+.kampus-section {
+    padding: 60px 0;
+    background: var(--white);
+}
+
+.kampus-section:nth-child(even) {
+    background: var(--light-color);
+}
+
+.kampus-section .kampus-intro-text {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.kampus-section p {
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto 15px;
+    text-align: center;
+}
+
+/* 4. Burs Table Wrapper */
+.burs-table-wrapper {
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+/* 5. Burs Table */
+.burs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.burs-table th {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.burs-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.burs-table tr:hover td {
+    background: var(--accent-light);
+}
+
+.burs-table th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.burs-table th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+/* 6. Burs Disclaimer */
+.burs-disclaimer {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* 7. Highlight Section (Çoklu İşletme) */
+.kampus-highlight-section {
+    background: var(--gradient-teal);
+    color: var(--white);
+    text-align: center;
+    padding: 50px 0;
+}
+
+.kampus-highlight-section h2 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.kampus-highlight-section p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* 8. Kariyer Grid */
+.kariyer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* 9. Kariyer Card */
+.kariyer-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kariyer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.kariyer-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.kariyer-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.kariyer-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.kariyer-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* 10. Kariyer Highlight Banner */
+.kariyer-highlight {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent-color);
+    padding: 20px 25px;
+    border-radius: 0 8px 8px 0;
+}
+
+.kariyer-highlight p {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/* 11. Katılım List */
+.katilim-list {
+    list-style: none;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.katilim-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.katilim-list li i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+/* 12. Kampüs Lider Section */
+.kampus-lider-section {
+    background: var(--gradient-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 0;
+}
+
+.kampus-lider-section h2 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.kampus-lider-section p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 25px;
+}
+
+.kampus-lider-section .btn {
+    display: inline-block;
+}
+
+/* Kampüs Partner SSS overrides */
+.kampus-section .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: left;
+}
+
+.kampus-section .faq-question[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.kampus-section .faq-question i {
+    transition: transform 0.3s;
+    color: var(--accent-color);
+}
+
+.kampus-section .faq-answer {
+    padding: 0 20px 18px;
+}
+
+.kampus-section .faq-answer p {
+    text-align: left;
+    max-width: none;
+    margin: 0;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+.kampus-section .faq-item {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+
+/* --- 4.2 Form ve Mesaj Stilleri --- */
+
+/* 13. Form Section */
+.kampus-form-section {
+    padding: 60px 0;
+    background: var(--light-color);
+}
+
+.kampus-form-section .form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.kampus-form-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.kampus-form-section .form-group {
+    margin-bottom: 18px;
+}
+
+.kampus-form-section label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.kampus-form-section input,
+.kampus-form-section select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.kampus-form-section input:focus,
+.kampus-form-section select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 43, 69, 0.1);
+}
+
+.kampus-form-section .btn-full {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.kampus-form-section .form-note {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 15px;
+}
+
+.kampus-form-section .form-note a {
+    color: var(--accent-color);
+}
+
+/* 14. Form Messages */
+.form-message {
+    text-align: center;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.form-message i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.form-message p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* 15. Form Success */
+.form-success {
+    background: rgba(30, 199, 166, 0.1);
+    border: 1px solid var(--success-color);
+}
+
+.form-success i {
+    color: var(--success-color);
+}
+
+.form-success p {
+    color: var(--text-dark);
+}
+
+/* 16. Form Error */
+.form-error {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid var(--error-color);
+}
+
+.form-error i {
+    color: var(--error-color);
+}
+
+.form-error p {
+    color: var(--text-dark);
+}
+
+
+/* --- 4.3 Sticky CTA ve Responsive Stilleri --- */
+
+/* 17. Sticky CTA */
+.sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 10px 15px;
+    background: var(--white);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-cta .btn-full {
+    width: 100%;
+    text-align: center;
+}
+
+/* 18. Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+    .sticky-cta:not([hidden]) {
+        display: block;
+    }
+
+    .kampus-hero {
+        padding: 80px 20px 50px;
+        margin-top: 115px;
+    }
+
+    .kampus-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .trust-band-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .kariyer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .burs-table-wrapper {
+        margin: 0 -20px;
+        padding: 0 20px;
+    }
+
+    .kampus-form-section .form-wrapper {
+        padding: 25px 20px;
+    }
+
+    body.kampus-partner-page {
+        padding-bottom: 70px;
+    }
+}
+
+/* 19. Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .trust-band-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kampus-hero h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* 20. Touch Targets */
+.kampus-section .btn,
+.sticky-cta .btn,
+.kampus-section .faq-question {
+    min-height: 44px;
+}
