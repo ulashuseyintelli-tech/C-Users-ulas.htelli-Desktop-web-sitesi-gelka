@@ -46,7 +46,7 @@
         "contactPoint": [
             {
                 "@type": "ContactPoint",
-                "telephone": "+90-212-706-05-62",
+                "telephone": "+90-535-021-99-65",
                 "contactType": "customer service",
                 "areaServed": "TR",
                 "availableLanguage": ["Turkish"]
@@ -150,12 +150,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Intro Screen -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-content">
+            <div class="intro-logo-3d">
+                <img src="gelka-logo-3d.png" alt="GELKA Enerji">
+            </div>
+        </div>
+    </div>
+
     <!-- Top Banner -->
     <div class="top-banner">
         <div class="container">
             <div class="banner-left">
                 <span><i class="fas fa-phone-alt"></i> 0850 532 69 95</span>
-                <span><i class="fas fa-phone-alt"></i> 0212 706 05 62</span>
+                <span><i class="fab fa-whatsapp"></i> 0535 021 99 65</span>
                 <span><i class="fas fa-envelope"></i> info@gelkaenerji.com.tr</span>
             </div>
             <div class="banner-right">
@@ -168,7 +177,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="yatay_logo.png" alt="GELKA Enerji - Sanayi Elektrik Tedarikçisi Logo"></a>
+                <a href="index.html"><img src="gelka-logo-header.png" alt="GELKA Enerji - Sanayi Elektrik Tedarikçisi Logo"></a>
             </div>
             <nav class="nav">
                 <ul>
@@ -269,100 +278,61 @@
     </section>
 
     <!-- Neden GELKA Section - 6 Kart Grid -->
-    <section id="neden-gelka" class="services-section">
+    <section id="neden-gelka" class="vdp-section">
+        <div class="vdp-bg-grid"></div>
         <div class="container">
             <div class="section-header">
-                <h2>Veriye Dayalı Elektrik Tedariki</h2>
+                <h2>Elektrik Maliyetinizi Veriye Dayalı Yönetin</h2>
                 <div class="section-divider">
                     <span></span>
                     <i class="fas fa-bolt"></i>
                     <span></span>
                 </div>
-                <p class="section-desc">Tüketimi okuruz, riski yönetiriz, geçişi sizin adınıza tamamlarız.</p>
+                <p class="section-desc">Tüketimi analiz eder, riski düşürür, en doğru tarifeye geçiririz.</p>
             </div>
             
-            <div class="services-grid">
-                <!-- Kart 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-invoice"></i>
-                    </div>
+            <div class="vdp-grid">
+                <div class="vdp-card icon-1">
+                    <div class="vdp-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Fatura Okuma & Profil Çıkarma</h3>
                     <p>Talep, puant, reaktif ve endüktif değerlerinizi faturadan okur, tüketim profilinizi çıkarırız.</p>
-                    <div class="service-output">
-                        <i class="fas fa-check-circle"></i>
-                        <span>PDF rapor + 3 senaryo teklif</span>
-                    </div>
+                    <span class="vdp-badge"><i class="fas fa-check"></i> PDF rapor + 3 senaryo teklif</span>
                 </div>
-                
-                <!-- Kart 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
+                <div class="vdp-card icon-2">
+                    <div class="vdp-icon"><i class="fas fa-triangle-exclamation"></i></div>
                     <h3>Reaktif/Endüktif Risk Tespiti</h3>
                     <p>Ceza riski taşıyan değerleri sözleşme öncesi tespit eder, simülasyonla gösteririz.</p>
-                    <div class="service-output">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Risk seviyesi: Düşük / Orta / Yüksek</span>
-                    </div>
+                    <span class="vdp-badge"><i class="fas fa-check"></i> Risk seviyesi: Düşük / Orta / Yüksek</span>
                 </div>
-                
-                <!-- Kart 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
+                <div class="vdp-card icon-3">
+                    <div class="vdp-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>PTF/YEKDEM Fiyat Şeffaflığı</h3>
                     <p>Piyasa fiyat hareketlerini takip eder, teklifinizin hangi endekse dayandığını net gösteririz.</p>
-                    <div class="service-output">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Sabit / Endeksli / Karma seçenekler</span>
-                    </div>
+                    <span class="vdp-badge"><i class="fas fa-check"></i> Sabit / Endeksli / Karma seçenekler</span>
                 </div>
-                
-                <!-- Kart 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
+                <div class="vdp-card icon-4">
+                    <div class="vdp-icon"><i class="fas fa-sliders"></i></div>
                     <h3>Tarife & Dağıtım Optimizasyonu</h3>
                     <p>OG/AG, tek/çift terimli tarife yapınızı değerlendirir, uygun modeli belirleriz.</p>
-                    <div class="service-output">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Tarife karşılaştırma tablosu</span>
-                    </div>
+                    <span class="vdp-badge"><i class="fas fa-check"></i> Tarife karşılaştırma tablosu</span>
                 </div>
-                
-                <!-- Kart 5 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
+                <div class="vdp-card icon-5">
+                    <div class="vdp-icon"><i class="fas fa-file-signature"></i></div>
                     <h3>Sözleşme Maddeleri Kontrolü</h3>
                     <p>Erken fesih, teminat, uzama ve gizli bedel maddelerini imza öncesi kontrol ederiz.</p>
-                    <div class="service-output">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Madde bazlı risk özeti</span>
-                    </div>
+                    <span class="vdp-badge"><i class="fas fa-check"></i> Madde bazlı risk özeti</span>
                 </div>
-                
-                <!-- Kart 6 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
+                <div class="vdp-card icon-6">
+                    <div class="vdp-icon"><i class="fas fa-right-left"></i></div>
                     <h3>Geçiş Yönetimi</h3>
                     <p>Başvuru, doküman ve takvim sürecini sizin adınıza yönetir, ilk faturaya kadar takip ederiz.</p>
-                    <div class="service-output">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Kesintisiz geçiş garantisi</span>
-                    </div>
+                    <span class="vdp-badge"><i class="fas fa-check"></i> Kesintisiz geçiş garantisi</span>
                 </div>
             </div>
             
-            <div class="section-cta">
-                <a href="#iletisim" class="btn btn-primary btn-large"><i class="fas fa-file-alt"></i> Ücretsiz Analiz Raporu İste</a>
+            <div class="vdp-cta">
+                <a href="#iletisim" class="btn btn-primary btn-large"><i class="fas fa-paper-plane"></i> Faturanızı Gönderin, 24 Saat İçinde Net Teklif Alın</a>
+                <p class="vdp-cta-sub">Ortalama analiz süresi: 24 saat</p>
             </div>
         </div>
     </section>
@@ -731,6 +701,8 @@
                     <p>EPDK lisanslı elektrik tedarik şirketi olarak sanayi, ticari ve kurumsal işletmelere hizmet veriyoruz. Tüketim analizi yaparak işletmenize özel fiyat modeli oluşturur, sözleşme sürecini sizin adınıza yönetiriz.</p>
                     <div class="do-dont">
                         <h3>GELKA Enerji Ne Yapar, Ne Yapmaz?</h3>
+                    </div>
+                    <div class="about-list">
                         <ul>
                             <li><strong>Yapar:</strong> Sözleşme öncesi tüketim analizi, risk tespiti, fiyat modelleme, geçiş süreci takibi.</li>
                             <li><strong>Yapar:</strong> Teklifin dayandığı endeksi (PTF/YEKDEM vb.) şeffaf biçimde açıklar.</li>
@@ -890,7 +862,12 @@
                             <i class="fas fa-phone"></i>
                             <div>
                                 <p><a href="tel:+908505326995">0850 532 69 95</a></p>
-                                <p><a href="tel:+902127060562">0212 706 05 62</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <p><a href="https://wa.me/905350219965">0535 021 99 65</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -953,7 +930,7 @@
                     <p class="footer-company">GELKA ENERJİ YATIRIM SANAYİ VE TİCARET A.Ş.</p>
                     <div class="footer-contact-info">
                         <p><i class="fas fa-map-marker-alt"></i> Mecidiyeköy Yolu Cd. Karsuyu Sokak No:2<br>Trump Towers Kule 1, Kat:4, D:401<br>Şişli / İstanbul</p>
-                        <p><i class="fas fa-phone"></i> <a href="tel:+908505326995">0850 532 69 95</a> | <a href="tel:+902127060562">0212 706 05 62</a></p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+908505326995">0850 532 69 95</a> | <a href="https://wa.me/905350219965"><i class="fab fa-whatsapp"></i> 0535 021 99 65</a></p>
                         <p><i class="fas fa-envelope"></i> <a href="mailto:info@gelkaenerji.com.tr">info@gelkaenerji.com.tr</a></p>
                         <p><i class="fas fa-globe"></i> <a href="https://www.gelkaenerji.com.tr" target="_blank">www.gelkaenerji.com.tr</a></p>
                     </div>
@@ -987,9 +964,9 @@
                 <div class="footer-col">
                     <h4>Bizi Takip Edin</h4>
                     <div class="social-links">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/gelka-enerji-564a183b0/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/gelkaenerji/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61583707926240" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
                     <div class="footer-cta">
                         <p>Elektrik maliyetinizi düşürmeye hazır mısınız?</p>
@@ -1020,7 +997,7 @@
     </div>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/905322381808?text=Merhaba%2C%20elektrik%20tedariki%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
+    <a href="https://wa.me/905350219965?text=Merhaba%2C%20elektrik%20tedariki%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
        class="whatsapp-float" 
        target="_blank" 
        rel="noopener noreferrer"

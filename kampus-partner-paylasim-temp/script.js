@@ -633,35 +633,3 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
         });
     });
 });
-
-// ============================================
-// VDP Section — Scroll Reveal
-// ============================================
-(function() {
-    var cards = document.querySelectorAll('.vdp-card');
-    if (!cards.length) return;
-
-    if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    var card = entry.target;
-                    var index = Array.prototype.indexOf.call(cards, card);
-                    setTimeout(function() {
-                        card.classList.add('revealed');
-                    }, index * 100);
-                    observer.unobserve(card);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        cards.forEach(function(card) {
-            observer.observe(card);
-        });
-    } else {
-        // Fallback: show all
-        cards.forEach(function(card) {
-            card.classList.add('revealed');
-        });
-    }
-})();
