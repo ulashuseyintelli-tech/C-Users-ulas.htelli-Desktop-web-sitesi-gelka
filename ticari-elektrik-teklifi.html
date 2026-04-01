@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root{
-      --bg:#0b1f2a;
-      --card:#102c3a;
-      --card-form:#132f40;
-      --input-bg:#f8fbff;
-      --input-border:#d0dce8;
-      --muted:#9fb8c8;
-      --text:#eaf4ff;
+      --bg:#080f18;
+      --card:#0e1e2e;
+      --card-form:#162a3e;
+      --input-bg:#ffffff;
+      --input-border:#c8d6e5;
+      --muted:#8ea8be;
+      --text:#f0f6ff;
       --text-dark:#0b1f2a;
-      --line:rgba(255,255,255,.10);
+      --line:rgba(255,255,255,.08);
       --accent:#7dd3fc;
       --accent2:#a78bfa;
       --good:#34d399;
@@ -41,8 +41,8 @@
     body{
       font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:
-        radial-gradient(1000px 500px at 65% 15%,rgba(125,211,252,.12),transparent 55%),
-        radial-gradient(800px 400px at 30% 60%,rgba(167,139,250,.08),transparent 55%),
+        radial-gradient(1000px 500px at 65% 15%,rgba(125,211,252,.08),transparent 55%),
+        radial-gradient(800px 400px at 30% 60%,rgba(167,139,250,.05),transparent 55%),
         var(--bg);
       color:var(--text);
       line-height:1.5;
@@ -73,7 +73,7 @@
     .hero{
       padding:24px 0;
     }
-    .hero h1{font-size:34px;letter-spacing:-.4px;line-height:1.15;margin-bottom:12px;font-weight:800}
+    .hero h1{font-size:34px;letter-spacing:-.4px;line-height:1.15;margin-bottom:12px;font-weight:800;color:#fff}
     .hero .subtitle{color:var(--muted);font-size:15px;margin-bottom:20px;line-height:1.6}
 
     /* Typewriter */
@@ -88,8 +88,8 @@
     .trust-points{margin:0 0 24px;padding:0;list-style:none}
     .trust-points li{
       display:flex;align-items:center;gap:10px;
-      font-size:14px;color:rgba(234,240,255,.88);
-      padding:6px 0;
+      font-size:14px;color:rgba(240,246,255,.92);
+      padding:7px 0;
     }
     .trust-points li svg{flex-shrink:0}
 
@@ -105,13 +105,13 @@
 
     /* SAĞ: Form kartı — öne çıkan, parlak */
     .card{
-      border:1px solid rgba(125,211,252,.2);
-      background:var(--card-form);
+      border:1px solid rgba(125,211,252,.25);
+      background:linear-gradient(170deg,#1a3548 0%,#132d40 40%,#0f2233 100%);
       border-radius:var(--r);padding:28px 24px;
       box-shadow:
-        0 0 60px rgba(125,211,252,.12),
-        0 0 120px rgba(125,211,252,.06),
-        var(--shadow);
+        0 0 80px rgba(125,211,252,.10),
+        0 0 160px rgba(125,211,252,.05),
+        0 20px 50px rgba(0,0,0,.4);
       position:sticky;top:20px;
     }
     .card h2{margin:0 0 4px;font-size:20px;letter-spacing:-.2px;font-weight:800}
