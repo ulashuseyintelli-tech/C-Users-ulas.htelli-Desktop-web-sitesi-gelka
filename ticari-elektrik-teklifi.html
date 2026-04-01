@@ -76,13 +76,17 @@
     .hero h1{font-size:34px;letter-spacing:-.4px;line-height:1.15;margin-bottom:12px;font-weight:800;color:#fff}
     .hero .subtitle{color:var(--muted);font-size:15px;margin-bottom:20px;line-height:1.6}
 
-    /* Typewriter */
-    .typewriter-wrapper{
-      font-size:15px;font-weight:600;color:#f4c542;
-      letter-spacing:.3px;margin-bottom:10px;min-height:22px;
+    /* Typewriter — kaldırıldı, hero-label eklendi */
+    .hero-label{
+      display:inline-block;
+      font-size:12px;font-weight:700;letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--accent);
+      background:rgba(125,211,252,.1);
+      border:1px solid rgba(125,211,252,.2);
+      padding:5px 12px;border-radius:999px;
+      margin-bottom:12px;
     }
-    #cursor{margin-left:4px;animation:blink-cursor .8s infinite}
-    @keyframes blink-cursor{0%,50%,100%{opacity:1}25%,75%{opacity:0}}
 
     /* Güven maddeleri — 3 satır, minimal */
     .trust-points{margin:0 0 24px;padding:0;list-style:none}
@@ -96,9 +100,9 @@
     /* Mini örnek — tek satır */
     .mini-proof{
       display:inline-flex;align-items:center;gap:8px;
-      font-size:13px;color:var(--muted);
-      border:1px solid var(--line);background:rgba(255,255,255,.04);
-      padding:8px 14px;border-radius:999px;margin-bottom:8px;
+      font-size:13px;color:var(--good);font-weight:600;
+      border:1px solid rgba(52,211,153,.2);background:rgba(52,211,153,.08);
+      padding:10px 16px;border-radius:999px;margin-bottom:16px;
     }
     .mini-proof .dot{width:8px;height:8px;border-radius:99px;background:var(--good);box-shadow:0 0 0 4px rgba(52,211,153,.12)}
     .mini-proof strong{color:var(--text);font-weight:700}
@@ -343,49 +347,42 @@
       </a>
       <nav class="mini-nav">
         <a href="index.html">Ana Sayfa</a>
-        <a href="index.html#neden-gelka">Hizmetlerimiz</a>
-        <a href="bayilik.html">Bayilik</a>
-        <a href="makaleler.html">Makaleler</a>
-        <a href="index.html#iletisim">İletişim</a>
         <span class="mini-nav-active">Teklif Al</span>
-        <a href="kampus-partner.html">🎓 Kampüs Partner</a>
       </nav>
     </div>
 
     <div class="grid">
       <!-- ===== SOL: Sadeleştirilmiş Hero ===== -->
       <section class="hero" id="heroSection">
-        <div class="typewriter-wrapper">
-          <span id="typewriter-text"></span><span id="cursor">|</span>
+        <!-- Sosyal kanıt — en üstte, dikkat çekici -->
+        <div class="mini-proof">
+          <span class="dot"></span>
+          Son analiz: <strong>₺49.300/ay</strong> tasarruf sağlandı
         </div>
 
-        <h1>Elektrik Faturanızı<br/>Birlikte Masaya Yatıralım</h1>
+        <p class="hero-label">Sanayi ve Büyük İşletmelere Özel</p>
+
+        <h1>Elektrik Faturanızı Düşürün.<br/>24 Saatte Net Teklif Alın.</h1>
 
         <p class="subtitle">
-          Elektrik maliyetinizi analiz edelim. Daha avantajlı bir senaryo varsa gösterelim, yoksa mevcut yapınızı teyit edelim.
+          Faturanızı gönderin, daha düşük fiyat varsa gösterelim. Uygun değilse mevcut sözleşmenizi teyit edelim.
         </p>
 
-        <!-- 3 güven maddesi — sadece bu -->
+        <!-- 3 güven checklist — net, kısa -->
         <ul class="trust-points">
           <li>
             <svg width="18" height="18" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#34d399" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            EPDK lisanslı, şeffaf piyasa modeli
+            Ücretsiz analiz
           </li>
           <li>
             <svg width="18" height="18" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#34d399" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            200+ işletme analizi tamamlandı
+            Bağlayıcı teklif yok
           </li>
           <li>
             <svg width="18" height="18" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#34d399" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Gereksiz geçiş önerilmez, veriye dayalı karar
+            Aynı gün dönüş
           </li>
         </ul>
-
-        <!-- Sosyal kanıt — yukarıda, güçlü -->
-        <div class="mini-proof">
-          <span class="dot"></span>
-          <strong>200+</strong> işletme analiz edildi — son örnek: aylık <strong>₺49.300</strong> tasarruf potansiyeli
-        </div>
       </section>
 
       <!-- ===== SAĞ: Form — öne çıkan, tek CTA ===== -->
@@ -454,11 +451,11 @@
           </div>
 
           <!-- TEK ANA CTA -->
-          <button class="btn pulse" type="submit">Faturamı Analiz Et →</button>
+          <button class="btn pulse" type="submit">Daha Ucuz Fiyatı Göster →</button>
           <div class="hint" style="text-align:center;margin-top:4px;font-size:12px;color:var(--muted)">
             Ücretsiz analiz – bağlayıcı değildir
           </div>
-          <div class="risk-line">⏳ Aynı gün dönüş için formu şimdi gönderin</div>
+          <div class="risk-line">⏳ Bugün gönder, bugün dönüş al</div>
           <div class="hint" style="text-align:center;margin-top:2px">
             Verileriniz yalnızca teklif amacıyla kullanılır. KVKK uyumlu.
           </div>
@@ -709,25 +706,6 @@
         waEl.classList.remove("visible");
       }
     });
-
-    // Typewriter
-    (function(){
-      var target = document.getElementById("typewriter-text");
-      var cursor = document.getElementById("cursor");
-      if(!target) return;
-      var text = "Analiz Etmeden Fazla \u00D6dedi\u011Finizi Bilemezsiniz.";
-      var index = 0;
-      setTimeout(function(){
-        var interval = setInterval(function(){
-          target.textContent += text.charAt(index);
-          index++;
-          if(index === text.length){
-            clearInterval(interval);
-            setTimeout(function(){ cursor.style.display = "none"; }, 500);
-          }
-        }, 35);
-      }, 400);
-    })();
   })();
   </script>
 
