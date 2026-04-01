@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda | GELKA Enerji – EPDK Lisanslı Elektrik Tedarikçisi</title>
+    <meta name="description" content="GELKA Enerji hakkında: EPDK lisanslı, veriye dayalı elektrik tedarik şirketi. Sanayi, ticari ve kurumsal işletmelere tüketim analizi ve şeffaf fiyatlama.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.gelkaenerji.com.tr/hakkimizda.html">
+
+    <!-- Google Ads + GA4 Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-442PEKLLWZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-442PEKLLWZ');
+        gtag('config', 'AW-2838120596');
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"GELKA Enerji Yatırım Sanayi ve Ticaret A.Ş.","url":"https://www.gelkaenerji.com.tr","logo":"https://www.gelkaenerji.com.tr/logo.png","sameAs":["https://www.linkedin.com/company/gelka-enerji"]}
+    </script>
+
+    <style>
+        /* Hakkımızda Sayfası Özel Stiller */
+        .about-hero {
+            background: var(--gradient-hero);
+            padding: 100px 0 60px;
+            margin-top: 115px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(30,199,166,.12), transparent 60%);
+        }
+        .about-hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .about-hero p {
+            font-size: 1.15rem;
+            opacity: .9;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .about-section {
+            padding: 70px 0;
+        }
+        .about-section:nth-child(even) {
+            background: var(--light-color);
+        }
+
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-intro-text h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+        .about-intro-text p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+        .about-intro-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,.12);
+        }
+        .about-intro-image img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+        }
+
+        /* Vizyon Misyon */
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .vm-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 36px 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.06);
+            border-top: 4px solid var(--accent-color);
+        }
+        .vm-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vm-card h3 i {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+        }
+        .vm-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Değerler */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .value-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.06);
+            transition: transform .3s;
+        }
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+        .value-item i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 14px;
+        }
+        .value-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .value-item p {
+            color: var(--text-light);
+            font-size: .88rem;
+            line-height: 1.5;
+        }
+
+        /* Ne Yapar Ne Yapmaz */
+        .do-dont-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .do-card, .dont-card {
+            border-radius: 14px;
+            padding: 32px 28px;
+        }
+        .do-card {
+            background: linear-gradient(135deg, rgba(30,199,166,.08), rgba(30,199,166,.03));
+            border: 1px solid rgba(30,199,166,.2);
+        }
+        .dont-card {
+            background: linear-gradient(135deg, rgba(231,76,60,.06), rgba(231,76,60,.02));
+            border: 1px solid rgba(231,76,60,.15);
+        }
+        .do-card h3, .dont-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .do-card h3 { color: var(--accent-color); }
+        .dont-card h3 { color: #e74c3c; }
+        .do-card ul, .dont-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .do-card li, .dont-card li {
+            padding: 8px 0;
+            color: var(--text-light);
+            font-size: .95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.6;
+        }
+        .do-card li i { color: var(--accent-color); margin-top: 4px; }
+        .dont-card li i { color: #e74c3c; margin-top: 4px; }
+
+        /* EPDK Lisans */
+        .license-banner {
+            background: var(--gradient-dark);
+            padding: 50px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .license-banner h2 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        .license-banner p {
+            opacity: .85;
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .license-banner .btn {
+            display: inline-block;
+        }
+
+        /* CTA */
+        .about-cta {
+            text-align: center;
+            padding: 60px 0;
+        }
+        .about-cta h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+        .about-cta p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .about-intro { grid-template-columns: 1fr; }
+            .vm-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr 1fr; }
+            .do-dont-grid { grid-template-columns: 1fr; }
+            .about-hero h1 { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .values-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-left">
+                <span><i class="fas fa-phone-alt"></i> 0850 532 69 95</span>
+                <span><i class="fab fa-whatsapp"></i> 0535 021 99 65</span>
+                <span><i class="fas fa-envelope"></i> info@gelkaenerji.com.tr</span>
+            </div>
+            <div class="banner-right">
+                <span><i class="fas fa-clock"></i> Pzt - Cuma: 09:00 - 18:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="gelka-logo-header.png" alt="Gelka Enerji Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html" class="active">Hakkımızda</a></li>
+                    <li><a href="index.html#neden-gelka">Hizmetlerimiz</a></li>
+                    <li><a href="bayilik.html" class="nav-highlight">🔥 Bayilik</a></li>
+                    <li><a href="makaleler.html">Makaleler</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                    <li><a href="ticari-elektrik-teklifi.html" class="nav-cta">Teklif Al</a></li>
+                    <li><a href="kampus-partner.html" class="nav-highlight nav-kampus">🎓 Kampüs Partner</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>GELKA Enerji Hakkında</h1>
+            <p>EPDK lisanslı elektrik tedarik şirketi olarak sanayi, ticari ve kurumsal işletmelere veriye dayalı enerji çözümleri sunuyoruz.</p>
+        </div>
+    </section>
+
+    <!-- Biz Kimiz -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-intro">
+                <div class="about-intro-text">
+                    <h2>Biz Kimiz?</h2>
+                    <p>GELKA Enerji Yatırım Sanayi ve Ticaret A.Ş., EPDK tarafından lisanslı bir perakende elektrik tedarik şirketidir. İstanbul merkezli olarak Türkiye genelinde 81 ilde hizmet veriyoruz.</p>
+                    <p>Fiyat satmıyoruz, maliyet yönetimi sunuyoruz. Her işletmenin tüketim profili farklıdır — biz bu farkı veriyle okur, doğru modeli kurar, sözleşme sürecini sizin adınıza yönetiriz.</p>
+                    <p>10 yılı aşkın sektör deneyimimizle 1.000'den fazla kurumsal müşteriye hizmet verdik. Amacımız: işletmenizin elektrik maliyetini şeffaf, ölçülebilir ve sürdürülebilir şekilde yönetmek.</p>
+                </div>
+                <div class="about-intro-image">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="GELKA Enerji Ofis - Trump Towers İstanbul">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vizyon & Misyon -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Vizyon & Misyon</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <i class="fas fa-bolt"></i>
+                    <span></span>
+                </div>
+            </div>
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <h3><i class="fas fa-eye"></i> Vizyonumuz</h3>
+                    <p>Türkiye'nin ticari ve sanayi elektrik tedarikinde veriye dayalı karar süreçlerini standart haline getirmek. Her işletmenin tüketim davranışına uygun, şeffaf ve ölçülebilir enerji çözümlerine erişebileceği bir piyasa oluşturmak.</p>
+                </div>
+                <div class="vm-card">
+                    <h3><i class="fas fa-bullseye"></i> Misyonumuz</h3>
+                    <p>Serbest tüketici statüsündeki işletmelere sözleşme öncesi tüketim analizi, risk tespiti ve piyasa koşullarına uygun fiyat modelleme sunarak doğru kararlar almalarını sağlamak. Geçiş sürecini uçtan uca yönetmek.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Değerlerimiz -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Değerlerimiz</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <i class="fas fa-bolt"></i>
+                    <span></span>
+                </div>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Veriye Dayalı Karar</h4>
+                    <p>Tüketim profilini okur, varsayıma değil veriye dayalı teklif kurarız.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Şeffaflık</h4>
+                    <p>Teklifin dayandığı endeksi, sözleşme koşullarını ve riskleri açıkça paylaşırız.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Güvenilirlik</h4>
+                    <p>EPDK lisanslı, mevzuata uygun, kurumsal yapıda hizmet veririz.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-users"></i>
+                    <h4>Müşteri Odaklılık</h4>
+                    <p>Gereksiz geçiş önerilmez. İşletmenin çıkarı her zaman önceliğimizdir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ne Yapar Ne Yapmaz -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>GELKA Enerji Ne Yapar, Ne Yapmaz?</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <i class="fas fa-bolt"></i>
+                    <span></span>
+                </div>
+            </div>
+            <div class="do-dont-grid">
+                <div class="do-card">
+                    <h3><i class="fas fa-check-circle"></i> Yapar</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Sözleşme öncesi tüketim analizi ve risk tespiti</li>
+                        <li><i class="fas fa-check"></i> Piyasa koşullarına uygun fiyat modelleme (sabit / endeksli / karma)</li>
+                        <li><i class="fas fa-check"></i> Teklifin dayandığı endeksi (PTF/YEKDEM vb.) şeffaf biçimde açıklar</li>
+                        <li><i class="fas fa-check"></i> Geçiş sürecini uçtan uca yönetir, ilk faturaya kadar takip eder</li>
+                        <li><i class="fas fa-check"></i> Reaktif/endüktif risk tespiti ve sözleşme maddeleri kontrolü</li>
+                    </ul>
+                </div>
+                <div class="dont-card">
+                    <h3><i class="fas fa-times-circle"></i> Yapmaz</h3>
+                    <ul>
+                        <li><i class="fas fa-times"></i> Tesisata müdahale etmez, sayaç değiştirmez</li>
+                        <li><i class="fas fa-times"></i> Kompanzasyon kurmaz, elektrik tesisat işi yapmaz</li>
+                        <li><i class="fas fa-times"></i> Her işletmeye aynı "sabit tarife" dayatmaz</li>
+                        <li><i class="fas fa-times"></i> Gereksiz tedarikçi geçişi önermez</li>
+                        <li><i class="fas fa-times"></i> Gizli bedel veya sürpriz sözleşme maddesi içermez</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EPDK Lisans -->
+    <section class="license-banner">
+        <div class="container">
+            <h2><i class="fas fa-certificate"></i> EPDK Lisanslı Tedarikçi</h2>
+            <p>GELKA Enerji, Enerji Piyasası Düzenleme Kurumu (EPDK) tarafından lisanslı bir perakende elektrik tedarik şirketidir. Tüm faaliyetlerimiz mevzuata uygundur.</p>
+            <a href="Gelka Elektrik Lisans EPDK.pdf" target="_blank" class="btn btn-primary"><i class="fas fa-file-pdf"></i> Lisans Belgesini Görüntüle</a>
+        </div>
+    </section>
+
+    <!-- İletişim Bilgileri -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>İletişim Bilgileri</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <i class="fas fa-bolt"></i>
+                    <span></span>
+                </div>
+            </div>
+            <div class="about-intro" style="gap:40px">
+                <div class="about-intro-text">
+                    <h2 style="font-size:1.4rem">GELKA Enerji Yatırım Sanayi ve Ticaret A.Ş.</h2>
+                    <p><i class="fas fa-map-marker-alt" style="color:var(--accent-color);margin-right:8px"></i> Mecidiyeköy Yolu Cd. Karsuyu Sokak No:2<br>Trump Towers Kule 1, Kat:4, D:401<br>Şişli / İstanbul</p>
+                    <p><i class="fas fa-phone" style="color:var(--accent-color);margin-right:8px"></i> <a href="tel:+908505326995" style="color:var(--primary-color)">0850 532 69 95</a></p>
+                    <p><i class="fab fa-whatsapp" style="color:var(--accent-color);margin-right:8px"></i> <a href="https://wa.me/905350219965" style="color:var(--primary-color)">0535 021 99 65</a></p>
+                    <p><i class="fas fa-envelope" style="color:var(--accent-color);margin-right:8px"></i> <a href="mailto:info@gelkaenerji.com.tr" style="color:var(--primary-color)">info@gelkaenerji.com.tr</a></p>
+                </div>
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.5!2d29.0117!3d41.0766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDA0JzM1LjgiTiAyOcKwMDAnNDIuMSJF!5e0!3m2!1str!2str!4v1" width="100%" height="300" style="border:0;border-radius:14px" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+        <div class="container">
+            <h2>Elektrik maliyetinizi birlikte yönetelim</h2>
+            <p>Tüketim analizinizi ücretsiz yapalım, size özel teklif sunalım.</p>
+            <a href="ticari-elektrik-teklifi.html" class="btn btn-primary btn-large"><i class="fas fa-file-alt"></i> Ücretsiz Analiz İste</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <img src="biteslem.png" alt="GELKA Enerji Logo">
+                    </div>
+                    <p class="footer-company">GELKA ENERJİ YATIRIM SANAYİ VE TİCARET A.Ş.</p>
+                    <div class="footer-contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Mecidiyeköy Yolu Cd. Karsuyu Sokak No:2<br>Trump Towers Kule 1, Kat:4, D:401<br>Şişli / İstanbul</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+908505326995">0850 532 69 95</a> | <a href="https://wa.me/905350219965"><i class="fab fa-whatsapp"></i> 0535 021 99 65</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@gelkaenerji.com.tr">info@gelkaenerji.com.tr</a></p>
+                        <p><i class="fas fa-globe"></i> <a href="https://www.gelkaenerji.com.tr" target="_blank">www.gelkaenerji.com.tr</a></p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                        <li><a href="index.html#neden-gelka">Hizmetlerimiz</a></li>
+                        <li><a href="index.html#kimler-icin">Kimler İçin?</a></li>
+                        <li><a href="index.html#iletisim">Teklif Al</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hedef Sektörler</h4>
+                    <ul>
+                        <li><a href="index.html#kimler-icin">Oteller & Turizm</a></li>
+                        <li><a href="index.html#kimler-icin">Akaryakıt İstasyonları</a></li>
+                        <li><a href="index.html#kimler-icin">Restoranlar & Kafeler</a></li>
+                        <li><a href="index.html#kimler-icin">AVM'ler</a></li>
+                        <li><a href="index.html#kimler-icin">Fabrikalar & Üretim</a></li>
+                        <li><a href="index.html#kimler-icin">Hastaneler & Sağlık</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/gelka-enerji-564a183b0/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/gelkaenerji/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61583707926240" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div class="footer-cta">
+                        <p>Elektrik maliyetinizi düşürmeye hazır mısınız?</p>
+                        <a href="ticari-elektrik-teklifi.html" class="btn btn-primary btn-sm">Teklif Al</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+                    <span>|</span>
+                    <a href="cerez-politikasi.html">Çerez Politikası</a>
+                </div>
+                <p>&copy; 2026 Gelka Enerji Yatırım Sanayi ve Ticaret A.Ş. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/905350219965?text=Merhaba%2C%20elektrik%20tedariki%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
+       class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletişime geçin">
+        <span class="whatsapp-label">Hızlı Teklif Al</span>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
