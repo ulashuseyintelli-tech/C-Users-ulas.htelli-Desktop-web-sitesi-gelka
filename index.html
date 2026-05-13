@@ -239,13 +239,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="il" placeholder="İl / İlçe *" required minlength="2" pattern="[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+">
+                            <input type="text" name="il" placeholder="İl / İlçe *" required>
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" placeholder="E-posta *" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="telefon" placeholder="Telefon * (05xx xxx xx xx)" required pattern="0?5[0-9]{9}">
+                            <input type="tel" name="telefon" placeholder="Telefon * (05xx xxx xx xx)" required>
                         </div>
                         
                         <!-- Fatura Yükleme Alanı -->
@@ -889,13 +889,17 @@
                     <form class="contact-form" id="teklifForm" action="https://formspree.io/f/xwvneaod" method="POST">
                         <h3>Ücretsiz Teklif Formu</h3>
                         <input type="hidden" name="_subject" value="Yeni Teklif Talebi - GELKA Enerji">
+                        <!-- Honeypot -->
+                        <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+                        </div>
                         <div class="form-row">
                             <input type="text" name="firma" placeholder="Firma Adı *" required>
                             <input type="text" name="yetkili" placeholder="Yetkili Adı Soyadı *" required>
                         </div>
                         <div class="form-row">
                             <input type="email" name="email" placeholder="E-posta Adresi *" required>
-                            <input type="tel" name="telefon" placeholder="Telefon *" required>
+                            <input type="tel" name="telefon" placeholder="Telefon * (05xx xxx xx xx)" required>
                         </div>
                         <div class="form-row">
                             <select name="sektor" required>
@@ -906,9 +910,10 @@
                                 <option value="otel">Otel / Turizm</option>
                                 <option value="diger">Diğer</option>
                             </select>
-                            <input type="text" name="tuketim" placeholder="Aylık Ortalama Tüketim (kWh)">
+                            <input type="number" name="tuketim" placeholder="Aylık Tüketim (kWh)" min="1000">
                         </div>
                         <textarea name="mesaj" placeholder="Ek bilgi veya sorularınız..." rows="4"></textarea>
+                        <p class="form-note" style="font-size:.8rem;color:#888;margin-bottom:10px"><i class="fas fa-info-circle"></i> Hizmetimiz yalnızca ticari ve sanayi işletmelere yöneliktir. Konut/mesken teklifi verilmemektedir.</p>
                         <button type="submit" class="btn btn-primary btn-full"><i class="fas fa-paper-plane"></i> Teklif Talep Et</button>
                         <p class="form-note"><i class="fas fa-lock"></i> Bilgileriniz gizli tutulur ve sadece teklif amacıyla kullanılır.</p>
                     </form>

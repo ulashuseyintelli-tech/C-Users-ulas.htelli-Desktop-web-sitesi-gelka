@@ -573,25 +573,42 @@ function validateFormData(form) {
     var il = (form.querySelector('input[name="il"]') || {}).value || '';
     var telefon = (form.querySelector('input[name="telefon"]') || {}).value || '';
     var tuketim = (form.querySelector('input[name="tuketim"]') || {}).value || '';
+    var email = (form.querySelector('input[name="email"]') || {}).value || '';
+    var yetkili = (form.querySelector('input[name="yetkili"]') || {}).value || '';
 
-    // Firma: min 3 karakter, anlamsız tekrar tespiti
+    // Firma: min 3 karakter, anlamsız tekrar tespiti, rastgele harf tespiti
     if (firma.length < 3) { alert("Geçerli bir firma adı girin (en az 3 karakter)."); return false; }
     if (/^(.)\1+$/.test(firma.replace(/\s/g,''))) { alert("Geçerli bir firma adı girin."); return false; }
+    // Anlamsız kelime tespiti: 4+ ünsüz yan yana (Türkçe'de olmaz)
+    if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(firma)) { alert("Lütfen geçerli bir firma adı girin."); return false; }
+
+    // Yetkili adı kontrolü (varsa)
+    if (yetkili) {
+        if (yetkili.length < 4) { alert("Geçerli bir ad soyad girin."); return false; }
+        if (yetkili.trim().split(/\s+/).length < 2) { alert("Lütfen ad ve soyadınızı birlikte yazın."); return false; }
+        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(yetkili)) { alert("Lütfen geçerli bir ad soyad girin."); return false; }
+    }
 
     // Mesken filtresi
     var aboneGrubu = form.querySelector('select[name="abone_grubu"]');
     if (aboneGrubu && aboneGrubu.value === "mesken") { alert("Mesken (konut) abonelerine teklif vermiyoruz. Hizmetimiz yalnızca ticari ve sanayi işletmelere yöneliktir."); return false; }
 
-    // İl: min 2 karakter, sadece harf
-    if (il.length < 2) { alert("Geçerli bir il/ilçe girin."); return false; }
-    if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(il)) { alert("İl/İlçe alanına sadece harf giriniz."); return false; }
+    // İl: varsa kontrol et
+    if (il) {
+        if (il.length < 2) { alert("Geçerli bir il/ilçe girin."); return false; }
+        if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(il)) { alert("İl/İlçe alanına sadece harf giriniz."); return false; }
+        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(il)) { alert("Lütfen geçerli bir il/ilçe adı girin."); return false; }
+    }
 
-    // Telefon: 05 ile başlamalı
-    var cleanPhone = telefon.replace(/[\s\-\(\)]/g,'');
-    if (!/^0?5\d{9}$/.test(cleanPhone)) { alert("Geçerli bir cep telefonu numarası girin (05xx xxx xx xx)."); return false; }
+    // Telefon: 05 ile başlamalı, 10-11 hane
+    var cleanPhone = telefon.replace(/[\s\-\(\)\+]/g,'');
+    if (!/^0?5\d{9}$/.test(cleanPhone)) { alert("Geçerli bir cep telefonu numarası girin (05xx xxx xx xx formatında, 11 hane)."); return false; }
+
+    // E-posta format kontrolü
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert("Geçerli bir e-posta adresi girin."); return false; }
 
     // Tüketim: varsa min 1000
-    if (tuketim && parseInt(tuketim) < 1000) { alert("Aylık tüketim en az 1.000 kWh olmalıdır."); return false; }
+    if (tuketim && parseInt(tuketim) < 1000) { alert("Aylık tüketim en az 1.000 kWh olmalıdır. Konut abonelerine hizmet vermiyoruz."); return false; }
 
     return true;
 }
