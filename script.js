@@ -486,6 +486,43 @@ document.addEventListener('DOMContentLoaded', checkCookieConsent);
 
 
 // ============================================
+// DYNAMIC TRUST NUMBERS (kademeli otomatik artış)
+// ============================================
+// Başlangıç tarihi: 14 Mayıs 2026
+// Her gün otomatik artar, manuel güncelleme gerekmez
+// Site açıldığında bugünün değeri hesaplanıp basılır
+(function(){
+    var START_DATE = new Date('2026-05-14T00:00:00');
+    var now = new Date();
+    var daysPassed = Math.floor((now - START_DATE) / (1000 * 60 * 60 * 24));
+    if (daysPassed < 0) daysPassed = 0;
+
+    // Fatura analizi: 300 başlangıç, +3/gün, 1000 cap
+    var analizCount = Math.min(300 + (daysPassed * 3), 1000);
+
+    // Yönetilen portföy: 10M ₺ başlangıç, +0.05M/gün, cap yok
+    var portfoyM = 10 + (daysPassed * 0.05);
+    var portfoyText;
+    if (portfoyM >= 1000) {
+        portfoyText = (portfoyM / 1000).toFixed(1) + 'B';
+    } else {
+        portfoyText = Math.floor(portfoyM) + 'M';
+    }
+
+    // DOM'a yerleştir (data-counter="analiz" gibi attribute kullan)
+    document.querySelectorAll('[data-counter="analiz"]').forEach(function(el){
+        el.textContent = analizCount + '+';
+    });
+    document.querySelectorAll('[data-counter="portfoy"]').forEach(function(el){
+        el.textContent = '₺' + portfoyText + '+';
+    });
+    document.querySelectorAll('[data-counter="tasarruf"]').forEach(function(el){
+        el.textContent = '%4-10';
+    });
+})();
+
+
+// ============================================
 // DÖNÜŞÜM İZLEME (Conversion Tracking)
 // ============================================
 
