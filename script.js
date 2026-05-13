@@ -523,72 +523,143 @@ document.addEventListener('DOMContentLoaded', checkCookieConsent);
 
 
 // ============================================
-// DÖNÜŞÜM İZLEME (Conversion Tracking)
+// UTM TRACKING (tüm formlara otomatik hidden field)
 // ============================================
+// URL'deki utm_*, gclid, gbraid, wbraid parametrelerini yakala
+// Tüm formlara hidden field olarak ekle, lead source attribution için
+(function(){
+    var trackingParams = [
+        'utm_source', 'utm_medium', 'utm_campaign',
+        'utm_content', 'utm_term',
+        'gclid', 'gbraid', 'wbraid',
+        'fbclid', 'msclkid',
+        'referrer', 'landing_page'
+    ];
 
-// Genel dönüşüm izleme fonksiyonu
-// Google Ads dönüşüm label'ları (Google Ads panelinden gelecek)
-const ADS_LABELS = {
-    form_submit:    'LABEL_FORM',      // TODO: Gerçek label ile değiştir
-    whatsapp_click: 'LABEL_WA',        // TODO: Gerçek label ile değiştir
-    phone_click:    'LABEL_PHONE'      // TODO: Gerçek label ile değiştir
-};
+    // URL parametrelerini parse et
+    function getUrlParams() {
+        var params = {};
+        var search = window.location.search.substring(1);
+        if (search) {
+            search.split('&').forEach(function(pair) {
+                var parts = pair.split('=');
+                if (parts.length === 2) {
+                    params[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1].replace(/\+/g, ' '));
+                }
+            });
+        }
+        return params;
+    }
 
-// Genel dönüşüm izleme fonksiyonu (callback'li, event düşmesini önler)
+    // İlk ziyareti localStorage'a kaydet (cross-session attribution)
+    function captureAttribution() {
+        var params = getUrlParams();
+        var hasNewAttribution = trackingParams.some(function(p) { return params[p]; });
+
+        if (hasNewAttribution) {
+            // Yeni attribution geldi → kaydet
+            var data = {};
+            trackingParams.forEach(function(p) {
+                if (params[p]) data[p] = params[p];
+            });
+            data.referrer = document.referrer || '(direct)';
+            data.landing_page = window.location.pathname;
+            data.captured_at = new Date().toISOString();
+
+            try {
+                localStorage.setItem('gelka_attribution', JSON.stringify(data));
+            } catch(e) {}
+        }
+    }
+
+    // Stored attribution'ı oku
+    function getStoredAttribution() {
+        try {
+            var stored = localStorage.getItem('gelka_attribution');
+            if (stored) return JSON.parse(stored);
+        } catch(e) {}
+        return {};
+    }
+
+    // Forma hidden field ekle (eğer yoksa)
+    function addHiddenField(form, name, value) {
+        if (!value) return;
+        var existing = form.querySelector('input[name="' + name + '"]');
+        if (existing) {
+            existing.value = value;
+            return;
+        }
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    }
+
+    // Tüm formlara attribution ekle
+    function injectIntoForms() {
+        var attribution = getStoredAttribution();
+        if (Object.keys(attribution).length === 0) return;
+
+        document.querySelectorAll('form').forEach(function(form) {
+            // Sadece formspree/POST formlarına ekle
+            var action = form.getAttribute('action') || '';
+            if (action.indexOf('formspree') === -1 && form.method.toLowerCase() !== 'post') return;
+
+            Object.keys(attribution).forEach(function(key) {
+                addHiddenField(form, key, attribution[key]);
+            });
+        });
+    }
+
+    // Çalıştır
+    captureAttribution();
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectIntoForms);
+    } else {
+        injectIntoForms();
+    }
+
+    // Dinamik olarak form eklenirse de yakala (mutation observer)
+    if (typeof MutationObserver !== 'undefined') {
+        new MutationObserver(function(mutations) {
+            mutations.forEach(function(m) {
+                if (m.addedNodes && m.addedNodes.length) injectIntoForms();
+            });
+        }).observe(document.body || document.documentElement, { childList: true, subtree: true });
+    }
+})();
+
+
+// ============================================
+// CONVERSION TRACKING (GA4 ONLY)
+// ============================================
+// Ads conversion'ları GA4 key event'leri üzerinden import ediliyor.
+// Burada sadece GA4 event firing yapıyoruz. Google Ads paneline manuel
+// eski-style label girmeye gerek yok.
 function trackConversion(eventName, callback) {
     // GA4 Event
     if (typeof gtag === 'function') {
         gtag('event', eventName, {
             'event_category': 'conversion',
-            'event_label': eventName
+            'event_label': eventName,
+            'event_callback': callback
         });
+        // Fallback timeout (event_callback bazen düşer)
+        if (typeof callback === 'function') {
+            setTimeout(callback, 700);
+        }
+    } else if (typeof callback === 'function') {
+        callback();
     }
 
-    // DataLayer push (GTM kullanıyorsanız)
+    // DataLayer push (GTM kullanılıyorsa)
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         'event': eventName,
         'event_category': 'conversion'
     });
-
-    // Google Ads Conversion
-    var label = ADS_LABELS[eventName];
-    if (!label || label.indexOf('LABEL_') === 0) {
-        // Label henüz ayarlanmamış, sessiz geç
-        console.log('[Conversion] GA4 only:', eventName);
-        if (typeof callback === 'function') callback();
-        return;
-    }
-
-    if (typeof gtag !== 'function') {
-        if (typeof callback === 'function') callback();
-        return;
-    }
-
-    var sendTo = 'AW-2838120596/' + label;
-
-    // Callback varsa (click -> dışa çıkış), event_callback + timeout ile garantile
-    if (typeof callback === 'function') {
-        var done = false;
-        var finish = function() {
-            if (done) return;
-            done = true;
-            callback();
-        };
-
-        gtag('event', 'conversion', {
-            send_to: sendTo,
-            event_callback: finish
-        });
-
-        // Fallback: event_callback çalışmazsa 700ms sonra devam et
-        setTimeout(finish, 700);
-        return;
-    }
-
-    // Normal conversion (sayfa yüklendiğinde, callback gerekmez)
-    gtag('event', 'conversion', { send_to: sendTo });
-    console.log('[Conversion] Ads:', eventName, sendTo);
 }
 
 

@@ -26,17 +26,6 @@
 
         // GA4 key event - Google Ads conversion action bunu dinliyor
         gtag('event', 'ads_conversion_Form_1');
-
-        // Google Ads Conversion - form başarılı gönderim
-        // Label gelince LABEL_FORM yerine gerçek label yazılacak
-        (function() {
-            var formLabel = 'LABEL_FORM'; // TODO: Gerçek label ile değiştir
-            if (formLabel.indexOf('LABEL_') !== 0) {
-                gtag('event', 'conversion', {
-                    send_to: 'AW-2838120596/' + formLabel
-                });
-            }
-        })();
     </script>
 
     <style>

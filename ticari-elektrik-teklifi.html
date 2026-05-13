@@ -581,12 +581,7 @@
     const CONFIG = {
       whatsappNumber: "905350219965",
       callNumber: "+905350219965",
-      thankYouUrl: "tesekkurler.html",
-      ads: {
-        formSubmit:     { send_to: "AW-2838120596/FORM_LABEL" },
-        whatsappClick:  { send_to: "AW-2838120596/WA_LABEL" },
-        callClick:      { send_to: "AW-2838120596/CALL_LABEL" }
-      }
+      thankYouUrl: "tesekkurler.html"
     };
 
     const $ = id => document.getElementById(id);
@@ -609,8 +604,15 @@
       return "https://wa.me/"+CONFIG.whatsappNumber+"?text="+encodeURIComponent(text);
     }
 
-    function track(params){
-      try{ if(typeof gtag==="function") gtag("event","conversion",params); }catch(e){}
+    function track(eventName){
+      try{
+        if(typeof gtag==="function"){
+          gtag("event", eventName, {
+            event_category: "conversion",
+            event_label: eventName
+          });
+        }
+      }catch(e){}
     }
 
     function getData(){
@@ -639,9 +641,9 @@
       $(id).addEventListener("change", refreshWA);
     });
 
-    $("waSticky").addEventListener("click", function(){ track(CONFIG.ads.whatsappClick); });
-    $("waLinkInline").addEventListener("click", function(){ track(CONFIG.ads.whatsappClick); });
-    $("callLink").addEventListener("click", function(){ track(CONFIG.ads.callClick); });
+    $("waSticky").addEventListener("click", function(){ track("whatsapp_click"); });
+    $("waLinkInline").addEventListener("click", function(){ track("whatsapp_click"); });
+    $("callLink").addEventListener("click", function(){ track("phone_click"); });
 
     function showErr(msg){
       var el=$("formError"); el.textContent=msg; el.classList.add("show");
@@ -703,7 +705,7 @@
       d.submittedAt = new Date().toISOString();
       try{ localStorage.setItem("gelka_lead_last", JSON.stringify(d)); }catch(err){}
 
-      track(CONFIG.ads.formSubmit);
+      track("form_submit_lead");
 
       var formBody = new FormData();
       formBody.append("firma", d.company);
