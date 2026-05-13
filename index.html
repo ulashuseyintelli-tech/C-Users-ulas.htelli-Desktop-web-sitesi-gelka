@@ -226,20 +226,17 @@
                         </div>
                         <div class="form-row-half">
                             <div class="form-group">
-                                <input type="number" name="tuketim" placeholder="Aylık Tüketim (kWh)" min="1000">
+                                <input type="number" name="fatura_tutari" placeholder="Aylık Fatura Tutarı (₺) *" min="0" required>
                             </div>
                             <div class="form-group">
-                                <input type="number" name="fatura_tutari" placeholder="Aylık Fatura Tutarı (₺)" min="0">
+                                <select name="abone_grubu" required>
+                                    <option value="">Abone Grubu *</option>
+                                    <option value="og">OG (Orta Gerilim)</option>
+                                    <option value="ag">AG (Alçak Gerilim)</option>
+                                    <option value="bilmiyorum">Bilmiyorum</option>
+                                    <option value="mesken" disabled style="color:#999">Mesken (konut teklifi verilmez)</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <select name="abone_grubu" required>
-                                <option value="">Abone Grubu *</option>
-                                <option value="og">OG (Orta Gerilim)</option>
-                                <option value="ag">AG (Alçak Gerilim)</option>
-                                <option value="bilmiyorum">Bilmiyorum</option>
-                                <option value="mesken" disabled style="color:#999">Mesken (konut teklifi verilmez)</option>
-                            </select>
                         </div>
                         <div class="form-group">
                             <input type="text" name="il" placeholder="İl / İlçe *" required>
