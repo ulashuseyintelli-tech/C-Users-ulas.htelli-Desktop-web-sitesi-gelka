@@ -450,6 +450,11 @@
             <textarea id="note" name="note" placeholder="Mevcut tedarikçi, sözleşme bitişi, özel talep vb."></textarea>
           </div>
 
+          <!-- Honeypot — bot tuzağı, kullanıcı görmez -->
+          <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
           <!-- TEK ANA CTA -->
           <button class="btn pulse" type="submit">Daha Ucuz Fiyatı Göster →</button>
           <div class="hint" style="text-align:center;margin-top:4px;font-size:12px;color:var(--muted)">
@@ -570,6 +575,9 @@
 
   <script>
   (function(){
+    // Form yüklenme zamanı (bot tespiti için)
+    window._formLoadTime = Date.now();
+
     const CONFIG = {
       whatsappNumber: "905350219965",
       callNumber: "+905350219965",
@@ -646,6 +654,14 @@
       clearErr();
       var d = getData();
 
+      // Honeypot kontrolü (bot doldurursa)
+      if($("website").value) return;
+
+      // Zaman kontrolü (3 saniyeden kısa = bot)
+      var elapsed = (Date.now() - window._formLoadTime) / 1000;
+      if(elapsed < 3) return showErr("Lütfen formu dikkatli doldurun.");
+
+      // Temel zorunluluk
       if(!d.company) return showErr("Firma adı zorunlu.");
       if(!d.name) return showErr("Yetkili ad soyad zorunlu.");
       if(!d.subscriberGroup) return showErr("Abone grubu seçmelisiniz.");
@@ -653,7 +669,31 @@
       if(!d.city) return showErr("İl / İlçe zorunlu.");
       if(!d.phone) return showErr("Telefon zorunlu.");
       if(!d.email) return showErr("E-posta zorunlu.");
+
+      // Firma adı: min 3 karakter, anlamsız tekrar tespiti
+      if(d.company.length < 3) return showErr("Geçerli bir firma adı girin (en az 3 karakter).");
+      if(/^(.)\1+$/.test(d.company.replace(/\s/g,''))) return showErr("Geçerli bir firma adı girin.");
+
+      // Yetkili adı: min 4 karakter, en az 2 kelime
+      if(d.name.length < 4) return showErr("Geçerli bir ad soyad girin.");
+      if(d.name.trim().split(/\s+/).length < 2) return showErr("Lütfen ad ve soyadınızı birlikte yazın.");
+
+      // Tüketim: sayı, minimum 1000 kWh (ciddi işletme filtresi)
+      var kwh = parseInt(d.consumption);
+      if(isNaN(kwh) || kwh < 1000) return showErr("Aylık tüketim en az 1.000 kWh olmalıdır. Serbest tüketici limiti altındaysanız bizi arayın.");
+
+      // İl: min 2 karakter, sadece harf ve boşluk
+      if(d.city.length < 2) return showErr("Geçerli bir il/ilçe girin.");
+      if(!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(d.city)) return showErr("İl/İlçe alanına sadece harf giriniz.");
+
+      // Telefon: 05 ile başlamalı, 10-11 hane
+      var cleanPhone = d.phone.replace(/[\s\-\(\)]/g,'');
+      if(!/^0?5\d{9}$/.test(cleanPhone) && !/^05\d{9}$/.test(cleanPhone)) return showErr("Geçerli bir cep telefonu numarası girin (05xx xxx xx xx).");
+
+      // E-posta format
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return showErr("Geçerli bir e-posta adresi girin.");
+
+      // Fatura zorunlu
       if(!d.invoiceProvided) return showErr("Fatura yüklenmesi zorunludur. Faturanıza ulaşamıyorsanız bizi arayın.");
 
       d.submittedAt = new Date().toISOString();

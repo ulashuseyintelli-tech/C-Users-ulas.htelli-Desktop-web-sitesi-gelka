@@ -216,12 +216,16 @@
                     <form class="hero-form" id="heroAnalysisForm" action="https://formspree.io/f/xwvneaod" method="POST" enctype="multipart/form-data">
                         <h3><i class="fas fa-clock"></i> 24 Saatte Ön Analiz</h3>
                         <input type="hidden" name="_subject" value="Yeni Analiz Talebi - GELKA Enerji">
+                        <!-- Honeypot -->
+                        <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+                        </div>
                         <div class="form-group">
-                            <input type="text" name="firma" placeholder="Firma Adı *" required>
+                            <input type="text" name="firma" placeholder="Firma Adı *" required minlength="3">
                         </div>
                         <div class="form-row-half">
                             <div class="form-group">
-                                <input type="text" name="tuketim" placeholder="Aylık Tüketim (kWh)">
+                                <input type="number" name="tuketim" placeholder="Aylık Tüketim (kWh)" min="1000">
                             </div>
                             <div class="form-group">
                                 <select name="abone_grubu">
@@ -233,13 +237,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="il" placeholder="İl / İlçe *" required>
+                            <input type="text" name="il" placeholder="İl / İlçe *" required minlength="2" pattern="[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+">
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" placeholder="E-posta *" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="telefon" placeholder="Telefon *" required>
+                            <input type="tel" name="telefon" placeholder="Telefon * (05xx xxx xx xx)" required pattern="0?5[0-9]{9}">
                         </div>
                         
                         <!-- Fatura Yükleme Alanı -->

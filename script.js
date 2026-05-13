@@ -556,11 +556,48 @@ function trackConversion(eventName, callback) {
 
 
 
-// Form submit with AJAX + redirect to tesekkurler.html
+// Form submit with AJAX + redirect to tesekkurler.html + SPAM KORUMASI
 // NOT: Conversion burada tetiklenmez! tesekkurler.html sayfasında tetiklenir.
+var _formLoadTime = Date.now();
+
+function validateFormData(form) {
+    // Honeypot kontrolü
+    var honeypot = form.querySelector('input[name="website"]');
+    if (honeypot && honeypot.value) return false;
+
+    // Zaman kontrolü (3 saniyeden kısa = bot)
+    var elapsed = (Date.now() - _formLoadTime) / 1000;
+    if (elapsed < 3) { alert("Lütfen formu dikkatli doldurun."); return false; }
+
+    var firma = (form.querySelector('input[name="firma"]') || {}).value || '';
+    var il = (form.querySelector('input[name="il"]') || {}).value || '';
+    var telefon = (form.querySelector('input[name="telefon"]') || {}).value || '';
+    var tuketim = (form.querySelector('input[name="tuketim"]') || {}).value || '';
+
+    // Firma: min 3 karakter, anlamsız tekrar tespiti
+    if (firma.length < 3) { alert("Geçerli bir firma adı girin (en az 3 karakter)."); return false; }
+    if (/^(.)\1+$/.test(firma.replace(/\s/g,''))) { alert("Geçerli bir firma adı girin."); return false; }
+
+    // İl: min 2 karakter, sadece harf
+    if (il.length < 2) { alert("Geçerli bir il/ilçe girin."); return false; }
+    if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(il)) { alert("İl/İlçe alanına sadece harf giriniz."); return false; }
+
+    // Telefon: 05 ile başlamalı
+    var cleanPhone = telefon.replace(/[\s\-\(\)]/g,'');
+    if (!/^0?5\d{9}$/.test(cleanPhone)) { alert("Geçerli bir cep telefonu numarası girin (05xx xxx xx xx)."); return false; }
+
+    // Tüketim: varsa min 1000
+    if (tuketim && parseInt(tuketim) < 1000) { alert("Aylık tüketim en az 1.000 kWh olmalıdır."); return false; }
+
+    return true;
+}
+
 function handleFormSubmit(form) {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Spam validasyonu
+        if (!validateFormData(form)) return;
 
         var formData = new FormData(form);
         var submitBtn = form.querySelector('button[type="submit"]');
