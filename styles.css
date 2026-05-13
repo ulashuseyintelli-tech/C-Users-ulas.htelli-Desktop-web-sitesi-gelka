@@ -484,12 +484,13 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .intro-screen.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .intro-content {
@@ -501,7 +502,7 @@ body {
 
 .intro-logo-3d {
     opacity: 0;
-    animation: introLogoIn 1s ease-out 0.2s forwards;
+    animation: introLogoIn 0.5s ease-out forwards;
 }
 
 .intro-logo-3d img {

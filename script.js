@@ -1,15 +1,23 @@
 // Intro Screen Animation
+// Optimize: 1.8s → 600ms (LCP iyileştirmesi)
+// Returning visitor: hiç gösterme
 const introScreen = document.getElementById('introScreen');
 if (introScreen) {
-    // Hide intro after animation completes - hızlandırıldı
-    setTimeout(() => {
-        introScreen.classList.add('hidden');
-    }, 1800);
-    
-    // Remove from DOM after fade out
-    setTimeout(() => {
+    // Returning visitor check
+    var seenIntro = sessionStorage.getItem('gelka_intro_seen');
+    if (seenIntro) {
+        // Daha önce görmüş, hiç gösterme
         introScreen.style.display = 'none';
-    }, 2500);
+    } else {
+        // İlk ziyaret: kısa intro göster
+        sessionStorage.setItem('gelka_intro_seen', '1');
+        setTimeout(() => {
+            introScreen.classList.add('hidden');
+        }, 600);
+        setTimeout(() => {
+            introScreen.style.display = 'none';
+        }, 1100);
+    }
 }
 
 // Smooth scrolling for navigation links

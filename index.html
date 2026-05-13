@@ -198,13 +198,16 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Hero görseli preload (LCP iyileştirme) -->
+    <link rel="preload" as="image" href="shutterstock-94087960-2459.jpg" imagesrcset="shutterstock-94087960-2459.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
     <!-- Intro Screen -->
     <div class="intro-screen" id="introScreen">
         <div class="intro-content">
             <div class="intro-logo-3d">
-                <img src="gelka-logo-3d.png" alt="GELKA Enerji">
+                <picture><source srcset="gelka-logo-3d.webp" type="image/webp"><img src="gelka-logo-3d.png" alt="GELKA Enerji"></picture>
             </div>
         </div>
     </div>
@@ -227,7 +230,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="gelka-logo-header.png" alt="GELKA Enerji - Sanayi Elektrik Tedarikçisi Logo"></a>
+                <a href="index.html"><picture><source srcset="gelka-logo-header.webp" type="image/webp"><img src="gelka-logo-header.png" alt="GELKA Enerji - Sanayi Elektrik Tedarikçisi Logo"></picture></a>
             </div>
             <nav class="nav">
                 <ul>
@@ -602,7 +605,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('akaryakit')">
                     <div class="customer-image">
-                        <img src="akaryakit_istasyonu.png" alt="Akaryakıt İstasyonu Elektrik Tedariki - 7/24 Enerji Çözümleri">
+                        <picture><source srcset="akaryakit_istasyonu.webp" type="image/webp"><img src="akaryakit_istasyonu.png" alt="Akaryakıt İstasyonu Elektrik Tedariki - 7/24 Enerji Çözümleri"></picture>
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-gas-pump"></i> Akaryakıt İstasyonları</h3>
@@ -989,7 +992,7 @@
             <div class="footer-grid">
                 <div class="footer-col footer-brand">
                     <div class="footer-logo">
-                        <img src="biteslem.png" alt="GELKA Enerji Logo - Sanayi ve Ticari Elektrik Tedarikçisi">
+                        <picture><source srcset="biteslem.webp" type="image/webp"><img src="biteslem.png" alt="GELKA Enerji Logo - Sanayi ve Ticari Elektrik Tedarikçisi"></picture>
                     </div>
                     <p class="footer-company">GELKA ENERJİ YATIRIM SANAYİ VE TİCARET A.Ş.</p>
                     <div class="footer-contact-info">
