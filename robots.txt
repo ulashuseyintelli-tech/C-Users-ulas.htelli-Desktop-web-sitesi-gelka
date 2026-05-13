@@ -1,14 +1,27 @@
+# GELKA Enerji - Robots.txt
+# https://www.gelkaenerji.com.tr
+
 User-agent: *
 Allow: /
-Disallow: /gelka-site-tam.zip
-Disallow: /guncelleme.zip
-Disallow: /footer-fix.zip
-Disallow: /meta-fix.zip
-Disallow: /seo-dosyalari.zip
-Disallow: /seo-temizlik.zip
-Disallow: /tesekkurler.html
-Disallow: /ticari-elektrik-teklifi.html
-Disallow: /ticari-elektrik-teklifi
-Disallow: /yapilacaklar
 
+# Tarama dışı bırakılan dosyalar
+Disallow: /tesekkurler.html
+Disallow: /kampus-partner-paylasim-temp/
+Disallow: /*.zip$
+Disallow: /*.pdf.bak$
+
+# Spam botları engelle
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap konumu
 Sitemap: https://www.gelkaenerji.com.tr/sitemap.xml
