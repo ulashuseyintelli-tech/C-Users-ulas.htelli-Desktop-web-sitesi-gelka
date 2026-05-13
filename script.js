@@ -575,12 +575,22 @@ function validateFormData(form) {
     var tuketim = (form.querySelector('input[name="tuketim"]') || {}).value || '';
     var email = (form.querySelector('input[name="email"]') || {}).value || '';
     var yetkili = (form.querySelector('input[name="yetkili"]') || {}).value || '';
+    var ad = (form.querySelector('input[name="ad"]') || form.querySelector('input[name="ad_soyad"]') || {}).value || '';
+    var sehir = (form.querySelector('input[name="sehir"]') || {}).value || '';
 
-    // Firma: min 3 karakter, anlamsız tekrar tespiti, rastgele harf tespiti
-    if (firma.length < 3) { alert("Geçerli bir firma adı girin (en az 3 karakter)."); return false; }
-    if (/^(.)\1+$/.test(firma.replace(/\s/g,''))) { alert("Geçerli bir firma adı girin."); return false; }
-    // Anlamsız kelime tespiti: 4+ ünsüz yan yana (Türkçe'de olmaz)
-    if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(firma)) { alert("Lütfen geçerli bir firma adı girin."); return false; }
+    // Firma: min 3 karakter (varsa)
+    if (firma) {
+        if (firma.length < 3) { alert("Geçerli bir firma adı girin (en az 3 karakter)."); return false; }
+        if (/^(.)\1+$/.test(firma.replace(/\s/g,''))) { alert("Geçerli bir firma adı girin."); return false; }
+        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(firma)) { alert("Lütfen geçerli bir firma adı girin."); return false; }
+    }
+
+    // Ad Soyad (varsa)
+    if (ad) {
+        if (ad.length < 4) { alert("Geçerli bir ad soyad girin."); return false; }
+        if (ad.trim().split(/\s+/).length < 2) { alert("Lütfen ad ve soyadınızı birlikte yazın."); return false; }
+        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(ad)) { alert("Lütfen geçerli bir ad soyad girin."); return false; }
+    }
 
     // Yetkili adı kontrolü (varsa)
     if (yetkili) {
@@ -593,11 +603,12 @@ function validateFormData(form) {
     var aboneGrubu = form.querySelector('select[name="abone_grubu"]');
     if (aboneGrubu && aboneGrubu.value === "mesken") { alert("Mesken (konut) abonelerine teklif vermiyoruz. Hizmetimiz yalnızca ticari ve sanayi işletmelere yöneliktir."); return false; }
 
-    // İl: varsa kontrol et
-    if (il) {
-        if (il.length < 2) { alert("Geçerli bir il/ilçe girin."); return false; }
-        if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(il)) { alert("İl/İlçe alanına sadece harf giriniz."); return false; }
-        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(il)) { alert("Lütfen geçerli bir il/ilçe adı girin."); return false; }
+    // İl/Şehir: varsa kontrol et
+    var ilOrSehir = il || sehir;
+    if (ilOrSehir) {
+        if (ilOrSehir.length < 2) { alert("Geçerli bir il/ilçe girin."); return false; }
+        if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(ilOrSehir)) { alert("İl/İlçe alanına sadece harf giriniz."); return false; }
+        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(ilOrSehir)) { alert("Lütfen geçerli bir il/ilçe adı girin."); return false; }
     }
 
     // Telefon: 05 ile başlamalı, 10-11 hane
@@ -658,6 +669,14 @@ if (heroForm) handleFormSubmit(heroForm);
 // Teklif Formu
 var teklifForm = document.getElementById('teklifForm');
 if (teklifForm) handleFormSubmit(teklifForm);
+
+// Bayilik Formu
+var bayilikForm = document.getElementById('bayilikForm');
+if (bayilikForm) handleFormSubmit(bayilikForm);
+
+// Kampüs Partner Formu
+var kampusForm = document.getElementById('kampusForm');
+if (kampusForm) handleFormSubmit(kampusForm);
 
 // ============================================
 // REAL-TIME VALIDASYON (blur anında kontrol + sonraki alanları kilitle)
@@ -730,6 +749,30 @@ if (teklifForm) handleFormSubmit(teklifForm);
             if (v.length < 3) return markInvalid(el, 'En az 3 karakter girin.');
             if (hasGibberish(v)) return markInvalid(el, 'Geçerli bir firma adı girin.');
             if (/^(.)\1+$/.test(v.replace(/\s/g,''))) return markInvalid(el, 'Geçerli bir firma adı girin.');
+            markValid(el);
+        });
+    });
+
+    // Ad Soyad (bayilik formu: name="ad")
+    document.querySelectorAll('input[name="ad"], input[name="ad_soyad"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim();
+            if (!v) return markInvalid(el, 'Ad soyad zorunlu.');
+            if (v.length < 4) return markInvalid(el, 'En az 4 karakter girin.');
+            if (v.split(/\s+/).length < 2) return markInvalid(el, 'Ad ve soyadınızı yazın.');
+            if (hasGibberish(v)) return markInvalid(el, 'Geçerli bir ad soyad girin.');
+            markValid(el);
+        });
+    });
+
+    // Şehir (bayilik formu: name="sehir")
+    document.querySelectorAll('input[name="sehir"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim();
+            if (!v) return markInvalid(el, 'Şehir zorunlu.');
+            if (v.length < 2) return markInvalid(el, 'Geçerli bir şehir girin.');
+            if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(v)) return markInvalid(el, 'Sadece harf giriniz.');
+            if (hasGibberish(v)) return markInvalid(el, 'Geçerli bir şehir adı girin.');
             markValid(el);
         });
     });
