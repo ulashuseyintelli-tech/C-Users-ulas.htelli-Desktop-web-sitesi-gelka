@@ -60,7 +60,11 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
 <body>
     <div class="top-banner">
@@ -77,7 +81,7 @@
     </div>
     <header class="header">
         <div class="container">
-            <div class="logo"><a href="index.html"><img src="gelka-logo-header.png" alt="GELKA Enerji Logo"></a></div>
+            <div class="logo"><a href="index.html"><picture><source srcset="gelka-logo-header.webp" type="image/webp"><img src="gelka-logo-header.png" alt="GELKA Enerji Logo"></picture></a></div>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Ana Sayfa</a></li>
@@ -155,7 +159,7 @@
             <div class="footer-grid">
                 <div class="footer-col footer-brand">
                     <div class="footer-logo">
-                        <img src="biteslem.png" alt="GELKA Enerji Logo - Sanayi ve Ticari Elektrik Tedarikçisi">
+                        <picture><source srcset="biteslem.webp" type="image/webp"><img src="biteslem.png" alt="GELKA Enerji Logo - Sanayi ve Ticari Elektrik Tedarikçisi"></picture>
                     </div>
                     <p class="footer-company">GELKA ENERJİ YATIRIM SANAYİ VE TİCARET A.Ş.</p>
                     <div class="footer-contact-info">

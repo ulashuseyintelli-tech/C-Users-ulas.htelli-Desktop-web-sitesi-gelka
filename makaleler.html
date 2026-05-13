@@ -30,7 +30,11 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Organization","name":"GELKA Enerji Yatırım Sanayi ve Ticaret A.Ş.","url":"https://www.gelkaenerji.com.tr","logo":"https://www.gelkaenerji.com.tr/logo.png","sameAs":["https://www.linkedin.com/company/gelka-enerji"]}
     </script>
@@ -77,7 +81,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="gelka-logo-header.png" alt="GELKA Enerji Logo"></a>
+                <a href="index.html"><picture><source srcset="gelka-logo-header.webp" type="image/webp"><img src="gelka-logo-header.png" alt="GELKA Enerji Logo"></picture></a>
             </div>
             <nav class="nav">
                 <ul>
@@ -111,7 +115,7 @@
                 <!-- 1. Sanayi Elektrik Tedarikçisi -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Sanayi Elektrik Tedarikçisi">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Sanayi Elektrik Tedarikçisi" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">Sanayi</span>
                     </div>
                     <div class="article-content">
@@ -128,7 +132,7 @@
                 <!-- 2. AVM Reaktif Endüktif (Pillar) -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&h=400&fit=crop" alt="AVM Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&h=400&fit=crop" alt="AVM Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">AVM</span>
                     </div>
                     <div class="article-content">
@@ -145,7 +149,7 @@
                 <!-- 3. Otel Zinciri -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Otel Zinciri Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Otel Zinciri Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">Otel</span>
                     </div>
                     <div class="article-content">
@@ -162,7 +166,7 @@
                 <!-- 4. Market Elektrik Tüketimi -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop" alt="Market Elektrik Tüketimi">
+                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop" alt="Market Elektrik Tüketimi" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">Market</span>
                     </div>
                     <div class="article-content">
@@ -179,7 +183,7 @@
                 <!-- 5. Akaryakıt İstasyonu Tüketimi -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="akaryakit_istasyonu.png" alt="Akaryakıt İstasyonu Elektrik Tüketimi">
+                        <picture><source srcset="akaryakit_istasyonu.webp" type="image/webp"><img src="akaryakit_istasyonu.png" alt="Akaryakıt İstasyonu Elektrik Tüketimi"></picture>
                         <span class="article-category">Akaryakıt</span>
                     </div>
                     <div class="article-content">
@@ -196,7 +200,7 @@
                 <!-- 6. Akaryakıt Demant Güç Aşımı -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="akaryakit_istasyonu.png" alt="Akaryakıt Demant Güç Aşımı">
+                        <picture><source srcset="akaryakit_istasyonu.webp" type="image/webp"><img src="akaryakit_istasyonu.png" alt="Akaryakıt Demant Güç Aşımı"></picture>
                         <span class="article-category">Akaryakıt</span>
                     </div>
                     <div class="article-content">
@@ -230,7 +234,7 @@
                 <!-- 8. Restoran Elektrik Fiyat Teklifi -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Restoran Elektrik Fiyat Teklifi">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Restoran Elektrik Fiyat Teklifi" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">Restoran</span>
                     </div>
                     <div class="article-content">
@@ -247,7 +251,7 @@
                 <!-- 9. OSB Elektrik Tedariki -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&h=400&fit=crop" alt="OSB Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&h=400&fit=crop" alt="OSB Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">Sanayi</span>
                     </div>
                     <div class="article-content">
@@ -281,7 +285,7 @@
                 <!-- 11. Tedarikçi Seçimi Hataları -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Elektrik Tedarikçisi Seçimi Hataları">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Elektrik Tedarikçisi Seçimi Hataları" width="800" height="500" loading="lazy" decoding="async">
                         <span class="article-category">Rehber</span>
                     </div>
                     <div class="article-content">
@@ -298,7 +302,7 @@
                 <!-- 12. Plaza & Ofis -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Plaza Ofis Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Plaza Ofis Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">Plaza</span>
                     </div>
                     <div class="article-content">
@@ -400,7 +404,7 @@
                 <!-- 18. Hastane & Sağlık Kuruluşları -->
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop" alt="Özel Hastane Elektrik Tedarikçisi">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop" alt="Özel Hastane Elektrik Tedarikçisi" width="400" height="280" loading="lazy" decoding="async">
                         <span class="article-category">Sağlık</span>
                     </div>
                     <div class="article-content">
@@ -433,7 +437,7 @@
             <div class="footer-grid">
                 <div class="footer-col footer-brand">
                     <div class="footer-logo">
-                        <img src="biteslem.png" alt="GELKA Enerji Logo - Sanayi ve Ticari Elektrik Tedarikçisi">
+                        <picture><source srcset="biteslem.webp" type="image/webp"><img src="biteslem.png" alt="GELKA Enerji Logo - Sanayi ve Ticari Elektrik Tedarikçisi"></picture>
                     </div>
                     <p class="footer-company">GELKA ENERJİ YATIRIM SANAYİ VE TİCARET A.Ş.</p>
                     <div class="footer-contact-info">

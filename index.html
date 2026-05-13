@@ -196,8 +196,22 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Font preconnect (DNS lookup'ı erkene al) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Font Awesome (async yüklenir, blocking'den çıkarıldı) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript></noscript>
 
     <!-- Hero görseli preload (LCP iyileştirme) -->
     <link rel="preload" as="image" href="shutterstock-94087960-2459.jpg" imagesrcset="shutterstock-94087960-2459.webp" type="image/webp" fetchpriority="high">
@@ -415,7 +429,7 @@
             
             <div class="zigzag-row">
                 <div class="zigzag-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop" alt="Tüketim Analizi ve Veri Okuma">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop" alt="Tüketim Analizi ve Veri Okuma" width="800" height="500" loading="lazy" decoding="async">
                 </div>
                 <div class="zigzag-content">
                     <h3>Tüketim Profilini Okuruz</h3>
@@ -426,7 +440,7 @@
             
             <div class="zigzag-row zigzag-reverse">
                 <div class="zigzag-image">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop" alt="Risk Analizi ve Sözleşme İnceleme">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop" alt="Risk Analizi ve Sözleşme İnceleme" width="800" height="500" loading="lazy" decoding="async">
                 </div>
                 <div class="zigzag-content">
                     <h3>Riskleri İmza Öncesi Görürüz</h3>
@@ -437,7 +451,7 @@
             
             <div class="zigzag-row">
                 <div class="zigzag-image">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=500&fit=crop" alt="Kesintisiz Geçiş ve Süreç Yönetimi">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=500&fit=crop" alt="Kesintisiz Geçiş ve Süreç Yönetimi" width="800" height="500" loading="lazy" decoding="async">
                 </div>
                 <div class="zigzag-content">
                     <h3>Geçişi Siz Değil, Biz Yönetiriz</h3>
@@ -575,7 +589,7 @@
             <div class="customers-detailed-grid">
                 <div class="customer-detailed-card" onclick="openSectorModal('fabrika')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=280&fit=crop" alt="Fabrika Elektrik Tedariki - Sanayi Tesisleri Enerji Maliyeti">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=280&fit=crop" alt="Fabrika Elektrik Tedariki - Sanayi Tesisleri Enerji Maliyeti" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-industry"></i> Fabrikalar & Üretim Tesisleri</h3>
@@ -585,7 +599,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('otel')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=280&fit=crop" alt="Otel Elektrik Tedariki - Turizm Tesisleri Enerji Çözümleri">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=280&fit=crop" alt="Otel Elektrik Tedariki - Turizm Tesisleri Enerji Çözümleri" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-hotel"></i> Oteller & Turizm Tesisleri</h3>
@@ -595,7 +609,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('avm')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=400&h=280&fit=crop" alt="AVM Elektrik Tedarikçisi - Alışveriş Merkezi Enerji Yönetimi">
+                        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=400&h=280&fit=crop" alt="AVM Elektrik Tedarikçisi - Alışveriş Merkezi Enerji Yönetimi" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-store-alt"></i> AVM'ler & Alışveriş Merkezleri</h3>
@@ -615,7 +629,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('restoran')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=280&fit=crop" alt="Zincir Restoran Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=280&fit=crop" alt="Zincir Restoran Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-utensils"></i> Zincir Restoranlar & Franchise Cafeler</h3>
@@ -625,7 +639,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('market')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&h=280&fit=crop" alt="Market Elektrik Maliyeti - Perakende Zinciri Enerji Tedariki">
+                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&h=280&fit=crop" alt="Market Elektrik Maliyeti - Perakende Zinciri Enerji Tedariki" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-shopping-cart"></i> Marketler & Perakende Zincirleri</h3>
@@ -635,7 +649,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('plaza')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=280&fit=crop" alt="Plaza Elektrik Tedariki - Ofis Binası Enerji Yönetimi">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=280&fit=crop" alt="Plaza Elektrik Tedariki - Ofis Binası Enerji Yönetimi" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-city"></i> Plazalar & Ofis Binaları</h3>
@@ -645,7 +659,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('hastane')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=280&fit=crop" alt="Özel Hastane Elektrik Tedarikçisi - Sağlık Kuruluşları Enerji Yönetimi">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=280&fit=crop" alt="Özel Hastane Elektrik Tedarikçisi - Sağlık Kuruluşları Enerji Yönetimi" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-hospital"></i> Özel Hastaneler & Sağlık Kuruluşları</h3>
@@ -655,7 +669,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('okul')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=280&fit=crop" alt="Özel Okul Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=280&fit=crop" alt="Özel Okul Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-graduation-cap"></i> Özel Okullar & Eğitim Kurumları</h3>
@@ -665,7 +679,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('tarim')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=280&fit=crop" alt="Tarımsal Sulama Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=280&fit=crop" alt="Tarımsal Sulama Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-tractor"></i> Tarımsal Sulama Tesisleri</h3>
@@ -675,7 +689,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('osb')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=280&fit=crop" alt="OSB Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=280&fit=crop" alt="OSB Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-warehouse"></i> OSB & Organize Sanayi</h3>
@@ -685,7 +699,7 @@
                 
                 <div class="customer-detailed-card" onclick="openSectorModal('ticari')">
                     <div class="customer-image">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=280&fit=crop" alt="Ticari İşletme Elektrik Tedariki">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=280&fit=crop" alt="Ticari İşletme Elektrik Tedariki" width="400" height="280" loading="lazy" decoding="async">
                     </div>
                     <div class="customer-info">
                         <h3><i class="fas fa-building"></i> Ticari İşletmeler & İş Merkezleri</h3>
@@ -876,7 +890,7 @@
                 <div class="faq-contact">
                     <h3>Satış Danışmanımıza Sorun</h3>
                     <div class="faq-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=600&fit=crop" alt="Müşteri Temsilcisi">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=600&fit=crop" alt="Müşteri Temsilcisi" width="500" height="600" loading="lazy" decoding="async">
                     </div>
                     <div class="faq-contact-info">
                         <a href="tel:+908505326995" class="faq-phone">
