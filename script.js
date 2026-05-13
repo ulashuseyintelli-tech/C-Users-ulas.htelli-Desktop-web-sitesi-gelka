@@ -660,6 +660,121 @@ var teklifForm = document.getElementById('teklifForm');
 if (teklifForm) handleFormSubmit(teklifForm);
 
 // ============================================
+// REAL-TIME VALIDASYON (blur anında kontrol + sonraki alanları kilitle)
+// ============================================
+(function(){
+    function markInvalid(input, msg) {
+        input.style.borderColor = '#e74c3c';
+        input.style.boxShadow = '0 0 0 3px rgba(231,76,60,.15)';
+        input.dataset.valid = 'false';
+        var existing = input.parentElement.querySelector('.inline-error');
+        if (existing) existing.remove();
+        var err = document.createElement('span');
+        err.className = 'inline-error';
+        err.style.cssText = 'display:block;font-size:11px;color:#e74c3c;margin-top:4px;font-weight:500';
+        err.textContent = msg;
+        input.parentElement.appendChild(err);
+        lockFollowingFields(input);
+    }
+    function markValid(input) {
+        input.style.borderColor = '';
+        input.style.boxShadow = '';
+        input.dataset.valid = 'true';
+        var existing = input.parentElement.querySelector('.inline-error');
+        if (existing) existing.remove();
+        unlockFollowingFields(input);
+    }
+
+    // Formdaki sıradaki alanları kilitle/aç
+    function lockFollowingFields(input) {
+        var form = input.closest('form');
+        if (!form) return;
+        var allInputs = Array.from(form.querySelectorAll('input:not([type="hidden"]):not([type="file"]), select, textarea'));
+        var idx = allInputs.indexOf(input);
+        for (var i = idx + 1; i < allInputs.length; i++) {
+            allInputs[i].disabled = true;
+            allInputs[i].style.opacity = '0.4';
+            allInputs[i].style.pointerEvents = 'none';
+        }
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.style.opacity = '0.5'; }
+    }
+    function unlockFollowingFields(input) {
+        var form = input.closest('form');
+        if (!form) return;
+        var allInputs = Array.from(form.querySelectorAll('input:not([type="hidden"]):not([type="file"]), select, textarea'));
+        var idx = allInputs.indexOf(input);
+        // Sadece bu alandan sonrakileri aç — ama önceki alanlar da valid mi kontrol et
+        var allValid = true;
+        for (var i = 0; i <= idx; i++) {
+            if (allInputs[i].dataset.valid === 'false') { allValid = false; break; }
+        }
+        if (!allValid) return;
+        for (var i = idx + 1; i < allInputs.length; i++) {
+            allInputs[i].disabled = false;
+            allInputs[i].style.opacity = '';
+            allInputs[i].style.pointerEvents = '';
+        }
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+    }
+
+    function hasGibberish(val) {
+        return /[bcçdfgğhjklmnprsştvyz]{4,}/i.test(val);
+    }
+
+    document.querySelectorAll('input[name="firma"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim();
+            if (!v) return markInvalid(el, 'Firma adı zorunlu.');
+            if (v.length < 3) return markInvalid(el, 'En az 3 karakter girin.');
+            if (hasGibberish(v)) return markInvalid(el, 'Geçerli bir firma adı girin.');
+            if (/^(.)\1+$/.test(v.replace(/\s/g,''))) return markInvalid(el, 'Geçerli bir firma adı girin.');
+            markValid(el);
+        });
+    });
+
+    document.querySelectorAll('input[name="yetkili"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim();
+            if (!v) return; // opsiyonel olabilir bazı formlarda
+            if (v.length < 4) return markInvalid(el, 'En az 4 karakter girin.');
+            if (v.split(/\s+/).length < 2) return markInvalid(el, 'Ad ve soyadınızı yazın.');
+            if (hasGibberish(v)) return markInvalid(el, 'Geçerli bir ad soyad girin.');
+            markValid(el);
+        });
+    });
+
+    document.querySelectorAll('input[name="il"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim();
+            if (!v) return markInvalid(el, 'İl/İlçe zorunlu.');
+            if (v.length < 2) return markInvalid(el, 'Geçerli bir il/ilçe girin.');
+            if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(v)) return markInvalid(el, 'Sadece harf giriniz.');
+            if (hasGibberish(v)) return markInvalid(el, 'Geçerli bir il/ilçe girin.');
+            markValid(el);
+        });
+    });
+
+    document.querySelectorAll('input[name="telefon"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim().replace(/[\s\-\(\)\+]/g,'');
+            if (!v) return markInvalid(el, 'Telefon zorunlu.');
+            if (!/^0?5\d{9}$/.test(v)) return markInvalid(el, '05 ile başlayan 11 haneli numara girin.');
+            markValid(el);
+        });
+    });
+
+    document.querySelectorAll('input[name="tuketim"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim();
+            if (v && parseInt(v) < 1000) return markInvalid(el, 'Min. 1.000 kWh (konut teklifi verilmez).');
+            if (v) markValid(el);
+        });
+    });
+})();
+
+// ============================================
 // CLICK TRACKING: WhatsApp + Telefon (callback'li)
 // ============================================
 
