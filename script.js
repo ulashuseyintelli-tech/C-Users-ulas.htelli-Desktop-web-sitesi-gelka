@@ -578,6 +578,10 @@ function validateFormData(form) {
     if (firma.length < 3) { alert("Geçerli bir firma adı girin (en az 3 karakter)."); return false; }
     if (/^(.)\1+$/.test(firma.replace(/\s/g,''))) { alert("Geçerli bir firma adı girin."); return false; }
 
+    // Mesken filtresi
+    var aboneGrubu = form.querySelector('select[name="abone_grubu"]');
+    if (aboneGrubu && aboneGrubu.value === "mesken") { alert("Mesken (konut) abonelerine teklif vermiyoruz. Hizmetimiz yalnızca ticari ve sanayi işletmelere yöneliktir."); return false; }
+
     // İl: min 2 karakter, sadece harf
     if (il.length < 2) { alert("Geçerli bir il/ilçe girin."); return false; }
     if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(il)) { alert("İl/İlçe alanına sadece harf giriniz."); return false; }
