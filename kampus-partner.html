@@ -30,6 +30,124 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.gelkaenerji.com.tr/"},
+            {"@type": "ListItem", "position": 2, "name": "Kampüs Partner", "item": "https://www.gelkaenerji.com.tr/kampus-partner.html"}
+        ]
+    }
+    </script>
+
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Bir işletmeden ne kadar burs kazanabilirim?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kazanç miktarı, yönlendirdiğiniz işletmenin aylık elektrik tüketimine bağlıdır. Program kapsamında işletmenin elektrik tüketiminin %1'i kadar burs kazanırsınız. Örnek: Aylık elektrik faturası 150.000 TL olan bir işletme için yaklaşık 1.500 TL / ay burs elde edebilirsiniz."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Herhangi bir ücret öder miyim?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hayır. Programa katılım tamamen ücretsizdir ve hiçbir üyelik bedeli, katılım ücreti veya finansal taahhüt bulunmaz. Gelka Enerji bu programı bir sosyal sorumluluk projesi olarak kurgulamıştır."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Ne kadar sürede burs almaya başlarım?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "İşletme Gelka Enerji ile sözleşme imzaladıktan sonra burs süreci başlar. Elektrik tedariki Gelka Enerji'ye geçtikten sonra işletmenin ilk faturasının tahsil edildiği ay itibarıyla burs ödemesi oluşur."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "İşletme sahibini tanımam gerekiyor mu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hayır, işletme sahibini yakından tanımanız şart değildir. Birçok öğrenci ilk işletmesini aile çevresi, akrabalar, arkadaşlarının aile işletmeleri veya sık gittiği kafeler ve restoranlar üzerinden bulur."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Ben sadece faturayı mı iletiyorum?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Evet, temel olarak yapmanız gereken işlem işletmenin elektrik faturasını Gelka Enerji'ye iletmektir. Teklif hazırlama, fiyat analizi, sözleşme süreci ve tüm operasyonel işlemler Gelka Enerji tarafından yürütülür."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "İşletme Gelka Enerji ile çalışmaya başlarsa benim görevim devam ediyor mu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hayır. İşletmenin faturası Gelka Enerji'ye ulaştıktan sonra teklif hazırlama, fiyat analizi, sözleşme süreci ve tüm operasyonel işlemler Gelka Enerji tarafından yürütülür. Sizin göreviniz işletme ile Gelka Enerji arasında ilk bağlantıyı kurmaktır."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Bu süreçte işletmeye elektrik kesintisi olur mu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hayır. Elektrik tedarikçisinin değişmesi elektrik kesintisine sebep olmaz. Türkiye'de elektrik dağıtım altyapısı aynı kalır ve dağıtım şirketi tarafından sağlanmaya devam eder."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Birden fazla işletme yönlendirebilir miyim?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Evet. Programa birden fazla işletme yönlendirebilirsiniz ve her işletme için ayrı burs kazanabilirsiniz. Bir işletme ile başlayan kazanç zaman içinde genişleyebilir."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Küçük işletmeler de programa dahil olabilir mi?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Evet. Restoranlar, kafeler, marketler, ofisler, atölyeler ve birçok ticari işletme programa uygun olabilir. Genellikle aylık elektrik faturası 25.000 TL ve üzeri olan işletmeler program için uygun adaylardır."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Bir işletme ile ne kadar süre burs almaya devam ederim?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "İşletme Gelka Enerji ile çalışmaya devam ettiği sürece burs kazanmanız devam eder. Yani tek bir işletme yönlendirmesi uzun süreli bir gelir oluşturabilir."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Programa katılmak için herhangi bir sözleşme imzalamam gerekiyor mu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hayır. Öğrenciler için programa katılım tamamen gönüllülük esasına dayanır ve herhangi bir bağlayıcı sözleşme zorunluluğu bulunmaz."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "İşletmeler Gelka Enerji'yi neden tercih ediyor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Gelka Enerji işletmelere elektrik piyasasındaki fiyat avantajlarını analiz ederek rekabetçi elektrik tedarik teklifleri sunar. İşletmeler enerji maliyetlerini daha verimli yönetirken, öğrenciler de bu bağlantı sayesinde burs kazanma fırsatı elde eder."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Top Banner -->

@@ -307,7 +307,7 @@ Bu doküman canlı bir referans. Her faz tamamlandıkça aşağıdaki tabloya no
 | 0.4 UTM Tracking | ✅ Tamam | 14 May | 14 May | utm_*, gclid, gbraid, wbraid, referrer, landing_page test edildi, mail'de görünüyor |
 | 1.1 .htaccess | ✅ Tamam | 14 May | 14 May | Brotli aktif (%76 sıkıştırma), HSTS, security headers, cache. Test: giftofspeed.com |
 | 1.2 robots/sitemap | ⏳ Bekliyor | - | - | - |
-| 1.3 Schema | ⏳ Bekliyor | - | - | - |
+| 1.3 Schema | ✅ Tamam | 14 May | 14 May | FAQPage (4 sayfa), Article (18 makale), BreadcrumbList (tüm alt sayfalar), AboutPage, CollectionPage |
 | 2.x Performance | ⏳ Bekliyor | - | - | - |
 | 3.x Trust+Conversion | ⏳ Bekliyor | - | - | - |
 | 4.x SEO Authority | ⏳ Sürekli | - | - | - |
