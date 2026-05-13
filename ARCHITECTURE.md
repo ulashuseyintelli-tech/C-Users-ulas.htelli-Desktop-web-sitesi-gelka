@@ -301,11 +301,11 @@ Bu doküman canlı bir referans. Her faz tamamlandıkça aşağıdaki tabloya no
 
 | Faz | Durum | Başlangıç | Bitiş | Notlar |
 |---|---|---|---|---|
-| 0.1 Trust Numbers | ⏳ Bekliyor | - | - | - |
-| 0.2 Ads Conversion | ⏳ Bekliyor | - | - | - |
-| 0.3 Email Deliverability | ⏳ Bekliyor | - | - | - |
-| 0.4 UTM Tracking | ⏳ Bekliyor | - | - | - |
-| 1.1 .htaccess | ⏳ Bekliyor | - | - | - |
+| 0.1 Trust Numbers | ✅ Tamam | 14 May | 14 May | Kademeli auto-artış, 1000 cap |
+| 0.2 Ads Conversion | ✅ Tamam | 14 May | 14 May | GA4 event üzerinden, label placeholder'lar temizlendi |
+| 0.3 Email Deliverability | ✅ Tamam | - | - | Spam'a düşen yok (manuel test) |
+| 0.4 UTM Tracking | ✅ Tamam | 14 May | 14 May | utm_*, gclid, gbraid, wbraid, referrer, landing_page test edildi, mail'de görünüyor |
+| 1.1 .htaccess | ✅ Tamam | 14 May | 14 May | Brotli aktif (%76 sıkıştırma), HSTS, security headers, cache. Test: giftofspeed.com |
 | 1.2 robots/sitemap | ⏳ Bekliyor | - | - | - |
 | 1.3 Schema | ⏳ Bekliyor | - | - | - |
 | 2.x Performance | ⏳ Bekliyor | - | - | - |

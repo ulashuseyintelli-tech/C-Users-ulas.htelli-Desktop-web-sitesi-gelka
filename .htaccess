@@ -1,12 +1,112 @@
 RewriteEngine On
 
+# ============================================
+# 1. HTTPS + WWW REDIRECT (mevcut, dokunulmadı)
+# ============================================
 # Tek adımda https://www.gelkaenerji.com.tr'ye yönlendir
-# (http, non-www, veya ikisi birden → tek 301)
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^gelkaenerji\.com\.tr [NC]
 RewriteRule ^(.*)$ https://www.gelkaenerji.com.tr/$1 [L,R=301]
 
-# Clean URL: /ticari-elektrik-teklifi → ticari-elektrik-teklifi.html
+# ============================================
+# 2. CLEAN URL (mevcut, dokunulmadı)
+# ============================================
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ticari-elektrik-teklifi$ /ticari-elektrik-teklifi.html [L]
+
+# ============================================
+# 3. GZIP COMPRESSION (yeni - sayfa boyutunu %70 düşürür)
+# ============================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+    AddOutputFilterByType DEFLATE application/xml application/rss+xml application/atom+xml
+    AddOutputFilterByType DEFLATE image/svg+xml font/ttf font/otf font/woff font/woff2
+</IfModule>
+
+# ============================================
+# 4. BROWSER CACHE (yeni - statik dosyaları cache'le)
+# ============================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # HTML — kısa cache, içerik değişebilir
+    ExpiresByType text/html "access plus 1 hour"
+    
+    # CSS / JS — orta vadeli cache
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    
+    # Görseller — uzun cache
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Fontlar — uzun cache
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    
+    # PDF — uzun cache
+    ExpiresByType application/pdf "access plus 6 months"
+</IfModule>
+
+# ============================================
+# 5. SECURITY HEADERS (yeni - güvenlik)
+# ============================================
+<IfModule mod_headers.c>
+    # Clickjacking koruması
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # MIME type sniffing koruması
+    Header set X-Content-Type-Options "nosniff"
+    
+    # XSS koruması (eski tarayıcılar için)
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # HSTS — 6 ay HTTPS zorunlu (HTTPS yerleşmiş, güvenli)
+    Header set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+    
+    # Permissions Policy (yeni özellikler için kısıtlama)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ============================================
+# 6. ETag KAPAT (cache verimi için, expires zaten var)
+# ============================================
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# ============================================
+# 7. .htaccess KENDİSİNİ KORU (dışarıdan erişilemesin)
+# ============================================
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# ============================================
+# 8. HASSAS DOSYALARI KORU (.git, .env vb.)
+# ============================================
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ============================================
+# 9. 404 ERROR PAGE (opsiyonel, ileride özel sayfa olursa)
+# ============================================
+# ErrorDocument 404 /404.html
