@@ -560,6 +560,19 @@ function trackConversion(eventName, callback) {
 // NOT: Conversion burada tetiklenmez! tesekkurler.html sayfasında tetiklenir.
 var _formLoadTime = Date.now();
 
+function _hasGibberish(val) {
+    if (!val) return false;
+    var clean = val.toLowerCase().replace(/[^a-zçğıöşü]/g, '');
+    if (clean.length < 2) return false;
+    var vowels = clean.match(/[aeıioöuüi]/g);
+    var vowelCount = vowels ? vowels.length : 0;
+    if (vowelCount === 0) return true;
+    if (clean.length >= 4 && (vowelCount / clean.length) < 0.2) return true;
+    if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(val)) return true;
+    if (/(.)\1{2,}/.test(clean)) return true;
+    return false;
+}
+
 function validateFormData(form) {
     // Honeypot kontrolü
     var honeypot = form.querySelector('input[name="website"]');
@@ -582,21 +595,21 @@ function validateFormData(form) {
     if (firma) {
         if (firma.length < 3) { alert("Geçerli bir firma adı girin (en az 3 karakter)."); return false; }
         if (/^(.)\1+$/.test(firma.replace(/\s/g,''))) { alert("Geçerli bir firma adı girin."); return false; }
-        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(firma)) { alert("Lütfen geçerli bir firma adı girin."); return false; }
+        if (_hasGibberish(firma)) { alert("Lütfen geçerli bir firma adı girin."); return false; }
     }
 
     // Ad Soyad (varsa)
     if (ad) {
         if (ad.length < 4) { alert("Geçerli bir ad soyad girin."); return false; }
         if (ad.trim().split(/\s+/).length < 2) { alert("Lütfen ad ve soyadınızı birlikte yazın."); return false; }
-        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(ad)) { alert("Lütfen geçerli bir ad soyad girin."); return false; }
+        if (_hasGibberish(ad)) { alert("Lütfen geçerli bir ad soyad girin."); return false; }
     }
 
     // Yetkili adı kontrolü (varsa)
     if (yetkili) {
         if (yetkili.length < 4) { alert("Geçerli bir ad soyad girin."); return false; }
         if (yetkili.trim().split(/\s+/).length < 2) { alert("Lütfen ad ve soyadınızı birlikte yazın."); return false; }
-        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(yetkili)) { alert("Lütfen geçerli bir ad soyad girin."); return false; }
+        if (_hasGibberish(yetkili)) { alert("Lütfen geçerli bir ad soyad girin."); return false; }
     }
 
     // Mesken filtresi
@@ -608,15 +621,19 @@ function validateFormData(form) {
     if (ilOrSehir) {
         if (ilOrSehir.length < 2) { alert("Geçerli bir il/ilçe girin."); return false; }
         if (!/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s\/\-]+$/.test(ilOrSehir)) { alert("İl/İlçe alanına sadece harf giriniz."); return false; }
-        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(ilOrSehir)) { alert("Lütfen geçerli bir il/ilçe adı girin."); return false; }
+        if (_hasGibberish(ilOrSehir)) { alert("Lütfen geçerli bir il/ilçe adı girin."); return false; }
     }
 
     // Telefon: 05 ile başlamalı, 10-11 hane
     var cleanPhone = telefon.replace(/[\s\-\(\)\+]/g,'');
     if (!/^0?5\d{9}$/.test(cleanPhone)) { alert("Geçerli bir cep telefonu numarası girin (05xx xxx xx xx formatında, 11 hane)."); return false; }
 
-    // E-posta format kontrolü
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert("Geçerli bir e-posta adresi girin."); return false; }
+    // E-posta format kontrolü (TLD zorunlu)
+    if (email) {
+        if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email)) { alert("Geçerli bir e-posta adresi girin (ornek@firma.com)."); return false; }
+        var domain = email.split('@')[1] || '';
+        if (_hasGibberish(domain.split('.')[0])) { alert("Geçerli bir e-posta adresi girin."); return false; }
+    }
 
     // Tüketim: varsa min 1000
     if (tuketim && parseInt(tuketim) < 1000) { alert("Aylık tüketim en az 1.000 kWh olmalıdır. Konut abonelerine hizmet vermiyoruz."); return false; }
@@ -739,7 +756,27 @@ if (kampusForm) handleFormSubmit(kampusForm);
     }
 
     function hasGibberish(val) {
-        return /[bcçdfgğhjklmnprsştvyz]{4,}/i.test(val);
+        if (!val) return false;
+        var clean = val.toLowerCase().replace(/[^a-zçğıöşü]/g, '');
+        if (clean.length < 2) return false;
+        // Sesli harf sayısı (Türkçe + İngilizce sesliler)
+        var vowels = clean.match(/[aeıioöuüi]/g);
+        var vowelCount = vowels ? vowels.length : 0;
+        // Hiç sesli harf yoksa → kesin anlamsız (hnnh, bhhbh, gdhdhx vb.)
+        if (vowelCount === 0) return true;
+        // 4+ karakterse sesli oranı %20'den düşük olmamalı
+        if (clean.length >= 4 && (vowelCount / clean.length) < 0.2) return true;
+        // 4+ ünsüz yan yana
+        if (/[bcçdfgğhjklmnprsştvyz]{4,}/i.test(val)) return true;
+        // Aynı harfin 3+ tekrarı (hnnnnh, aaaaa)
+        if (/(.)\1{2,}/.test(clean)) return true;
+        return false;
+    }
+
+    // Email: TLD zorunlu (.com, .net gibi)
+    function isValidEmail(email) {
+        if (!email) return false;
+        return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email);
     }
 
     document.querySelectorAll('input[name="firma"]').forEach(function(el){
@@ -800,10 +837,27 @@ if (kampusForm) handleFormSubmit(kampusForm);
     });
 
     document.querySelectorAll('input[name="telefon"]').forEach(function(el){
+        // Harf girişini engelle — sadece rakam, boşluk, +, -, ( ) kabul et
+        el.addEventListener('input', function(){
+            el.value = el.value.replace(/[^\d\s\+\-\(\)]/g, '');
+        });
         el.addEventListener('blur', function(){
             var v = el.value.trim().replace(/[\s\-\(\)\+]/g,'');
             if (!v) return markInvalid(el, 'Telefon zorunlu.');
             if (!/^0?5\d{9}$/.test(v)) return markInvalid(el, '05 ile başlayan 11 haneli numara girin.');
+            markValid(el);
+        });
+    });
+
+    // E-posta real-time kontrolü
+    document.querySelectorAll('input[name="email"]').forEach(function(el){
+        el.addEventListener('blur', function(){
+            var v = el.value.trim();
+            if (!v) return markInvalid(el, 'E-posta zorunlu.');
+            if (!isValidEmail(v)) return markInvalid(el, 'Geçerli bir e-posta girin (ornek@firma.com).');
+            // Domain kısmında anlamsız harf kontrolü
+            var domain = v.split('@')[1] || '';
+            if (hasGibberish(domain.split('.')[0])) return markInvalid(el, 'Geçerli bir e-posta girin.');
             markValid(el);
         });
     });
