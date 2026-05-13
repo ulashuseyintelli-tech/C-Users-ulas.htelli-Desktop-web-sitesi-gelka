@@ -19,8 +19,293 @@
     --highlight-dark: #e0a800;
     
     /* Gri Tonları */
-    --silver: #8c8c8c;
-    --silver-light: #b8b8b8;
+    --silver: #8c8c8c;Plan doğru. Sadece üç kritik düzeltme yap.
+
+## 1. `_maybe_record_drift()` sadece `logger.debug` olmasın
+
+T2.1’de compute yok tamam, ama stub tamamen boş da olmamalı.
+
+Şunu yapsın:
+
+```text
+dual-read active
+canonical_count
+legacy_count
+period
+```
+
+bilgisini debug log’a yazsın.
+
+Çünkü:
+
+* dual path gerçekten çalıştı mı
+* legacy shadow read çağrıldı mı
+
+anlayabilmek lazım.
+
+Ama:
+
+* delta hesaplama
+* drift severity
+* DB write
+
+olmasın.
+
+---
+
+# 2. `test_dual_mode_returns_canonical_authoritative`
+
+Bu testte sadece:
+
+```text
+response canonical döndü
+```
+
+kontrolü yetmez.
+
+Şunu da doğrula:
+
+```text
+legacy gerçekten çağrıldı
+```
+
+Yoksa test:
+
+* dual-read çalışmadan
+* yanlışlıkla pass olabilir.
+
+Mock/spying ekleyin.
+
+---
+
+# 3. En kritik düzeltme
+
+Şu davranışı explicit test edin:
+
+```text
+dual-read ON
+legacy empty
+canonical exists
+→ 200
+```
+
+Bu çok önemli.
+
+Çünkü observe-only modelde:
+
+* legacy eksik olabilir
+* canonical authoritative kalmalı
+
+Şu anda test matrix’te bu yok.
+
+Ek test:
+
+```text
+test_dual_mode_legacy_empty_still_returns_200
+```
+
+---
+
+# Çok önemli karar — doğru yöndesiniz
+
+Şu yaklaşım doğru:
+
+```text
+ptf_source cache key değişmiyor
+```
+
+Çünkü:
+
+* response authoritative canonical
+* legacy sadece shadow telemetry
+
+Bu doğru model.
+
+Eğer `ptf_source=dual` yapsaydınız:
+
+* gereksiz cache fragmentation
+* telemetry’nin response semantics’e sızması
+
+olurdu.
+
+Doğru karar vermişsiniz. 
+
+---
+
+# Ayrıca
+
+Şu precedence sırası kritik ve doğru:
+
+```python
+if use_legacy_ptf:
+    ...
+elif ptf_drift_log_enabled:
+    ...
+else:
+    ...
+```
+
+Kill switch her şeyin üstünde olmalı.
+
+---
+
+# Sonuç
+
+Onay.
+
+Ama şu üç eklemeyle:
+
+```text
+1. _maybe_record_drift debug metadata loglasın
+2. canonical-authoritative testinde legacy gerçekten çağrıldı mı doğrulansın
+3. legacy empty + canonical exists → 200 testi eklensin
+```
+
+Sonra kodlayın.
+Plan doğru. Sadece üç kritik düzeltme yap.
+
+## 1. `_maybe_record_drift()` sadece `logger.debug` olmasın
+
+T2.1’de compute yok tamam, ama stub tamamen boş da olmamalı.
+
+Şunu yapsın:
+
+```text
+dual-read active
+canonical_count
+legacy_count
+period
+```
+
+bilgisini debug log’a yazsın.
+
+Çünkü:
+
+* dual path gerçekten çalıştı mı
+* legacy shadow read çağrıldı mı
+
+anlayabilmek lazım.
+
+Ama:
+
+* delta hesaplama
+* drift severity
+* DB write
+
+olmasın.
+
+---
+
+# 2. `test_dual_mode_returns_canonical_authoritative`
+
+Bu testte sadece:
+
+```text
+response canonical döndü
+```
+
+kontrolü yetmez.
+
+Şunu da doğrula:
+
+```text
+legacy gerçekten çağrıldı
+```
+
+Yoksa test:
+
+* dual-read çalışmadan
+* yanlışlıkla pass olabilir.
+
+Mock/spying ekleyin.
+
+---
+
+# 3. En kritik düzeltme
+
+Şu davranışı explicit test edin:
+
+```text
+dual-read ON
+legacy empty
+canonical exists
+→ 200
+```
+
+Bu çok önemli.
+
+Çünkü observe-only modelde:
+
+* legacy eksik olabilir
+* canonical authoritative kalmalı
+
+Şu anda test matrix’te bu yok.
+
+Ek test:
+
+```text
+test_dual_mode_legacy_empty_still_returns_200
+```
+
+---
+
+# Çok önemli karar — doğru yöndesiniz
+
+Şu yaklaşım doğru:
+
+```text
+ptf_source cache key değişmiyor
+```
+
+Çünkü:
+
+* response authoritative canonical
+* legacy sadece shadow telemetry
+
+Bu doğru model.
+
+Eğer `ptf_source=dual` yapsaydınız:
+
+* gereksiz cache fragmentation
+* telemetry’nin response semantics’e sızması
+
+olurdu.
+
+Doğru karar vermişsiniz. 
+
+---
+
+# Ayrıca
+
+Şu precedence sırası kritik ve doğru:
+
+```python
+if use_legacy_ptf:
+    ...
+elif ptf_drift_log_enabled:
+    ...
+else:
+    ...
+```
+
+Kill switch her şeyin üstünde olmalı.
+
+---
+
+# Sonuç
+
+Onay.
+
+Ama şu üç eklemeyle:
+
+```text
+1. _maybe_record_drift debug metadata loglasın
+2. canonical-authoritative testinde legacy gerçekten çağrıldı mı doğrulansın
+3. legacy empty + canonical exists → 200 testi eklensin
+```
+
+Sonra kodlayın.
+
     --light-color: #f5f5f5;
     --white: #ffffff;
     
@@ -508,6 +793,10 @@ body {
 .hero {
     min-height: calc(100vh - 115px);
     background: url('shutterstock-94087960-2459.jpg') center/cover no-repeat;
+    background-image: image-set(
+        url('shutterstock-94087960-2459.webp') type('image/webp'),
+        url('shutterstock-94087960-2459.jpg') type('image/jpeg')
+    );
     position: relative;
     display: flex;
     align-items: center;
@@ -6691,6 +6980,10 @@ section[id] {
 /* 1. Hero Section */
 .kampus-hero {
     background: linear-gradient(135deg, rgba(0, 75, 80, 0.88) 0%, rgba(0, 40, 60, 0.92) 100%), url('kampus-partner-hero.png') center/cover no-repeat;
+    background-image: linear-gradient(135deg, rgba(0, 75, 80, 0.88) 0%, rgba(0, 40, 60, 0.92) 100%), image-set(
+        url('kampus-partner-hero.webp') type('image/webp'),
+        url('kampus-partner-hero.png') type('image/png')
+    );
     color: var(--white);
     padding: 120px 0 80px;
     margin-top: 115px;
@@ -8674,6 +8967,12 @@ section[id] {
     background: 
         url('bayilik-hero-clean.png') center 75% / 78% auto no-repeat,
         url('bayilik-hero-clean.png') center center / cover no-repeat;
+    background-image:
+        image-set(url('bayilik-hero-clean.webp') type('image/webp'), url('bayilik-hero-clean.png') type('image/png')),
+        image-set(url('bayilik-hero-clean.webp') type('image/webp'), url('bayilik-hero-clean.png') type('image/png'));
+    background-position: center 75%, center center;
+    background-size: 78% auto, cover;
+    background-repeat: no-repeat, no-repeat;
     background-color: #0a1e33;
     height: calc(100vh - 110px);
     margin-top: 110px;

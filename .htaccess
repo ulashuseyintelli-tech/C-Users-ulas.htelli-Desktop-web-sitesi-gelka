@@ -107,6 +107,26 @@ FileETag None
 </FilesMatch>
 
 # ============================================
-# 9. 404 ERROR PAGE (opsiyonel, ileride özel sayfa olursa)
+# 9. WEBP AUTO-SERVE (PNG/JPG istenince WebP varsa onu döndür)
+# ============================================
+# Çalışma mantığı:
+# 1) Tarayıcı WebP destekliyor mu (Accept header'da image/webp var mı)
+# 2) Aynı klasörde aynı base isimli .webp dosyası var mı (logo.png varsa logo.webp)
+# 3) Varsa internal rewrite ile .webp servisle (URL aynı kalır, içerik webp)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Vary: Accept header (CDN/cache farklı versiyonları doğru cache'lesin)
+    <FilesMatch "\.(jpe?g|png)$">
+        Header append Vary "Accept"
+    </FilesMatch>
+</IfModule>
+
+# ============================================
+# 10. 404 ERROR PAGE (opsiyonel, ileride özel sayfa olursa)
 # ============================================
 # ErrorDocument 404 /404.html
