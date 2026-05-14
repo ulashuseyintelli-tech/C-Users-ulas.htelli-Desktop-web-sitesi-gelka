@@ -899,70 +899,116 @@
         </div>
     </section>
 
-    <!-- Tasarruf Hesaplama Aracı -->
+    <!-- Maliyet Optimizasyonu Hesaplayıcı -->
     <style>
     .savings-calculator{background:linear-gradient(135deg,var(--primary-color,#0d2b45) 0%,#1a3d5c 100%);padding:60px 20px;text-align:center}
-    .savings-calculator .calc-container{max-width:600px;margin:0 auto;background:var(--white,#fff);border-radius:16px;padding:40px 32px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+    .savings-calculator .calc-container{max-width:620px;margin:0 auto;background:var(--white,#fff);border-radius:16px;padding:40px 32px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
     .savings-calculator .calc-title{font-size:1.8rem;color:var(--primary-color,#0d2b45);margin-bottom:8px;font-weight:700}
     .savings-calculator .calc-subtitle{font-size:1rem;color:var(--text-light,#5a6a7a);margin-bottom:32px}
     .savings-calculator .calc-form{display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
+    .savings-calculator .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .savings-calculator .calc-input-group{display:flex;flex-direction:column;text-align:left}
-    .savings-calculator .calc-input-group label{font-size:.9rem;color:var(--primary-color,#0d2b45);font-weight:600;margin-bottom:6px}
-    .savings-calculator .calc-input-group input,.savings-calculator .calc-input-group select{padding:14px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:1rem;color:var(--primary-color,#0d2b45);transition:border-color .3s;outline:none;width:100%;box-sizing:border-box}
+    .savings-calculator .calc-input-group label{font-size:.85rem;color:var(--primary-color,#0d2b45);font-weight:600;margin-bottom:6px}
+    .savings-calculator .calc-input-group input,.savings-calculator .calc-input-group select{padding:13px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;color:var(--primary-color,#0d2b45);transition:border-color .3s;outline:none;width:100%;box-sizing:border-box}
     .savings-calculator .calc-input-group input:focus,.savings-calculator .calc-input-group select:focus{border-color:var(--accent-color,#1ec7a6)}
     .savings-calculator .calc-input-group input::placeholder{color:#a0aec0}
-    .savings-calculator .calc-btn{background:var(--accent-color,#1ec7a6);color:#fff;border:none;padding:16px 32px;font-size:1.1rem;font-weight:700;border-radius:10px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .savings-calculator .calc-btn{background:var(--accent-color,#1ec7a6);color:#fff;border:none;padding:16px 32px;font-size:1.05rem;font-weight:700;border-radius:10px;cursor:pointer;transition:transform .2s,box-shadow .2s}
     .savings-calculator .calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(30,199,166,.4)}
-    .savings-calculator .calc-result{display:none;margin-top:32px;padding-top:32px;border-top:2px solid #e2e8f0;animation:calcFadeIn .6s ease forwards}
+    .savings-calculator .calc-result{display:none;margin-top:28px;padding:24px;background:#f8fafb;border-radius:12px;border:1px solid #e2e8f0;animation:calcFadeIn .6s ease forwards}
     .savings-calculator .calc-result.active{display:block}
-    @keyframes calcFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    .savings-calculator .calc-monthly{font-size:1.1rem;color:var(--text-light,#5a6a7a);margin-bottom:8px}
-    .savings-calculator .calc-monthly-value{font-size:2.2rem;font-weight:800;color:var(--accent-color,#1ec7a6);margin-bottom:16px}
-    .savings-calculator .calc-yearly{font-size:1rem;color:var(--text-light,#5a6a7a);margin-bottom:4px}
-    .savings-calculator .calc-yearly-value{font-size:1.5rem;font-weight:700;color:var(--primary-color,#0d2b45);margin-bottom:24px}
-    .savings-calculator .calc-cta{display:inline-block;background:var(--accent-color,#1ec7a6);color:#fff;text-decoration:none;padding:14px 32px;border-radius:10px;font-size:1.05rem;font-weight:700;transition:transform .2s,box-shadow .2s;margin-bottom:16px}
+    @keyframes calcFadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+    .savings-calculator .calc-label{font-size:.9rem;color:var(--text-light,#5a6a7a);margin-bottom:4px}
+    .savings-calculator .calc-range{font-size:1.6rem;font-weight:800;color:var(--primary-color,#0d2b45);margin-bottom:16px}
+    .savings-calculator .calc-note{font-size:.85rem;color:var(--text-light,#5a6a7a);line-height:1.6;margin-bottom:20px}
+    .savings-calculator .calc-cta{display:inline-block;background:var(--accent-color,#1ec7a6);color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-size:1rem;font-weight:700;transition:transform .2s,box-shadow .2s}
     .savings-calculator .calc-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(30,199,166,.4)}
-    .savings-calculator .calc-disclaimer{font-size:.8rem;color:var(--text-light,#5a6a7a);margin-top:16px;font-style:italic}
-    @media(max-width:768px){.savings-calculator{padding:40px 16px}.savings-calculator .calc-container{padding:28px 20px}.savings-calculator .calc-title{font-size:1.4rem}.savings-calculator .calc-monthly-value{font-size:1.8rem}.savings-calculator .calc-yearly-value{font-size:1.3rem}}
+    .savings-calculator .calc-disclaimer{font-size:.75rem;color:#8a9bb0;margin-top:16px;line-height:1.5}
+    @media(max-width:768px){.savings-calculator{padding:40px 16px}.savings-calculator .calc-container{padding:28px 20px}.savings-calculator .calc-title{font-size:1.4rem}.savings-calculator .calc-row{grid-template-columns:1fr}.savings-calculator .calc-range{font-size:1.3rem}}
     </style>
     <section class="savings-calculator" id="tasarruf-hesapla">
         <div class="calc-container">
-            <h2 class="calc-title">Tasarruf Hesaplayıcı</h2>
-            <p class="calc-subtitle">Aylık elektrik faturanızdan ne kadar tasarruf edebileceğinizi öğrenin</p>
+            <h2 class="calc-title">Ön Maliyet Analizi</h2>
+            <p class="calc-subtitle">Tüketim profilinize benzer işletmelerdeki potansiyel optimizasyon aralığını görün</p>
             <div class="calc-form">
-                <div class="calc-input-group">
-                    <label for="calc-bill">Aylık Elektrik Faturası (₺)</label>
-                    <input type="text" id="calc-bill" placeholder="Örn: 50.000" inputmode="numeric">
+                <div class="calc-row">
+                    <div class="calc-input-group">
+                        <label for="calc-bill">Aylık Elektrik Faturası (₺)</label>
+                        <input type="text" id="calc-bill" placeholder="Örn: 150.000" inputmode="numeric">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="calc-sector">Sektör</label>
+                        <select id="calc-sector">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="sanayi">Sanayi / Üretim</option>
+                            <option value="avm">AVM / Plaza</option>
+                            <option value="otel">Otel / Turizm</option>
+                            <option value="akaryakit">Akaryakıt İstasyonu</option>
+                            <option value="market">Market / Perakende</option>
+                            <option value="restoran">Restoran / Cafe</option>
+                            <option value="hastane">Hastane / Sağlık</option>
+                            <option value="diger">Diğer Ticari</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="calc-input-group">
-                    <label for="calc-sector">Sektörünüz</label>
-                    <select id="calc-sector">
-                        <option value="" disabled selected>Sektör seçiniz</option>
-                        <option value="sanayi">Sanayi</option>
-                        <option value="avm">AVM</option>
-                        <option value="otel">Otel</option>
-                        <option value="akaryakit">Akaryakıt</option>
-                        <option value="market">Market</option>
-                        <option value="restoran">Restoran</option>
-                        <option value="plaza">Plaza</option>
-                        <option value="hastane">Hastane</option>
-                        <option value="diger">Diğer</option>
-                    </select>
+                <div class="calc-row">
+                    <div class="calc-input-group">
+                        <label for="calc-voltage">Gerilim Seviyesi</label>
+                        <select id="calc-voltage">
+                            <option value="og">OG (Orta Gerilim)</option>
+                            <option value="ag">AG (Alçak Gerilim)</option>
+                            <option value="bilmiyorum" selected>Bilmiyorum</option>
+                        </select>
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="calc-tariff">Tarife Yapısı</label>
+                        <select id="calc-tariff">
+                            <option value="bilmiyorum" selected>Bilmiyorum</option>
+                            <option value="tek">Tek Terimli</option>
+                            <option value="cift">Çift Terimli</option>
+                            <option value="uc">Üç Zamanlı</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <button class="calc-btn" onclick="calculateSavings()">Tasarrufu Hesapla</button>
+            <button class="calc-btn" onclick="calculateOptimization()">Ön Analizi Göster</button>
             <div class="calc-result" id="calc-result">
-                <p class="calc-monthly">Tahmini Aylık Tasarruf:</p>
-                <p class="calc-monthly-value" id="calc-monthly-value">₺0</p>
-                <p class="calc-yearly">Yıllık Tasarruf Potansiyeli:</p>
-                <p class="calc-yearly-value" id="calc-yearly-value">₺0</p>
-                <a href="#iletisim" class="calc-cta">Kesin Teklifinizi Alın →</a>
-                <p class="calc-disclaimer">Bu hesaplama tahminidir. Kesin tasarruf oranı tüketim profilinize göre değişir.</p>
+                <p class="calc-label">Potansiyel Maliyet Optimizasyonu:</p>
+                <p class="calc-range" id="calc-range">₺0 – ₺0 / ay</p>
+                <p class="calc-note" id="calc-note">Kesin analiz için son elektrik faturanızın uzman ekibimiz tarafından incelenmesi gerekir.</p>
+                <a href="#iletisim" class="calc-cta">Ücretsiz Ön Analiz Talep Et</a>
+                <p class="calc-disclaimer">Bu hesaplama, benzer profildeki işletme verilerine dayalı tahmini bir aralıktır. Gerçek optimizasyon potansiyeli tüketim profili, sözleşme yapısı ve piyasa koşullarına göre değişir. Bazı işletmelerde çift haneli maliyet avantajları elde edilebilmektedir.</p>
             </div>
         </div>
     </section>
     <script>
-    function calculateSavings(){var e=document.getElementById('calc-bill'),t=document.getElementById('calc-sector'),r=document.getElementById('calc-result'),a=document.getElementById('calc-monthly-value'),l=document.getElementById('calc-yearly-value'),n=parseFloat(e.value.replace(/\./g,'').replace(/,/g,'.').replace(/[^0-9.]/g,''));if(!n||n<=0)return alert('Lütfen geçerli bir fatura tutarı giriniz.');if(!t.value)return alert('Lütfen sektörünüzü seçiniz.');var s={sanayi:.07,avm:.05,otel:.06,akaryakit:.05,market:.045,restoran:.06,plaza:.05,hastane:.06,diger:.06},o=n*s[t.value],c=12*o,i=function(e){return'₺'+e.toLocaleString('tr-TR',{minimumFractionDigits:0,maximumFractionDigits:0})};r.classList.remove('active');void r.offsetWidth;r.classList.add('active');a.textContent=i(o);l.textContent=i(c)}
+    function calculateOptimization(){
+        var billEl=document.getElementById('calc-bill'),sectorEl=document.getElementById('calc-sector'),voltageEl=document.getElementById('calc-voltage'),tariffEl=document.getElementById('calc-tariff'),resultEl=document.getElementById('calc-result'),rangeEl=document.getElementById('calc-range'),noteEl=document.getElementById('calc-note');
+        var bill=parseFloat(billEl.value.replace(/\./g,'').replace(/,/g,'.').replace(/[^0-9.]/g,''));
+        if(!bill||bill<=0)return alert('Lütfen geçerli bir fatura tutarı giriniz.');
+        if(!sectorEl.value)return alert('Lütfen sektörünüzü seçiniz.');
+        // Sektör bazlı aralıklar (alt-üst)
+        var ranges={sanayi:[.04,.15],avm:[.03,.12],otel:[.04,.14],akaryakit:[.03,.10],market:[.03,.10],restoran:[.04,.12],hastane:[.04,.12],diger:[.03,.12]};
+        var r=ranges[sectorEl.value]||[.03,.12];
+        // OG genelde daha yüksek optimizasyon potansiyeli
+        if(voltageEl.value==='og'){r[0]+=.01;r[1]+=.02}
+        // Çift/üç terimli daha fazla optimizasyon alanı
+        if(tariffEl.value==='cift'){r[1]+=.01}
+        if(tariffEl.value==='uc'){r[1]+=.02}
+        // Yüksek fatura = daha fazla alan
+        if(bill>=500000){r[0]+=.01;r[1]+=.02}
+        else if(bill>=200000){r[0]+=.005;r[1]+=.01}
+        // Cap
+        if(r[1]>.20)r[1]=.20;
+        var low=Math.round(bill*r[0]);
+        var high=Math.round(bill*r[1]);
+        var fmt=function(n){return n.toLocaleString('tr-TR')};
+        rangeEl.textContent='₺'+fmt(low)+' – ₺'+fmt(high)+' / ay';
+        // Dinamik not
+        if(bill>=500000){noteEl.textContent='Yüksek hacimli tüketiminiz için detaylı analiz önemli fark yaratabilir. Uzman ekibimiz faturanızı inceleyerek kesin potansiyeli belirler.'}
+        else if(bill>=100000){noteEl.textContent='Tüketim profilinize benzer işletmelerde rekabetçi tedarik avantajları sağlanmaktadır. Kesin analiz için faturanızın incelenmesi gerekir.'}
+        else{noteEl.textContent='Kesin optimizasyon potansiyeli tüketim profili ve sözleşme yapısına bağlıdır. Ücretsiz ön analiz ile net rakamı öğrenebilirsiniz.'}
+        resultEl.classList.remove('active');void resultEl.offsetWidth;resultEl.classList.add('active');
+    }
     </script>
 
     <!-- CTA Section -->
