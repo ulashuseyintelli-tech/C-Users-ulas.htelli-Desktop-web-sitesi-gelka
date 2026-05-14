@@ -308,6 +308,6 @@ Bu doküman canlı bir referans. Her faz tamamlandıkça aşağıdaki tabloya no
 | 1.1 .htaccess | ✅ Tamam | 14 May | 14 May | Brotli aktif (%76 sıkıştırma), HSTS, security headers, cache. Test: giftofspeed.com |
 | 1.2 robots/sitemap | ⏳ Bekliyor | - | - | - |
 | 1.3 Schema | ✅ Tamam | 14 May | 14 May | FAQPage (4 sayfa), Article (18 makale), BreadcrumbList (tüm alt sayfalar), AboutPage, CollectionPage |
-| 2.x Performance | 🔄 Devam | 14 May | - | %75 görsel sıkıştırma, CSS minify, critical CSS inline, FA async, mobil 59→67 |
-| 3.x Trust+Conversion | ⏳ Bekliyor | - | - | - |
+| 2.x Performance | ✅ Tamam | 14 May | 15 May | WebP, CSS bölme (138→69KB), minify, FA async, critical CSS, intro fix. Mobil 58, Masaüstü 81 |
+| 3.x Trust+Conversion | ✅ Tamam | 15 May | 15 May | Ön Maliyet Analizi hesaplayıcı + Case study cards (3 gerçek örnek). Lead webhook atlandı (gerek yok) |
 | 4.x SEO Authority | ⏳ Sürekli | - | - | - |
