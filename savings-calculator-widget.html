@@ -1,0 +1,281 @@
+<style>
+.savings-calculator {
+    background: linear-gradient(135deg, var(--primary-color, #0d2b45) 0%, #1a3d5c 100%);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.savings-calculator .calc-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white, #ffffff);
+    border-radius: 16px;
+    padding: 40px 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.savings-calculator .calc-title {
+    font-size: 1.8rem;
+    color: var(--primary-color, #0d2b45);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.savings-calculator .calc-subtitle {
+    font-size: 1rem;
+    color: var(--text-light, #5a6a7a);
+    margin-bottom: 32px;
+}
+
+.savings-calculator .calc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.savings-calculator .calc-input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.savings-calculator .calc-input-group label {
+    font-size: 0.9rem;
+    color: var(--primary-color, #0d2b45);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.savings-calculator .calc-input-group input,
+.savings-calculator .calc-input-group select {
+    padding: 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--primary-color, #0d2b45);
+    transition: border-color 0.3s ease;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.savings-calculator .calc-input-group input:focus,
+.savings-calculator .calc-input-group select:focus {
+    border-color: var(--accent-color, #1ec7a6);
+}
+
+.savings-calculator .calc-input-group input::placeholder {
+    color: #a0aec0;
+}
+
+.savings-calculator .calc-btn {
+    background: var(--accent-color, #1ec7a6);
+    color: var(--white, #ffffff);
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.savings-calculator .calc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 199, 166, 0.4);
+}
+
+.savings-calculator .calc-result {
+    display: none;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px solid #e2e8f0;
+    animation: calcFadeIn 0.6s ease forwards;
+}
+
+.savings-calculator .calc-result.active {
+    display: block;
+}
+
+@keyframes calcFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.savings-calculator .calc-monthly {
+    font-size: 1.1rem;
+    color: var(--text-light, #5a6a7a);
+    margin-bottom: 8px;
+}
+
+.savings-calculator .calc-monthly-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent-color, #1ec7a6);
+    margin-bottom: 16px;
+}
+
+.savings-calculator .calc-yearly {
+    font-size: 1rem;
+    color: var(--text-light, #5a6a7a);
+    margin-bottom: 4px;
+}
+
+.savings-calculator .calc-yearly-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color, #0d2b45);
+    margin-bottom: 24px;
+}
+
+.savings-calculator .calc-cta {
+    display: inline-block;
+    background: var(--accent-color, #1ec7a6);
+    color: var(--white, #ffffff);
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 16px;
+}
+
+.savings-calculator .calc-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 199, 166, 0.4);
+}
+
+.savings-calculator .calc-disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-light, #5a6a7a);
+    margin-top: 16px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .savings-calculator {
+        padding: 40px 16px;
+    }
+
+    .savings-calculator .calc-container {
+        padding: 28px 20px;
+    }
+
+    .savings-calculator .calc-title {
+        font-size: 1.4rem;
+    }
+
+    .savings-calculator .calc-monthly-value {
+        font-size: 1.8rem;
+    }
+
+    .savings-calculator .calc-yearly-value {
+        font-size: 1.3rem;
+    }
+}
+</style>
+
+<section class="savings-calculator" id="tasarruf-hesapla">
+    <div class="calc-container">
+        <h2 class="calc-title">Tasarruf Hesaplayıcı</h2>
+        <p class="calc-subtitle">Aylık elektrik faturanızdan ne kadar tasarruf edebileceğinizi öğrenin</p>
+
+        <div class="calc-form">
+            <div class="calc-input-group">
+                <label for="calc-bill">Aylık Elektrik Faturası (₺)</label>
+                <input type="text" id="calc-bill" placeholder="Örn: 50.000" inputmode="numeric">
+            </div>
+            <div class="calc-input-group">
+                <label for="calc-sector">Sektörünüz</label>
+                <select id="calc-sector">
+                    <option value="" disabled selected>Sektör seçiniz</option>
+                    <option value="sanayi">Sanayi</option>
+                    <option value="avm">AVM</option>
+                    <option value="otel">Otel</option>
+                    <option value="akaryakit">Akaryakıt</option>
+                    <option value="market">Market</option>
+                    <option value="restoran">Restoran</option>
+                    <option value="plaza">Plaza</option>
+                    <option value="hastane">Hastane</option>
+                    <option value="diger">Diğer</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="calc-btn" onclick="calculateSavings()">Tasarrufu Hesapla</button>
+
+        <div class="calc-result" id="calc-result">
+            <p class="calc-monthly">Tahmini Aylık Tasarruf:</p>
+            <p class="calc-monthly-value" id="calc-monthly-value">₺0</p>
+            <p class="calc-yearly">Yıllık Tasarruf Potansiyeli:</p>
+            <p class="calc-yearly-value" id="calc-yearly-value">₺0</p>
+            <a href="#iletisim" class="calc-cta">Kesin Teklifinizi Alın →</a>
+            <p class="calc-disclaimer">Bu hesaplama tahminidir. Kesin tasarruf oranı tüketim profilinize göre değişir.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+function calculateSavings() {
+    const billInput = document.getElementById('calc-bill');
+    const sectorSelect = document.getElementById('calc-sector');
+    const resultDiv = document.getElementById('calc-result');
+    const monthlyValue = document.getElementById('calc-monthly-value');
+    const yearlyValue = document.getElementById('calc-yearly-value');
+
+    // Parse bill amount (remove dots and non-numeric chars except comma)
+    const billText = billInput.value.replace(/\./g, '').replace(/,/g, '.').replace(/[^0-9.]/g, '');
+    const bill = parseFloat(billText);
+
+    if (!bill || bill <= 0) {
+        alert('Lütfen geçerli bir fatura tutarı giriniz.');
+        return;
+    }
+
+    if (!sectorSelect.value) {
+        alert('Lütfen sektörünüzü seçiniz.');
+        return;
+    }
+
+    // Savings rates by sector
+    const rates = {
+        'sanayi': 0.07,
+        'avm': 0.05,
+        'otel': 0.06,
+        'akaryakit': 0.05,
+        'market': 0.045,
+        'restoran': 0.06,
+        'plaza': 0.05,
+        'hastane': 0.06,
+        'diger': 0.06
+    };
+
+    const rate = rates[sectorSelect.value];
+    const monthlySaving = bill * rate;
+    const yearlySaving = monthlySaving * 12;
+
+    // Format numbers in Turkish locale
+    const formatTL = (num) => {
+        return '₺' + num.toLocaleString('tr-TR', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+    };
+
+    // Show result with animation
+    resultDiv.classList.remove('active');
+    void resultDiv.offsetWidth; // trigger reflow for re-animation
+    resultDiv.classList.add('active');
+
+    monthlyValue.textContent = formatTL(monthlySaving);
+    yearlyValue.textContent = formatTL(yearlySaving);
+}
+</script>
