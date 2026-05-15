@@ -50,19 +50,19 @@
     <!-- MAKALELER -->
     <url>
         <loc>https://www.gelkaenerji.com.tr/makale-sanayi-elektrik-tedarikcisi.html</loc>
-        <lastmod>2026-05-14</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.gelkaenerji.com.tr/makale-osb-elektrik-tedariki.html</loc>
-        <lastmod>2026-05-14</lastmod>
+        <lastmod>2026-05-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.gelkaenerji.com.tr/makale-reaktif-ceza-sanayi.html</loc>
-        <lastmod>2026-05-14</lastmod>
+        <lastmod>2026-05-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -146,13 +146,49 @@
     </url>
     <url>
         <loc>https://www.gelkaenerji.com.tr/makale-orta-olcekli-uretici-elektrik.html</loc>
-        <lastmod>2026-05-14</lastmod>
+        <lastmod>2026-05-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.gelkaenerji.com.tr/makale-elektrik-tedarikcisi-secimi-hatalari.html</loc>
-        <lastmod>2026-05-14</lastmod>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.gelkaenerji.com.tr/makale-og-tek-terim-cift-terim.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.gelkaenerji.com.tr/makale-isletmeler-neden-fazla-elektrik-oder.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.gelkaenerji.com.tr/makale-ptf-piyasa-takas-fiyati.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.gelkaenerji.com.tr/makale-demant-asimi-guc-tasmasi.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.gelkaenerji.com.tr/makale-serbest-tuketici-gecis-rehberi.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.gelkaenerji.com.tr/makale-serbest-tuketici-gecis-rehberi.html</loc>
+        <lastmod>2026-05-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

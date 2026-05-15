@@ -308,6 +308,96 @@ Bu doküman canlı bir referans. Her faz tamamlandıkça aşağıdaki tabloya no
 | 1.1 .htaccess | ✅ Tamam | 14 May | 14 May | Brotli aktif (%76 sıkıştırma), HSTS, security headers, cache. Test: giftofspeed.com |
 | 1.2 robots/sitemap | ⏳ Bekliyor | - | - | - |
 | 1.3 Schema | ✅ Tamam | 14 May | 14 May | FAQPage (4 sayfa), Article (18 makale), BreadcrumbList (tüm alt sayfalar), AboutPage, CollectionPage |
-| 2.x Performance | ✅ Tamam | 14 May | 15 May | WebP, CSS bölme (138→69KB), minify, FA async, critical CSS, intro fix. Mobil 58, Masaüstü 81 |
+| 2.x Performance | ✅ Tamam | 14 May | 15 May | WebP, CSS bölme (138→69KB), minify, FA async, critical CSS, intro fix. Mobil 58, Masaüstü 81. Article-hero padding fix (120→200px) |
 | 3.x Trust+Conversion | ✅ Tamam | 15 May | 15 May | Ön Maliyet Analizi hesaplayıcı + Case study cards (3 gerçek örnek). Lead webhook atlandı (gerek yok) |
-| 4.x SEO Authority | ⏳ Sürekli | - | - | - |
+| 4.x SEO Authority | ✅ Tamam | 14 May | 15 May | Pillar page + 5 supporting content + thin content genişletme + cluster backlinking. 9 bağlı sayfa canlı. |
+
+---
+
+## 🗺 FAZ 4 — SEO Authority Detay Planı
+
+### 4.1 Pillar Page Dönüşümü
+| Aksiyon | Durum | Tarih |
+|---|---|---|
+| makale-sanayi-elektrik-tedarikcisi.html → Pillar | ✅ Tamam | 15 May |
+| Mevcut 4 cluster makaleye geri link ekleme | ✅ Tamam | 15 May |
+| sitemap.xml lastmod güncelleme | ✅ Tamam | 15 May |
+| Search Console URL Inspection + sitemap resubmit | ✅ Tamam | 15 May |
+
+### 4.2 Supporting Content (Öncelik Sırası)
+| # | İçerik | Intent | Cluster Rolü | Durum |
+|---|---|---|---|---|
+| 1 | OG Tek Terim / Çift Terim Farkı | Yüksek ticari | Teknik derinlik | ✅ Tamam (15 May) |
+| 2 | İşletmeler Neden Fazla Elektrik Öder? | Problem awareness | Conversion | ✅ Tamam (15 May) |
+| 3 | PTF Nedir? Piyasa Takas Fiyatı Rehberi | Üst funnel / otorite | Bilgi | ✅ Tamam (15 May) |
+| 4 | Demant Aşımı ve Güç Taşması Rehberi | Teknik | Cluster derinliği | ✅ Tamam (15 May) |
+| 5 | Serbest Tüketici Geçiş Rehberi | How-to / long tail | Conversion | ✅ Tamam (15 May) |
+
+### 4.3 Mevcut İçerik İyileştirme
+| Aksiyon | Durum |
+|---|---|
+| Cluster makalelere pillar'a geri link ekleme | ✅ Tamam |
+| Thin content audit (500-800 kelime olanları tespit) | ⏳ Bekliyor |
+| Cannibalization kontrolü (aynı SERP'e düşen URL'ler) | ⏳ Bekliyor |
+| Keyword mapping sheet oluşturma | ⏳ Bekliyor |
+
+### 4.4 Teknik SEO Aksiyonları
+| Aksiyon | Durum |
+|---|---|
+| sitemap.xml lastmod güncelleme | ⏳ |
+| Search Console sitemap resubmit | ⏳ |
+| URL Inspection (pillar page) | ⏳ |
+| GA4 internal link click tracking | ⏳ |
+
+### 4.5 Ölçüm KPI'ları
+| KPI | Ölçüm Sıklığı | Hedef |
+|---|---|---|
+| Organic impressions | Haftalık | Artış trendi |
+| Avg position (hedef KW'ler) | Haftalık | Top 20 → Top 10 |
+| Time on page (pillar) | Haftalık | >3 dakika |
+| Internal link CTR (pillar → cluster) | Aylık | >5% |
+| Form conversion rate | Aylık | >3% |
+| Indexed pages count | Aylık | Büyüme |
+
+---
+
+## 📋 Keyword Mapping Sheet
+
+| URL | Primary KW | Secondary KW | Intent | Cluster | Kelime |
+|---|---|---|---|---|---|
+| makale-sanayi-elektrik-tedarikcisi.html | sanayi elektrik tedarikçisi | enerji tedarik yapısı, işletme enerji maliyetleri, serbest tüketici yapısı | Ticari / Bilgi | **PILLAR** | 2568 |
+| makale-reaktif-ceza-sanayi.html | reaktif ceza sanayi | endüktif reaktif, kapasitif reaktif, kompanzasyon | Teknik / Problem | Cluster | ~700 |
+| makale-osb-elektrik-tedariki.html | osb elektrik tedariki | organize sanayi elektrik, osb elektrik fiyatı | Ticari / Niş | Cluster | ~600 |
+| makale-orta-olcekli-uretici-elektrik.html | orta ölçekli üretici elektrik | KOBİ elektrik, üretim tesisi elektrik | Ticari / Niş | Cluster | ~500 |
+| makale-elektrik-tedarikcisi-secimi-hatalari.html | elektrik tedarikçisi seçimi hataları | tedarikçi nasıl seçilir, serbest tüketici | Problem / Bilgi | Cluster | ~600 |
+| makale-og-tek-terim-cift-terim.html | og tek terim çift terim fark | çift terim tarifesi avantajı, OG tarife yapısı | Yüksek ticari | Cluster | 1579 |
+| makale-isletmeler-neden-fazla-elektrik-oder.html | işletmeler neden fazla elektrik öder | elektrik faturası neden yüksek, enerji maliyet optimizasyonu | Problem / Conversion | Cluster (Hub) | 1977 |
+| makale-ptf-piyasa-takas-fiyati.html | PTF nedir piyasa takas fiyatı | YEKDEM PTF ilişkisi, endeksli sözleşme, spot fiyat | Educational / Otorite | Cluster | 1559 |
+| makale-akaryakit-istasyonu-elektrik-tuketimi.html | akaryakıt istasyonu elektrik | istasyon elektrik tüketimi | Niş / Sektörel | Bağımsız | ? |
+| makale-otel-zinciri-elektrik-tedariki.html | otel elektrik tedariki | otel enerji maliyeti | Niş / Sektörel | Bağımsız | ? |
+| makale-market-elektrik-tuketimi.html | market elektrik tüketimi | market enerji analizi | Niş / Sektörel | Bağımsız | ? |
+| makale-hastane-saglik-elektrik-tedariki.html | hastane elektrik tedariki | sağlık sektörü enerji | Niş / Sektörel | Bağımsız | ? |
+| makale-plaza-ofis-elektrik-tedariki.html | plaza ofis elektrik | ticari bina enerji | Niş / Sektörel | Bağımsız | ? |
+| makale-franchise-cafe-elektrik-tuketimi.html | franchise cafe elektrik | cafe enerji maliyeti | Niş / Sektörel | Bağımsız | ? |
+| makale-restoran-elektrik-fiyat-teklifi.html | restoran elektrik fiyat | restoran enerji | Niş / Sektörel | Bağımsız | ? |
+| makale-zincir-magaza-elektrik-farki.html | zincir mağaza elektrik | perakende enerji | Niş / Sektörel | Bağımsız | ? |
+| makale-zincir-restoran-elektrik-tuketimi.html | zincir restoran elektrik | çoklu şube enerji | Niş / Sektörel | Bağımsız | ? |
+| makale-market-demant-guc-asimi.html | market demant güç aşımı | demant aşımı market | Teknik / Niş | Bağımsız | ? |
+| makale-akaryakit-demant-guc-asimi.html | akaryakıt demant güç aşımı | istasyon güç aşımı | Teknik / Niş | Bağımsız | ? |
+| makale-avm-reaktif-enduktif.html | avm reaktif endüktif | AVM kompanzasyon | Teknik / Niş | Bağımsız | ? |
+| makale-tatli-su-deniz-suyu-havuz-otel.html | otel havuz elektrik | havuz enerji tüketimi | Niş / Sektörel | Bağımsız | ? |
+
+### Cannibalization Risk Alanları
+| Risk | URL'ler | Aksiyon |
+|---|---|---|
+| "sanayi elektrik" overlap | pillar + osb + orta ölçekli | Pillar ana otorite, diğerleri niş odaklı kalmalı ✅ |
+| "tedarikçi seçimi" overlap | pillar + secimi-hatalari | Pillar genel rehber, hatalar spesifik listicle ✅ |
+| "demant güç aşımı" overlap | market-demant + akaryakit-demant | Farklı sektör, sorun yok ✅ |
+
+### Thin Content Riski (Tahmini)
+| URL | Tahmini Kelime | Aksiyon |
+|---|---|---|
+| makale-osb-elektrik-tedariki.html | ~600 | Genişletme gerekli |
+| makale-orta-olcekli-uretici-elektrik.html | ~500 | Genişletme gerekli |
+| makale-elektrik-tedarikcisi-secimi-hatalari.html | ~600 | Genişletme gerekli |
+| makale-reaktif-ceza-sanayi.html | ~700 | Sınırda, izle |

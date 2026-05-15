@@ -56,8 +56,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Sanayi ElektriÄŸinde Reaktif Ceza NasÄ±l Ã–nlenir?",
-        "description": "Sanayi tesislerinde reaktif ceza riski nedir? EndÃ¼ktif, kapasitif ve reaktif gÃ¼Ã§ kavramlarÄ±. GELKA Enerji sÃ¶zleÅŸme Ã¶ncesi reaktif deÄŸerleri analiz eder.",
+        "headline": "Sanayi Elektriğinde Reaktif Ceza Nasıl Önlenir?",
+        "description": "Sanayi tesislerinde reaktif ceza riski nedir? Endüktif, kapasitif ve reaktif güç kavramları, ceza hesaplama ve önleme yöntemleri.",
         "author": {"@type": "Organization", "name": "GELKA Enerji"},
         "publisher": {
             "@type": "Organization",
@@ -65,9 +65,43 @@
             "logo": {"@type": "ImageObject", "url": "https://www.gelkaenerji.com.tr/yatay_logo.png"}
         },
         "datePublished": "2026-04-01",
-        "dateModified": "2026-05-14",
+        "dateModified": "2026-05-15",
         "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.gelkaenerji.com.tr/makale-reaktif-ceza-sanayi.html"},
         "image": "https://www.gelkaenerji.com.tr/yatay_logo.png"
+    }
+    </script>
+
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Reaktif ceza nedir?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Reaktif ceza, tesisteki endüktif veya kapasitif yüklerin EPDK'nın belirlediği oranları aşması durumunda uygulanan ek bedeldir. Endüktif reaktif enerji aktif enerjinin %20'sini, kapasitif reaktif enerji %15'ini aştığında ceza oluşur. Sanayi tesislerinde faturanın %15-30'una kadar çıkabilir."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Kompanzasyon sistemi kurulu ama hâlâ ceza ödüyorum, neden?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kompanzasyon sistemi kurulu olması ceza ödenmeyeceği anlamına gelmez. Kondansatörler bozulmuş, kontaktörler arızalanmış veya kontrol rölesi yanlış çalışıyor olabilir. Ayrıca yeni eklenen yükler mevcut kapasiteyi aşmış olabilir. Sistem bakımı ve kapasite kontrolü gereklidir."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Reaktif ceza faturada nerede görünür?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Elektrik faturanızda reaktif enerji bedeli, endüktif reaktif bedeli veya kapasitif reaktif bedeli olarak ayrı bir kalem halinde görünür. Bazı faturalarda reaktif enerji tüketimi (kVArh) değeri de belirtilir."
+                }
+            }
+        ]
     }
     </script>
 
@@ -134,35 +168,99 @@
                 <div class="article-main">
                     
                     <div class="article-intro">
-                        <p><strong>Türkiye'de sanayi tesislerinin önemli bir kısmı, farkında olmadan reaktif ceza ödüyor.</strong> Bu ceza, faturada ayrı bir kalem olarak görünür ve çoğu zaman "neden bu kadar yüksek?" sorusuna net cevap alınamaz.</p>
+                        <p><strong>Türkiye'de sanayi tesislerinin önemli bir kısmı, farkında olmadan reaktif ceza ödüyor.</strong> Bu ceza, faturada ayrı bir kalem olarak görünür ve çoğu zaman "neden bu kadar yüksek?" sorusuna net cevap alınamaz. Reaktif güç cezası, sanayi faturalarının %15-30'una kadar çıkabilir — aylık 100.000 TL fatura ödeyen bir tesis için bu, yılda 180.000-360.000 TL gereksiz maliyet demektir.</p>
+                        <p>Bu rehber, reaktif güç kavramını, ceza mekanizmasını, hesaplama yöntemini ve önleme stratejilerini teknik ama anlaşılır bir dille ele alır.</p>
                     </div>
 
-                    <h2>Reaktif Güç Nedir?</h2>
+                    <!-- İçindekiler -->
+                    <div class="article-toc">
+                        <h3><i class="fas fa-list"></i> İçindekiler</h3>
+                        <ol>
+                            <li><a href="#reaktif-guc-nedir">Reaktif Güç Nedir?</a></li>
+                            <li><a href="#enduktif-kapasitif-fark">Endüktif ve Kapasitif Reaktif Farkı</a></li>
+                            <li><a href="#ceza-hesaplama">Reaktif Ceza Nasıl Hesaplanır?</a></li>
+                            <li><a href="#neden-olusur">Reaktif Ceza Neden Oluşur?</a></li>
+                            <li><a href="#nasil-onlenir">Reaktif Cezadan Korunmak İçin Ne Yapılmalı?</a></li>
+                            <li><a href="#kompanzasyon-bakimi">Kompanzasyon Sistemi Bakımı</a></li>
+                            <li><a href="#sss">Sıkça Sorulan Sorular</a></li>
+                        </ol>
+                    </div>
+
+                    <h2 id="reaktif-guc-nedir">Reaktif Güç Nedir?</h2>
                     <p>Elektrik sistemlerinde iki tür güç vardır:</p>
                     <ul class="article-list">
-                        <li><strong>Aktif Güç (kW):</strong> Gerçek iş yapan, makineleri çalıştıran güç</li>
-                        <li><strong>Reaktif Güç (kVAr):</strong> Manyetik alan oluşturmak için gereken, iş yapmayan güç</li>
+                        <li><strong>Aktif Güç (kW):</strong> Gerçek iş yapan, makineleri çalıştıran güç. Faturanızda "tüketim" olarak gördüğünüz kısım.</li>
+                        <li><strong>Reaktif Güç (kVAr):</strong> Manyetik alan oluşturmak için gereken, doğrudan iş yapmayan güç. Motorların, transformatörlerin çalışması için gereklidir ancak enerji olarak "tüketilmez" — şebeke ile tesis arasında gidip gelir.</li>
                     </ul>
                     <p>Motorlar, transformatörler, kaynak makineleri gibi endüktif yükler çalışırken reaktif güç tüketir. Bu tüketim belirli limitleri aştığında <strong>reaktif ceza</strong> uygulanır.</p>
 
-                    <h2>Endüktif ve Kapasitif Reaktif Farkı</h2>
+                    <div class="article-highlight-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p><strong>Basit analoji:</strong> Reaktif gücü bir bira bardağındaki köpüğe benzetebilirsiniz. Bardaktaki bira (aktif güç) gerçek içeceğinizdir. Köpük (reaktif güç) ise bardakta yer kaplar ama içilmez. Çok fazla köpük olursa, bardağın kapasitesini gereksiz yere kullanmış olursunuz — ve bunun bedeli vardır.</p>
+                    </div>
+
+                    <h3>Güç Faktörü (Cos φ) Nedir?</h3>
+                    <p>Güç faktörü, aktif gücün toplam görünür güce oranıdır. İdeal değer 1'dir (tüm güç aktif). Sanayi tesislerinde genellikle 0.85-0.95 arasında seyreder. Güç faktörü düştükçe reaktif güç oranı artar ve ceza riski yükselir.</p>
                     <ul class="article-list">
-                        <li><strong>Endüktif Reaktif:</strong> Motorlar, transformatörler, bobinler üretir. Sanayi tesislerinde en yaygın görülen tür.</li>
-                        <li><strong>Kapasitif Reaktif:</strong> Kondansatörler, uzun kablolar üretir. Genellikle kompanzasyon sistemlerinin aşırı çalışmasından kaynaklanır.</li>
+                        <li><strong>Cos φ = 1.0:</strong> İdeal — reaktif güç yok</li>
+                        <li><strong>Cos φ = 0.95:</strong> İyi — düşük reaktif güç</li>
+                        <li><strong>Cos φ = 0.85:</strong> Sınırda — ceza riski başlıyor</li>
+                        <li><strong>Cos φ < 0.80:</strong> Kritik — yüksek ceza riski</li>
+                    </ul>
+
+                    <h2 id="enduktif-kapasitif-fark">Endüktif ve Kapasitif Reaktif Farkı</h2>
+                    <ul class="article-list">
+                        <li><strong>Endüktif Reaktif:</strong> Motorlar, transformatörler, bobinler, kaynak makineleri üretir. Sanayi tesislerinde en yaygın görülen tür. Akım gerilimin gerisinde kalır.</li>
+                        <li><strong>Kapasitif Reaktif:</strong> Kondansatörler, uzun kablolar, aşırı kompanzasyon üretir. Genellikle kompanzasyon sistemlerinin yanlış ayarlanmasından veya gece saatlerinde düşük yükte çalışmadan kaynaklanır. Akım gerilimin önüne geçer.</li>
                     </ul>
 
                     <div class="article-highlight-box warning">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <p>Her iki durumda da limit aşımı cezaya yol açar. Endüktif ceza daha yaygındır, kapasitif ceza ise genellikle yanlış ayarlanmış kompanzasyon sistemlerinden kaynaklanır.</p>
+                        <p>Her iki durumda da limit aşımı cezaya yol açar. Endüktif ceza daha yaygındır (%90+ vaka), kapasitif ceza ise genellikle yanlış ayarlanmış veya bakımsız kompanzasyon sistemlerinden kaynaklanır. Özellikle gece vardiyasında düşük yükle çalışan tesislerde kapasitif aşım riski artar.</p>
                     </div>
 
-                    <h2>Reaktif Ceza Nasıl Hesaplanır?</h2>
+                    <h2 id="ceza-hesaplama">Reaktif Ceza Nasıl Hesaplanır?</h2>
                     <p>EPDK düzenlemelerine göre:</p>
                     <ul class="article-list">
-                        <li>Endüktif reaktif enerji, aktif enerjinin %20'sini aşarsa ceza uygulanır</li>
-                        <li>Kapasitif reaktif enerji, aktif enerjinin %15'ini aşarsa ceza uygulanır</li>
+                        <li>Endüktif reaktif enerji, aktif enerjinin <strong>%20'sini</strong> aşarsa ceza uygulanır</li>
+                        <li>Kapasitif reaktif enerji, aktif enerjinin <strong>%15'ini</strong> aşarsa ceza uygulanır</li>
                         <li>Ceza miktarı, aşım oranına ve birim fiyata göre hesaplanır</li>
                     </ul>
+
+                    <h3>Örnek Hesaplama</h3>
+                    <ul class="article-list">
+                        <li>Aylık aktif enerji tüketimi: 100.000 kWh</li>
+                        <li>Endüktif reaktif enerji: 28.000 kVArh</li>
+                        <li>İzin verilen limit: 100.000 × %20 = 20.000 kVArh</li>
+                        <li>Aşım miktarı: 28.000 - 20.000 = 8.000 kVArh</li>
+                        <li>Birim ceza fiyatı: ~1,5 TL/kVArh (örnek)</li>
+                        <li><strong>Aylık ceza: 8.000 × 1,5 = 12.000 TL</strong></li>
+                        <li><strong>Yıllık ceza: ~144.000 TL</strong></li>
+                    </ul>
+
+                    <div class="article-note">
+                        <p><strong>Önemli:</strong> Ceza birim fiyatı dağıtım bölgesine ve döneme göre değişir. Yukarıdaki örnek genel bir hesaplamadır. Gerçek ceza tutarı faturanızdaki "reaktif enerji bedeli" kaleminden görülebilir.</p>
+                    </div>
+
+                    <h2 id="neden-olusur">Reaktif Ceza Neden Oluşur?</h2>
+                    <p>Reaktif cezanın oluşmasının birden fazla yapısal nedeni vardır:</p>
+
+                    <h3>1. Kompanzasyon Sistemi Yetersizliği</h3>
+                    <p>Tesis büyüdükçe, yeni makineler eklendikçe mevcut kompanzasyon kapasitesi yetersiz kalabilir. Başlangıçta yeterli olan sistem, artan yükle birlikte reaktif gücü dengeleyemez hale gelir.</p>
+
+                    <h3>2. Kompanzasyon Bakım Eksikliği</h3>
+                    <p>Kompanzasyon panolarındaki kondansatörler zamanla bozulur, kontaktörler arızalanır, kontrol rölesi yanlış çalışır. Bakımsız sistem, kurulu olmasına rağmen işlevini yerine getirmez.</p>
+
+                    <h3>3. Yeni Makine Devreye Alımı</h3>
+                    <p>Her yeni motor, kompresör veya kaynak makinesi ek reaktif güç talebi oluşturur. Kompanzasyon kapasitesi güncellenmezse, yeni yükler cezayı tetikler.</p>
+
+                    <h3>4. Harmonik Bozulma</h3>
+                    <p>Frekans dönüştürücüler (invertörler), UPS sistemleri ve LED sürücüler harmonik akımlar üretir. Bu harmonikler, kompanzasyon kondansatörlerine zarar verir ve sistemin verimini düşürür.</p>
+
+                    <h3>5. Gece Vardiyasında Kapasitif Aşım</h3>
+                    <p>Gece saatlerinde üretim yükü düştüğünde, kompanzasyon sistemi otomatik olarak kapanmazsa aşırı kompanzasyon (kapasitif aşım) oluşur. Bu durum, özellikle eski tip sabit kompanzasyon sistemlerinde yaygındır.</p>
+
+                    <p>Reaktif ceza, işletmelerin elektrik maliyetlerinde fazla ödeme yapmasının en yaygın nedenlerinden biridir. Bu konunun diğer maliyet kaçağı noktalarıyla birlikte değerlendirilmesi için <a href="makale-isletmeler-neden-fazla-elektrik-oder.html">işletmeler neden fazla elektrik maliyeti öder rehberimize</a> göz atabilirsiniz.</p>
 
                     <h2>GELKA Enerji Reaktif Riski Nasıl Değerlendirir?</h2>
                     <p>GELKA Enerji, sözleşme öncesi ve süreç içinde:</p>
@@ -177,17 +275,63 @@
                         <p><strong>Önemli:</strong> GELKA Enerji kompanzasyon kurmaz, tesisata müdahale etmez. Ama tüketim verisini okur, riski baştan görür ve sanayiciyi uyarır.</p>
                     </div>
 
-                    <h2>Reaktif Cezadan Korunmak İçin Ne Yapılmalı?</h2>
+                    <h2 id="nasil-onlenir">Reaktif Cezadan Korunmak İçin Ne Yapılmalı?</h2>
                     <ul class="article-list check-list">
                         <li><i class="fas fa-check"></i> Mevcut kompanzasyon sisteminin düzgün çalıştığından emin olun</li>
                         <li><i class="fas fa-check"></i> Aylık faturalarda reaktif değerleri takip edin</li>
                         <li><i class="fas fa-check"></i> Yeni makine devreye alırken reaktif etkisini değerlendirin</li>
                         <li><i class="fas fa-check"></i> Elektrik tedarikçinizin reaktif analizi yapıp yapmadığını sorun</li>
+                        <li><i class="fas fa-check"></i> Kompanzasyon sistemini yılda en az 2 kez kontrol ettirin</li>
+                        <li><i class="fas fa-check"></i> Harmonik filtre ihtiyacını değerlendirin</li>
+                        <li><i class="fas fa-check"></i> Gece vardiyasında kompanzasyon davranışını kontrol edin</li>
                     </ul>
+
+                    <h2 id="kompanzasyon-bakimi">Kompanzasyon Sistemi Bakımı</h2>
+                    <p>Kompanzasyon sistemi "kur ve unut" bir ekipman değildir. Düzenli bakım gerektirir:</p>
+
+                    <h3>Periyodik Kontrol Listesi</h3>
+                    <ul class="article-list">
+                        <li><strong>Aylık:</strong> Faturadaki reaktif değerlerin takibi, alarm kontrolü</li>
+                        <li><strong>3 Aylık:</strong> Kondansatör gruplarının görsel kontrolü, şişme/sızıntı tespiti</li>
+                        <li><strong>6 Aylık:</strong> Kontaktör ve sigorta kontrolü, bağlantı sıkılıkları</li>
+                        <li><strong>Yıllık:</strong> Kapasitans ölçümü, harmonik analiz, kontrol rölesi kalibrasyonu</li>
+                    </ul>
+
+                    <h3>Kompanzasyon Yenileme İşaretleri</h3>
+                    <p>Aşağıdaki belirtiler, kompanzasyon sisteminin yenilenmesi gerektiğine işaret eder:</p>
+                    <ul class="article-list">
+                        <li>Kondansatörlerde şişme veya sızıntı</li>
+                        <li>Kontaktörlerde yanık veya yapışma</li>
+                        <li>Reaktif cezanın bakıma rağmen devam etmesi</li>
+                        <li>Sistemin 10 yaşını aşmış olması</li>
+                        <li>Harmonik kaynaklı arızaların tekrarlanması</li>
+                    </ul>
+
+                    <p>Demant aşımı ve güç taşması da reaktif güç sorunlarıyla birlikte değerlendirilmesi gereken bir konudur. Kompanzasyon arızası dolaylı olarak demant aşımına da katkıda bulunabilir. Bu konunun detaylı analizi için <a href="makale-demant-asimi-guc-tasmasi.html">demant aşımı ve güç taşması rehberimize</a> göz atabilirsiniz.</p>
+
+                    <h2 id="sss">Sıkça Sorulan Sorular</h2>
+
+                    <div class="faq-section">
+                        <div class="faq-item">
+                            <h3>Reaktif ceza nedir?</h3>
+                            <p>Reaktif ceza, tesisteki endüktif veya kapasitif yüklerin EPDK'nın belirlediği oranları aşması durumunda uygulanan ek bedeldir. Endüktif reaktif enerji aktif enerjinin %20'sini, kapasitif reaktif enerji %15'ini aştığında ceza oluşur. Sanayi tesislerinde faturanın %15-30'una kadar çıkabilir.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Kompanzasyon sistemi kurulu ama hâlâ ceza ödüyorum, neden?</h3>
+                            <p>Kompanzasyon sistemi kurulu olması ceza ödenmeyeceği anlamına gelmez. Kondansatörler bozulmuş, kontaktörler arızalanmış veya kontrol rölesi yanlış çalışıyor olabilir. Ayrıca yeni eklenen yükler mevcut kapasiteyi aşmış olabilir. Sistem bakımı ve kapasite kontrolü gereklidir.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Reaktif ceza faturada nerede görünür?</h3>
+                            <p>Elektrik faturanızda "reaktif enerji bedeli", "endüktif reaktif bedeli" veya "kapasitif reaktif bedeli" olarak ayrı bir kalem halinde görünür. Bazı faturalarda "reaktif enerji tüketimi (kVArh)" değeri de belirtilir.</p>
+                        </div>
+                    </div>
 
                     <h2>Sonuç</h2>
                     <p>Reaktif ceza, sanayi tesislerinde <strong>görünmeyen ama ciddi bir maliyet kalemidir</strong>. Doğru tedarikçi seçimi, bu riskin baştan görülmesini sağlar.</p>
                     <p>GELKA Enerji, reaktif değerleri sözleşme öncesi analiz eder ve sanayiciyi bilgilendirir. Elektrik fiyatı sadece birim fiyat değildir; toplam maliyet kontrolü gerektirir.</p>
+                    <p>Reaktif ceza yönetimi, sanayi elektrik tedarikçisi seçiminde değerlendirilmesi gereken kritik kriterlerden yalnızca biridir. Tedarikçi seçim sürecinin tüm boyutları — sözleşme yapısı, gerilim seviyesi, tüketim profili analizi — hakkında kapsamlı bilgiye <a href="makale-sanayi-elektrik-tedarikcisi.html">sanayi elektrik tedarikçisi seçim rehberimizden</a> ulaşabilirsiniz.</p>
 
                     <!-- CTA -->
                     <div class="article-cta">
